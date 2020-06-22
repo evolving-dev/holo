@@ -1,5 +1,6 @@
 import pygame
 import time, os
+from os.path import join
 
 def readfile(name):
     with open(name,"r") as f:

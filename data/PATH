@@ -1,0 +1,5 @@
+{
+'home' : {
+    'assets' : 'assets/apps/holo' , 'scripts' : 'scripts/apps/holo/home'
+    }
+}

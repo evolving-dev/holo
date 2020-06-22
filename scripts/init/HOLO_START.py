@@ -16,6 +16,7 @@ if "game" in globals():
     #RAM CLEANUP (START VIA LAUNCHER)
 else:
     import os,pygame #DEBUG START
+    from os.path import join
     PATH = "/media/pi/DOKUMENTE 3/HOLO"
     def readfile(name):
         with open(name,"r") as f:
@@ -24,15 +25,20 @@ else:
 os.chdir(PATH)
 
 #INIT
-exec(readfile(os.path.join(PATH,"scripts/core/renderFunctions.py"))) #INITIALIZE CUSTOM RENDER FUNCTIONS
-SETTINGS = eval(readfile(os.path.join(PATH,"USERS/settings"))) #INITIALIZE SETTINGS
+PATHFILE = eval(readfile(join(PATH,"data/PATH"))) #APP PATH FILE
+exec(readfile(join(PATH,"scripts/core/renderFunctions.py"))) #INITIALIZE CUSTOM RENDER FUNCTIONS
+SETTINGS = eval(readfile(join(PATH,"USERS/settings"))) #INITIALIZE SETTINGS
 pygame.init()
 #pygame.display.set_icon(pygame.image.load('icon.png')) # ICON
 screen = pygame.display.set_mode([SETTINGS["width"],SETTINGS["height"]])
 clock = pygame.time.Clock()
 pygame.display.set_caption("HOLO")
-exec(readfile(os.path.join(PATH, "scripts/init/initStaticCore.py")))#STATIC_CORE MOVED TO INITSTATICCORE.PY
-exec(readfile(os.path.join(PATH, "scripts/init/initFontsMain.py")))#INITIALIZE GUI AND FONTS
+LOADING = pygame.image.load(join(PATH,"assets/images/icons/startup.png")).convert_alpha()
+screen.blit(LOADING,(0,0))
+pygame.display.flip()
+del LOADING
+exec(readfile(join(PATH, "scripts/init/initStaticCore.py")))#STATIC_CORE MOVED TO INITSTATICCORE.PY
+exec(readfile(join(PATH, "scripts/init/initFontsMain.py")))#INITIALIZE GUI AND FONTS
 STATIC:dict = {} #Static objects, such as texts, which persist until the given app was closed.
 DISPLAY = [SETTINGS["width"],SETTINGS["height"]]
 CLOSE = False #LOOP STATE
@@ -41,29 +47,49 @@ FRAME = 0
 SECOND = 0
 FPS = 6
 APP = "startup"
+TIMEOUT = SETTINGS["timeout"]
 APP_CODE = ""
-APPLAUNCHER = readfile(os.path.join(PATH,"scripts/core/launcher.py"))
+APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
 exec(APPLAUNCHER)
 
 CHECKBOX = holo.checkbox([0,0])
 
 while not CLOSE:
-    
-    if DISPLAY_BACKGROUND:
-        screen.blit(STATIC_CORE["background"],(0,0))
-    else:
-        screen.fill([0,0,0])
-    screen.blit(CHECKBOX.surface,(0,0))
-    clock.tick(FPS)
-    pygame.display.flip()
-    FRAME += 1
-    if FRAME%FPS == 0:
-        SECOND += 1
-        FRAME = 0
-    
+    if TIMEOUT > 0: #If screen timeout not reached
+        if DISPLAY_BACKGROUND:
+            screen.blit(STATIC_CORE["background"],(0,0))
+        else:
+            screen.fill([0,0,0])
+        screen.blit(CHECKBOX.surface,(0,0))
+        clock.tick(FPS)
+        pygame.display.flip()
+        FRAME += 1
+        if FRAME%FPS == 0:
+            SECOND += 1
+            FRAME = 0
+            if TIMEOUT:
+                TIMEOUT -= 1
+        #DRAW
+    else: #If screen timeout reached
+        while 1:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    CLOSE = True
+                    TIMEOUT = SETTINGS["timeout"]
+                if event.type == pygame.MOUSEBUTTONUP:
+                    TIMEOUT = SETTINGS["timeout"]
+            if TIMEOUT > 0:
+                break
+            else:
+                clock.tick(1)
+                screen.fill([0,0,0])
+                pygame.display.flip()
+        
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             CLOSE = True
+        else:
+            TIMEOUT = SETTINGS["timeout"]
         if event.type == pygame.MOUSEBUTTONUP:
             CHECKBOX.detectClick(list(pygame.mouse.get_pos()))
             
