@@ -28,6 +28,9 @@ os.chdir(PATH)
 PATHFILE = eval(readfile(join(PATH,"data/PATH"))) #APP PATH FILE
 exec(readfile(join(PATH,"scripts/core/renderFunctions.py"))) #INITIALIZE CUSTOM RENDER FUNCTIONS
 SETTINGS = eval(readfile(join(PATH,"USERS/settings"))) #INITIALIZE SETTINGS
+
+
+#Init pygame window
 pygame.init()
 #pygame.display.set_icon(pygame.image.load('icon.png')) # ICON
 screen = pygame.display.set_mode([SETTINGS["width"],SETTINGS["height"]])
@@ -37,8 +40,14 @@ LOADING = pygame.image.load(join(PATH,"assets/images/icons/startup.png")).conver
 screen.blit(LOADING,(0,0))
 pygame.display.flip()
 del LOADING
+
+
+
 exec(readfile(join(PATH, "scripts/init/initStaticCore.py")))#STATIC_CORE MOVED TO INITSTATICCORE.PY
 exec(readfile(join(PATH, "scripts/init/initFontsMain.py")))#INITIALIZE GUI AND FONTS
+
+
+#GLOBAL VARIABLES (ALL CAPS VARIABLES)
 STATIC:dict = {} #Static objects, such as texts, which persist until the given app was closed.
 DISPLAY = [SETTINGS["width"],SETTINGS["height"]]
 CLOSE = False #LOOP STATE
@@ -52,6 +61,8 @@ APP_CODE = ""
 APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
 exec(APPLAUNCHER)
 
+ALERT = holo.alert("I'm testing if alerts work")
+
 CHECKBOX = holo.checkbox([0,0])
 
 while not CLOSE:
@@ -61,6 +72,7 @@ while not CLOSE:
         else:
             screen.fill([0,0,0])
         screen.blit(CHECKBOX.surface,(0,0))
+        screen.blit(ALERT.surface,(SETTINGS["width"] // 2 - ALERT.width // 2, SETTINGS["height"] // 2 - ALERT.height // 2))
         clock.tick(FPS)
         pygame.display.flip()
         FRAME += 1
@@ -75,7 +87,7 @@ while not CLOSE:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
                     CLOSE = True
-                    TIMEOUT = SETTINGS["timeout"]
+                    TIMEOUT = SETTINGS["timeout"] #End timeout loop either through closing or clicking/tapping
                 if event.type == pygame.MOUSEBUTTONUP:
                     TIMEOUT = SETTINGS["timeout"]
             if TIMEOUT > 0:

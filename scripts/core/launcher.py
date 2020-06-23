@@ -1,5 +1,5 @@
 if APP == "startup":
     APP = "home"
     exec(APPLAUNCHER)
-if APP == "home":
-    pass
+else:
+    exec(readfile(join(PATH,join(PATHFILE[APP]['scripts'],'__init__.py')))) #Run the init file for the opened app.

@@ -28,3 +28,12 @@ class holo:
         def detectClick(self,clickPos):
             if clickPos[0] in range(self.pos[0],self.pos[0]+self.width):
                 self.onClick()
+    class alert:
+        def __init__(self,message):
+            self.message = message
+            self.surface = STATIC_CORE["alert"]
+            self.width = self.surface.get_width()
+            self.height = self.surface.get_height()
+            self.button_width = STATIC_CORE["ok_button"].get_width()
+            self.button_height = STATIC_CORE["ok_button"].get_height()
+            self.surface.blit(STATIC_CORE["ok_button"],(self.width // 2 - self.button_width // 2, int(self.height*0.95 - self.button_height)))
