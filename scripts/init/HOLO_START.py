@@ -29,6 +29,7 @@ PATHFILE = eval(readfile(join(PATH,"data/PATH"))) #APP PATH FILE
 exec(readfile(join(PATH,"scripts/core/renderFunctions.py"))) #INITIALIZE CUSTOM RENDER FUNCTIONS
 exec(readfile(join(PATH,"scripts/core/text_wrapper.py"))) #INITIALIZE TEXT WRAPPER
 SETTINGS = eval(readfile(join(PATH,"USERS/settings"))) #INITIALIZE SETTINGS
+SYSTEM_TEXTS = eval(readfile(join(PATH, "assets/text/main_"+SETTINGS["lang"])))
 
 
 #Init pygame window
@@ -62,7 +63,7 @@ APP_CODE = ""
 APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
 exec(APPLAUNCHER)
 
-ALERT = holo.alert("I'm testing if alerts work")
+ALERT = holo.alert("I'm testing if alerts work. This is a long text  so that I can see if the line breaks work correctly. Test test test test test test qwertuasd dfshofgia gfji gsoigf")
 
 CHECKBOX = holo.checkbox([0,0])
 
