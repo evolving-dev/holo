@@ -106,6 +106,7 @@ while not CLOSE:
             TIMEOUT = SETTINGS["timeout"]
         if event.type == pygame.MOUSEBUTTONUP:
             CHECKBOX.detectClick(list(pygame.mouse.get_pos()))
+            ALERT.detectClick(list(pygame.mouse.get_pos()))
             
             
 pygame.quit()
