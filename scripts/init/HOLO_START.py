@@ -27,6 +27,7 @@ os.chdir(PATH)
 #INIT
 PATHFILE = eval(readfile(join(PATH,"data/PATH"))) #APP PATH FILE
 exec(readfile(join(PATH,"scripts/core/renderFunctions.py"))) #INITIALIZE CUSTOM RENDER FUNCTIONS
+exec(readfile(join(PATH,"scripts/core/text_wrapper.py"))) #INITIALIZE TEXT WRAPPER
 SETTINGS = eval(readfile(join(PATH,"USERS/settings"))) #INITIALIZE SETTINGS
 
 
