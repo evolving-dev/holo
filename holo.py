@@ -1,5 +1,5 @@
 import pygame
-import time, os
+import time, os, math
 from os.path import join
 
 def readfile(name):

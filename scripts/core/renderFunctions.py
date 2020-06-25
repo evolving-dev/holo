@@ -1,4 +1,15 @@
 class holo:
+    def responsive_scale(image,new_scale): #Function to scale an image without stretching
+        im = image
+        old_width, old_height = im.size
+        
+        # Center the image
+        paste_coords = [(new_scale[0] - old_width) // 2,(new_scale[1] - old_height) // 2]
+        
+        newImage = Image.new("RGBA", tuple(new_scale),(255,255,255,255))
+        newImage.paste(im, (paste_coords[0], paste_coords[1], paste_coords[0] + old_width, paste_coords[1] + old_height))
+        
+        return newImage
     def text(text,font="p-sans-serif",color=[255,255,255]):
         if FONTS.get(font) == None:
             return False

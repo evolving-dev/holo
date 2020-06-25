@@ -15,7 +15,7 @@ if "game" in globals():
     del i
     #RAM CLEANUP (START VIA LAUNCHER)
 else:
-    import os,pygame #DEBUG START
+    import os,pygame,time,math #DEBUG START
     from os.path import join
     PATH = "/media/pi/DOKUMENTE 3/HOLO"
     def readfile(name):
