@@ -31,7 +31,7 @@ class holo:
     class alert:
         def __init__(self,message):
             self.visible = True
-            self.surface = STATIC_CORE["alert"]
+            self.surface = STATIC_CORE["alert"].copy()
             self.width = self.surface.get_width()
             self.height = self.surface.get_height()
             self.message = text_wrap(message, int(self.width*0.95), FONTS["p-sans-serif"])
@@ -51,5 +51,7 @@ class holo:
         def detectClick(self, clickPos):
             if clickPos[0] in range(self.xy[0] + self.width // 2 - self.button_width // 2, self.xy[0] + self.width // 2 - self.button_width // 2 + self.button_width) and clickPos[1] in range(self.xy[1] + int(self.height*0.95 - self.button_height), self.xy[1] + int(self.height*0.95 - self.button_height) + self.button_height):
                 self.visible = False
-            
+    def new_alert(message="Sample Text"):
+        global ALERTS
+        ALERTS += [holo.alert(message)]
             

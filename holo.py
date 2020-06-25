@@ -80,14 +80,11 @@ clock = pygame.time.Clock()
 pygame.display.set_caption(game.options.gameTitle)
 pygame.key.set_repeat(100, 10)
 
-
 exec(readfile(os.path.join(PATH, "scripts/init/initFontsFirstTimeStartup.py")))
 STARTUP_LANG_FILE = eval(readfile(os.path.join(PATH,"assets/text/startup_en-US"))) if not os.path.isdir(os.path.join(PATH,"USERS")) else eval(readfile(os.path.join(PATH,"assets/text/startup_"+eval(readfile(os.path.join(PATH,"USERS/settings")))["lang"])))
 STARTUP_TEXTS:dict = {}
 for i in list(STARTUP_LANG_FILE.keys()):
     STARTUP_TEXTS[i] = FONTS["small"].render(STARTUP_LANG_FILE[i],True,[255]*3)
-
-
 
 while not game.state.done:
     for event in pygame.event.get():

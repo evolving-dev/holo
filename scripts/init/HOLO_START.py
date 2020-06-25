@@ -60,10 +60,13 @@ FPS = 6
 APP = "startup"
 TIMEOUT = SETTINGS["timeout"]
 APP_CODE = ""
+ALERTS:list = []
 APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
 exec(APPLAUNCHER)
 
 ALERT = holo.alert("I'm testing if alerts work. This is a long text  so that I can see if the line breaks work correctly. Test test test test test test qwertuasd dfshofgia gfji gsoigf")
+
+holo.new_alert("testalert")
 
 CHECKBOX = holo.checkbox([0,0])
 
@@ -73,8 +76,21 @@ while not CLOSE:
             screen.blit(STATIC_CORE["background"],(0,0))
         else:
             screen.fill([0,0,0])
+        
+        #DEBUG DRAWINGS (WILL BE REMOVED SOON)
         screen.blit(CHECKBOX.surface,(0,0))
-        screen.blit(ALERT.surface,(SETTINGS["width"] // 2 - ALERT.width // 2, SETTINGS["height"] // 2 - ALERT.height // 2))
+        
+        #END DEBUG
+        
+        
+        
+        for index,alert in enumerate(ALERTS):
+            if not alert.visible:
+                del ALERTS[index]
+        for alert in ALERTS:
+            screen.blit(alert.surface,(SETTINGS["width"] // 2 - alert.width // 2, SETTINGS["height"] // 2 - alert.height // 2))
+        
+        
         clock.tick(FPS)
         pygame.display.flip()
         FRAME += 1
@@ -83,7 +99,23 @@ while not CLOSE:
             FRAME = 0
             if TIMEOUT:
                 TIMEOUT -= 1
-        #DRAW
+                
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                CLOSE = True
+            else:
+                TIMEOUT = SETTINGS["timeout"]
+            if event.type == pygame.MOUSEBUTTONUP:
+                for alert in ALERTS:
+                    alert.detectClick(list(pygame.mouse.get_pos()))
+                CHECKBOX.detectClick(list(pygame.mouse.get_pos()))
+                
+        
+        
+        
+        
+        
+        
     else: #If screen timeout reached
         while 1:
             for event in pygame.event.get():
@@ -98,15 +130,6 @@ while not CLOSE:
                 clock.tick(1)
                 screen.fill([0,0,0])
                 pygame.display.flip()
-        
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            CLOSE = True
-        else:
-            TIMEOUT = SETTINGS["timeout"]
-        if event.type == pygame.MOUSEBUTTONUP:
-            CHECKBOX.detectClick(list(pygame.mouse.get_pos()))
-            ALERT.detectClick(list(pygame.mouse.get_pos()))
             
             
 pygame.quit()
