@@ -1,5 +1,5 @@
 class holo:
-    class loader:
+    class loader:#Loader object
         def __init__(self,pos):
             self.frame = 0
             self.surface = STATIC_CORE["loading"][0].copy()
@@ -8,6 +8,8 @@ class holo:
             self.surface = STATIC_CORE["loading"][self.frame].copy()
     def new_loader(pos):
         LOADERS += [holo.loader(pos)]
+    
+    
     def responsive_scale(image,new_scale): #Function to scale an image without stretching
         im = image
         old_width, old_height = im.size
@@ -28,11 +30,6 @@ class holo:
             STATIC[itemID] = item #Make item static if an item of the given ID doesn't exist.
             return True
         return False
-    def drawOptimize(img):
-        with BytesIO() as f:
-            img.save(f, format='JPEG')
-            f.seek(0)
-            return Image.open(f).tobytes()
     class checkbox:
         def __init__(self,pos):
             self.isChecked = False
