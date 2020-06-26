@@ -1,6 +1,6 @@
 from io import BytesIO
 import PIL
-from PIL import Image,ImageDraw
+from PIL import Image,ImageDraw,GifImagePlugin
 if "game" in globals():
     del game
     del execute
