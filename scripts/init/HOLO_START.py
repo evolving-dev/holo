@@ -67,6 +67,8 @@ exec(APPLAUNCHER)
 ALERT = holo.alert("I'm testing if alerts work. This is a long text  so that I can see if the line breaks work correctly. Test test test test test test qwertuasd dfshofgia gfji gsoigf")
 
 holo.new_alert("testalert")
+holo.new_alert("testalert2")
+holo.new_alert("testalert3")
 
 CHECKBOX = holo.checkbox([0,0])
 
@@ -106,8 +108,8 @@ while not CLOSE:
             else:
                 TIMEOUT = SETTINGS["timeout"]
             if event.type == pygame.MOUSEBUTTONUP:
-                for alert in ALERTS:
-                    alert.detectClick(list(pygame.mouse.get_pos()))
+                if len(ALERTS) >= 1:
+                    ALERTS[-1:][0].detectClick(list(pygame.mouse.get_pos())) #Only detect most recent alert
                 CHECKBOX.detectClick(list(pygame.mouse.get_pos()))
                 
         
