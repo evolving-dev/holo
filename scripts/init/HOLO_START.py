@@ -1,4 +1,4 @@
-from io import BytesIO
+import sys
 import PIL
 from PIL import Image,ImageDraw,GifImagePlugin
 if "game" in globals():
@@ -58,6 +58,7 @@ FRAME = 0
 SECOND = 0
 FPS = 6
 APP = "startup"
+data:dict = {}
 TIMEOUT = SETTINGS["timeout"]
 APP_CODE = ""
 ALERTS:list = []
