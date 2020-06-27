@@ -65,8 +65,6 @@ LOADERS:list = []
 APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
 exec(APPLAUNCHER)
 
-ALERT = holo.alert("I'm testing if alerts work. This is a long text  so that I can see if the line breaks work correctly. Test test test test test test qwertuasd dfshofgia gfji gsoigf")
-
 holo.new_alert("testalert")
 
 CHECKBOX = holo.checkbox([0,0])

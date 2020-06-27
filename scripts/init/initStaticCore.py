@@ -17,8 +17,13 @@ try:
         im.seek(im.tell()+1)
 except EOFError:
     del im
+LOADERWIDTH = STATIC_CORE["loading"][0].get_width()
+TEXTCACHE = FONTS["p-sans-serif"].render(SYSTEM_TEXTS["loading"], True, [0,0,0] if SETTINGS["theme"] == "light" else [255,255,255])
 for i in range(len(STATIC_CORE["loading"])):
     INITCACHE = STATIC_CORE["surface_4_1"].copy()
     INITCACHE.blit(STATIC_CORE["loading"][i],(int(0.05*INITCACHE.get_width()),int(INITCACHE.get_height()//2)-STATIC_CORE["loading"][i].get_height() // 2))
+    INITCACHE.blit(TEXTCACHE,(((int(INITCACHE.get_width()) - int(LOADERWIDTH*1.1)) // 2 - TEXTCACHE.get_width() // 2) + int(LOADERWIDTH*1.1) , int(INITCACHE.get_height()//2)-TEXTCACHE.get_height() // 2))
     STATIC_CORE["loading"][i] = INITCACHE.copy()
 del INITCACHE
+del TEXTCACHE
+del LOADERWIDTH
