@@ -7,9 +7,11 @@ STATIC_CORE: dict = {
 "loading":[],
 "surface_1_1":pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_1_1_"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//5,SETTINGS["height"]//5)).tobytes(),(SETTINGS["height"]//5,SETTINGS["height"]//5),"RGBA").convert_alpha(),
 "surface_4_1":pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_4_1_"+SETTINGS["theme"]+".png")).resize(((SETTINGS["height"]//5)*4,SETTINGS["height"]//5)).tobytes(),((SETTINGS["height"]//5)*4,SETTINGS["height"]//5),"RGBA").convert_alpha(),
+"keyboard":{}
 }
 #Static objects which belong to HOLO itself and persist until the end of the session.
 
+#LOADER OBJECT
 im = Image.open(join(PATH,"assets/animations/loading/loading.gif"))
 try:
     while True:
@@ -27,3 +29,4 @@ for i in range(len(STATIC_CORE["loading"])):
 del INITCACHE
 del TEXTCACHE
 del LOADERWIDTH
+###

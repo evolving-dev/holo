@@ -13,19 +13,14 @@ class game:
         dimensions = [256,256]
         frame_rate = 1
         gameTitle = "Startup - HOLO" if os.path.isdir(os.path.join(PATH,"USERS")) else "Setup - HOLO"
-        pixel_size = 1
         cursorVisible = True
-        #Generelle Informationen über das Spiel
     class timers:
         frame = 0
         seconds = 0
-        #In dieser Klasse kann direkt auf die GameTimer zugegriffen werden.
     class state:
         done = False
-        #Status des Spiels
     class storage:
         state = 1
-        #Speicherort von Spieldaten oder Texturen
 
 class engine:
     class draw:
@@ -38,10 +33,6 @@ class engine:
 ii=0
 
 class execute:
-    def gameInit():
-        #game.storage.textureStorage["backgroundimage"] = pygame.image.load("menuBackground.jpg")
-        pass
-        #Funktion, die beim Spielstart ausgeführt wird.
     def onDrawFunction():
         screen.fill((40,60,100))
         if game.storage.state == 1:
@@ -64,13 +55,10 @@ class execute:
                 game.storage.state = 2
         else:
             screen.blit(ERRORMSG,((game.options.dimensions[0] - ERRORMSG.get_width())//2,(game.options.dimensions[1] - ERRORMSG.get_height())//2))
-        #Code, der jeden Frame ausgeführt wird. (auch Draw-Befehle)
     def onSecondFunction():
         game.storage.trueFPS = clock.get_fps()
-        #Code, der jede Sekunde ausgeführt wird.
             
 
-execute.gameInit()
 pygame.init()
 #programIcon = pygame.image.load('icon.png')
 
@@ -90,7 +78,6 @@ while not game.state.done:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             game.state.done = True
-    #Loop
     execute.onDrawFunction()
     if game.state.done:
         pygame.quit()

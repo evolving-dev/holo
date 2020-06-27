@@ -4,7 +4,7 @@ with open(os.path.join(PATH,"INITFILE"),"r") as f:
     f.close()
 os.mkdir("USERS")
 os.chdir(os.path.join(PATH,"USERS"))
-SETTINGS = {"width":int(INITFILE[0]),"height":int(INITFILE[1]),"lang":"en-US",'background':'standard','theme':'dark','timeout':120}
+SETTINGS = {"width":int(INITFILE[0]),"height":int(INITFILE[1]),"lang":"en-US",'background':'standard','theme':'dark','timeout':120,'keyboard':'qwerty'}
 with open("settings","w") as f:
     f.write(str(SETTINGS))
     f.close()

@@ -97,7 +97,7 @@ while not CLOSE:
             if loader.finished:
                 del LOADERS[index]
         for loader in LOADERS:
-            if not (FRAME % (FPS // 6)):
+            if not (FRAME % math.ceil(FPS / 6)):
                 loader.update()
             screen.blit(loader.surface,tuple(loader.pos))
         
