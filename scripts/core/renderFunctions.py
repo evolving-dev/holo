@@ -1,13 +1,16 @@
 class holo:
     class loader:#Loader object
-        def __init__(self,pos):
+        def __init__(self):
             self.frame = 0
+            self.finished = False
             self.surface = STATIC_CORE["loading"][0].copy()
+            self.pos = [(SETTINGS["width"]//2) - self.surface.get_width() // 2, (SETTINGS["height"] // 2) - self.surface.get_height() // 2]
         def update(self):
-            self.frame = 0 if self.frame > len(STATIC_CORE["loading"]) - 1 else self.frame+1 #Loop animation if end is reached
+            self.frame = 0 if self.frame >= len(STATIC_CORE["loading"]) - 1 else self.frame+1 #Loop animation if end is reached
             self.surface = STATIC_CORE["loading"][self.frame].copy()
-    def new_loader(pos):
-        LOADERS += [holo.loader(pos)]
+    def new_loader():
+        global LOADERS
+        LOADERS += [holo.loader()]
     
     
     def responsive_scale(image,new_scale): #Function to scale an image without stretching

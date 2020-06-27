@@ -44,9 +44,8 @@ pygame.display.flip()
 del LOADING
 
 
-
-exec(readfile(join(PATH, "scripts/init/initStaticCore.py")))#STATIC_CORE MOVED TO INITSTATICCORE.PY
-exec(readfile(join(PATH, "scripts/init/initFontsMain.py")))#INITIALIZE GUI AND FONTS
+exec(readfile(join(PATH, "scripts/init/initFontsMain.py")))#INITIALIZE FONTS
+exec(readfile(join(PATH, "scripts/init/initStaticCore.py")))#INITIALIZE STATIC OBJECTS
 
 
 #GLOBAL VARIABLES (ALL CAPS VARIABLES)
@@ -62,16 +61,17 @@ data:dict = {}
 TIMEOUT = SETTINGS["timeout"]
 APP_CODE = ""
 ALERTS:list = []
+LOADERS:list = []
 APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
 exec(APPLAUNCHER)
 
 ALERT = holo.alert("I'm testing if alerts work. This is a long text  so that I can see if the line breaks work correctly. Test test test test test test qwertuasd dfshofgia gfji gsoigf")
 
 holo.new_alert("testalert")
-holo.new_alert("testalert2")
-holo.new_alert("testalert3")
 
 CHECKBOX = holo.checkbox([0,0])
+
+holo.new_loader()
 
 while not CLOSE:
     if TIMEOUT > 0: #If screen timeout not reached
@@ -86,13 +86,21 @@ while not CLOSE:
         #END DEBUG
         
         
-        
+        #ALERT UPDATE ROUTINE
         for index,alert in enumerate(ALERTS):
             if not alert.visible:
                 del ALERTS[index]
         for alert in ALERTS:
             screen.blit(alert.surface,(SETTINGS["width"] // 2 - alert.width // 2, SETTINGS["height"] // 2 - alert.height // 2))
+        ###
         
+        #LOADER UPDATE ROUTINE
+        for index,loader in enumerate(LOADERS):
+            if loader.finished:
+                del LOADERS[index]
+        for loader in LOADERS:
+            loader.update()
+            screen.blit(loader.surface,tuple(loader.pos))
         
         clock.tick(FPS)
         pygame.display.flip()
