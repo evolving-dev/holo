@@ -63,13 +63,9 @@ APP_CODE = ""
 ALERTS:list = []
 LOADERS:list = []
 APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
-exec(APPLAUNCHER)
-
-holo.new_alert("testalert")
+exec(APPLAUNCHER) #LAUNCH HOME APP
 
 CHECKBOX = holo.checkbox([0,0])
-
-holo.new_loader()
 
 while not CLOSE:
     if TIMEOUT > 0: #If screen timeout not reached
@@ -80,8 +76,9 @@ while not CLOSE:
         
         #DEBUG DRAWINGS (WILL BE REMOVED SOON)
         screen.blit(CHECKBOX.surface,(0,0))
-        
+        screen.blit(STATIC_CORE["keyboard_lower"],(0,SETTINGS["height"] // 2))
         #END DEBUG
+        
         
         
         #ALERT UPDATE ROUTINE

@@ -46,7 +46,7 @@ class holo:
             self.isChecked = not self.isChecked
             self.updateSurface()
         def detectClick(self,clickPos):
-            if clickPos[0] in range(self.pos[0],self.pos[0]+self.width):
+            if clickPos[0] in range(self.pos[0],self.pos[0]+self.width) and clickPos[1] in range(self.pos[1],self.pos[1]+self.height):
                 self.onClick()
     class alert:
         def __init__(self,message):

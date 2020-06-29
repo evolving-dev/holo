@@ -7,7 +7,8 @@ STATIC_CORE: dict = {
 "loading":[],
 "surface_1_1":pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_1_1_"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//5,SETTINGS["height"]//5)).tobytes(),(SETTINGS["height"]//5,SETTINGS["height"]//5),"RGBA").convert_alpha(),
 "surface_4_1":pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_4_1_"+SETTINGS["theme"]+".png")).resize(((SETTINGS["height"]//5)*4,SETTINGS["height"]//5)).tobytes(),((SETTINGS["height"]//5)*4,SETTINGS["height"]//5),"RGBA").convert_alpha(),
-"keyboard":{}
+"keyboard_lower":pygame.Surface([SETTINGS["width"],SETTINGS["height"] // 2], pygame.SRCALPHA).convert_alpha(),
+"keyboard_upper":pygame.Surface([SETTINGS["width"],SETTINGS["height"] // 2], pygame.SRCALPHA).convert_alpha()
 }
 #Static objects which belong to HOLO itself and persist until the end of the session.
 
@@ -30,3 +31,27 @@ del INITCACHE
 del TEXTCACHE
 del LOADERWIDTH
 ###
+#KEYBOARD
+KEYTEMPLATE = pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_1_1_"+SETTINGS["theme"]+".png")).resize((SETTINGS["width"]//16,SETTINGS["height"]//10)).tobytes(),(SETTINGS["width"]//16,SETTINGS["height"]//10),"RGBA").convert_alpha()
+KEYBOARD_LAYOUT = eval(readfile(join(PATH,"assets/text/keyboard_layouts.json")))[SETTINGS["keyboard"]]
+
+
+for ROW_INDEX,ROW_ITEM in enumerate(KEYBOARD_LAYOUT):
+    for i,char in enumerate(ROW_ITEM):
+        key = KEYTEMPLATE.copy()
+        letter = FONTS["p-sans-serif"].render(char,True,[0,0,0] if SETTINGS["theme"] == "light" else [255,255,255])
+        key.blit(letter,[key.get_width() // 2 - letter.get_width() // 2, key.get_height() // 2 - letter.get_height() // 2])
+        STATIC_CORE["keyboard_lower"].blit(key, (i * key.get_width() + 2*i, ROW_INDEX * key.get_height()))
+
+
+
+
+del ROW_ITEM
+del ROW_INDEX
+del i
+del KEYTEMPLATE
+del char
+del key
+del letter
+
+
