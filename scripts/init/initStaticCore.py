@@ -37,11 +37,13 @@ KEYBOARD_LAYOUT = eval(readfile(join(PATH,"assets/text/keyboard_layouts.json")))
 
 
 for ROW_INDEX,ROW_ITEM in enumerate(KEYBOARD_LAYOUT):
+    ROW = pygame.Surface([SETTINGS["width"],SETTINGS["height"] // 10], pygame.SRCALPHA).convert_alpha()
     for i,char in enumerate(ROW_ITEM):
         key = KEYTEMPLATE.copy()
         letter = FONTS["p-sans-serif"].render(char,True,[0,0,0] if SETTINGS["theme"] == "light" else [255,255,255])
         key.blit(letter,[key.get_width() // 2 - letter.get_width() // 2, key.get_height() // 2 - letter.get_height() // 2])
-        STATIC_CORE["keyboard_lower"].blit(key, (i * key.get_width() + 2*i, ROW_INDEX * key.get_height()))
+        ROW.blit(key, (i * key.get_width() + 2*i,0))
+    STATIC_CORE["keyboard_lower"].blit(ROW,((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2 ,ROW_INDEX * key.get_height()))
 
 
 
@@ -53,5 +55,5 @@ del KEYTEMPLATE
 del char
 del key
 del letter
-
+del ROW
 
