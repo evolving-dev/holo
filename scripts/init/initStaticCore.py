@@ -35,8 +35,23 @@ del LOADERWIDTH
 KEYTEMPLATE = pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_1_1_"+SETTINGS["theme"]+".png")).resize((SETTINGS["width"]//15,SETTINGS["height"]//10)).tobytes(),(SETTINGS["width"]//15,SETTINGS["height"]//10),"RGBA").convert_alpha()
 KEYBOARD_LAYOUT = eval(readfile(join(PATH,"assets/text/keyboard_layouts.json")))[SETTINGS["keyboard"]]
 SPACEBAR = pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_8_1_"+SETTINGS["theme"]+".png")).resize(((SETTINGS["height"]//10)*8 if (SETTINGS["height"]//10)*8 < SETTINGS["width"] else SETTINGS["width"] // 1.5,SETTINGS["height"]//10)).tobytes(),((SETTINGS["height"]//10)*8 if (SETTINGS["height"]//10)*8 < SETTINGS["width"] else SETTINGS["width"] // 1.5,SETTINGS["height"]//10),"RGBA").convert_alpha()
+SHIFT = pygame.image.fromstring(Image.open(join(PATH,"assets/images/system/keyboard/shift-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//20,SETTINGS["height"]//20)).tobytes(),(SETTINGS["height"]//20,SETTINGS["height"]//20),"RGBA").convert_alpha()
+BACKSPACE = pygame.image.fromstring(Image.open(join(PATH,"assets/images/system/keyboard/backspace-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//10,SETTINGS["height"]//20)).tobytes(),(SETTINGS["height"]//10,SETTINGS["height"]//20),"RGBA").convert_alpha()
+ENTER = pygame.image.fromstring(Image.open(join(PATH,"assets/images/system/keyboard/enter-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//20,SETTINGS["height"]//20)).tobytes(),(SETTINGS["height"]//20,SETTINGS["height"]//20),"RGBA").convert_alpha()
+BACKSPACE_SURFACE = pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_2_1_"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//5,SETTINGS["height"]//10)).tobytes(),(SETTINGS["height"]//5,SETTINGS["height"]//10),"RGBA").convert_alpha()
+
+#BLIT KEYS ONTO SURFACES
 
 
+KEYSURFACE = SHIFT.copy()
+SHIFT = KEYTEMPLATE.copy()
+SHIFT.blit(KEYSURFACE,(KEYTEMPLATE.get_width() // 2 - KEYSURFACE.get_width() // 2, KEYTEMPLATE.get_height() // 2 - KEYSURFACE.get_height() // 2))
+KEYSURFACE = ENTER.copy()
+ENTER = KEYTEMPLATE.copy()
+ENTER.blit(KEYSURFACE,(KEYTEMPLATE.get_width() // 2 - KEYSURFACE.get_width() // 2, KEYTEMPLATE.get_height() // 2 - KEYSURFACE.get_height() // 2))
+KEYSURFACE = BACKSPACE.copy()
+BACKSPACE = BACKSPACE_SURFACE.copy()
+BACKSPACE.blit(KEYSURFACE,(BACKSPACE_SURFACE.get_width() // 2 - KEYSURFACE.get_width() // 2, BACKSPACE_SURFACE.get_height() // 2 - KEYSURFACE.get_height() // 2))
 
 for ROW_INDEX,ROW_ITEM in enumerate(KEYBOARD_LAYOUT):
     ROW = pygame.Surface([SETTINGS["width"],SETTINGS["height"] // 10], pygame.SRCALPHA).convert_alpha()
@@ -44,11 +59,14 @@ for ROW_INDEX,ROW_ITEM in enumerate(KEYBOARD_LAYOUT):
         key = KEYTEMPLATE.copy()
         letter = FONTS["p-sans-serif"].render(char,True,[0,0,0] if SETTINGS["theme"] == "light" else [255,255,255])
         key.blit(letter,[key.get_width() // 2 - letter.get_width() // 2, key.get_height() // 2 - letter.get_height() // 2]) #Project text onto key
-        ROW.blit(key, (i * key.get_width() + 2*i,0)) # Project key onto row
+        ROW.blit(key, (i * key.get_width() + ((2 if i not in [2,3,1] else 3)*i),0)) # Project key onto row
     STATIC_CORE["keyboard_lower"].blit(ROW,((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2 ,ROW_INDEX * key.get_height())) #Project row onto keyboard
 STATIC_CORE["keyboard_lower"].blit(SPACEBAR, [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height()]) #Add the spacebar
+#STATIC_CORE["keyboard_lower"].blit(SHIFT, (0,(SETTINGS["height"] // 10) * 3 ))
+#STATIC_CORE["keyboard_lower"].blit(ENTER, (SETTINGS["width"] - ENTER.get_width(),(SETTINGS["height"] // 10) * 4 ))
+#STATIC_CORE["keyboard_lower"].blit(BACKSPACE, (SETTINGS["width"] - BACKSPACE.get_width(),(SETTINGS["height"] // 10)))
 
-
+del BACKSPACE_SURFACE
 del SPACEBAR
 del ROW_ITEM
 del ROW_INDEX
