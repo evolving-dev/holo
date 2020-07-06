@@ -1,7 +1,7 @@
 {
 "list":["qwerty","qwertz"],
- "qwerty": ["1234567890?+","qwertyuiop","asdfghjkl","zxcvbnm,.-@"],
- "qwerty_upper":["!\"€$%&/()=?+","QWERTYUIOP","ASDFGHJKL","ZXCVBNM;:_"],
- "qwertz": ["1234567890ß+","qwertzuiopü","asdfghjklöä","yxcvbnm,.-@"],
- "qwertz_upper":["!\"€$%&/()=?+","QWERTZUIOPÜ","ASDFGHJKLÖÄ","YXCVBNM;:_@"]
+ "qwerty": ["1234567890?+","qwertyuiop<<","asdfghjkl|","^zxcvbnm,.-@"],
+ "qwerty_upper":["!\"€$%&/()=?+","QWERTYUIOP<<","ASDFGHJKL|","^ZXCVBNM;:_"],
+ "qwertz": ["1234567890ß+","qwertzuiopü<<","asdfghjklöä|","^yxcvbnm,.-@"],
+ "qwertz_upper":["!\"€$%&/()=?+","QWERTZUIOPÜ<<","ASDFGHJKLÖÄ|","^YXCVBNM;:_@"]
 }

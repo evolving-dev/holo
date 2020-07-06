@@ -76,7 +76,7 @@ while not CLOSE:
         
         #DEBUG DRAWINGS (WILL BE REMOVED SOON)
         screen.blit(CHECKBOX.surface,(0,0))
-        screen.blit(STATIC_CORE["keyboard_lower"],(0,SETTINGS["height"] // 2))
+        screen.blit(STATIC_CORE["keyboard_upper"],(0,SETTINGS["height"] // 2))
         #END DEBUG
         
         
