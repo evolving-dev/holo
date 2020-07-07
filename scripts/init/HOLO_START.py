@@ -116,6 +116,7 @@ while not CLOSE:
                 if len(ALERTS) >= 1:
                     ALERTS[-1:][0].detectClick(list(pygame.mouse.get_pos())) #Only detect most recent alert
                 CHECKBOX.detectClick(list(pygame.mouse.get_pos()))
+                print(pygame.mouse.get_pos())
                 
         
         

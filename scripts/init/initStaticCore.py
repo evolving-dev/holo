@@ -10,7 +10,7 @@ STATIC_CORE: dict = {
 "keyboard_lower":pygame.Surface([SETTINGS["width"],SETTINGS["height"] // 2], pygame.SRCALPHA).convert_alpha(),
 "keyboard_upper":pygame.Surface([SETTINGS["width"],SETTINGS["height"] // 2], pygame.SRCALPHA).convert_alpha(),
 }
-KEYMAP:dict = {}
+KEYMAP:dict = {"upper":{},"lower":{}}
 
 #Static objects which belong to HOLO itself and persist until the end of the session.
 
@@ -63,19 +63,26 @@ for ROW_INDEX,ROW_ITEM in enumerate(KEYBOARD_LAYOUT):
     for i,char in enumerate(ROW_ITEM):
         if char == "^":
             ROW.blit(SHIFT, (i * SHIFT.get_width() + 2*i ,0))
+            KEYMAP["lower"][char] = [[((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i),  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2], [((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i) + key.get_width(), key.get_height() +  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2]] #Add key to keymap
             continue
         if char == "|":
             ROW.blit(ENTER, (i * ENTER.get_width() + 2*i ,0))
+            KEYMAP["lower"][char] = [[((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i),  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2], [((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i) + key.get_width(), key.get_height() +  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2]] #Add key to keymap
             continue
         if char == "<":
             if not BACKSPACE_DRAWN:
                 ROW.blit(BACKSPACE, (i * ENTER.get_width() + 2*i ,0)) #Width of normal key is used as a workaround
                 BACKSPACE_DRAWN = True
+                KEYMAP["lower"]["<<"] = [[((SETTINGS["width"] // 2) - (len(ROW_ITEM) * ENTER.get_width()) // 2) + (i * ENTER.get_width() + 2*i),  (ROW_INDEX * BACKSPACE.get_height()) + SETTINGS["height"] // 2], [((SETTINGS["width"] // 2) - (len(ROW_ITEM) * ENTER.get_width()) // 2) + (i * ENTER.get_width() + 2*i) + BACKSPACE.get_width(), BACKSPACE.get_height() +  (ROW_INDEX * BACKSPACE.get_height()) + SETTINGS["height"] // 2]] #Add key to keymap
             continue
         key = KEYTEMPLATE.copy()
+        
+        KEYMAP["lower"][char] = [[((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i),  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2], [((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i) + key.get_width(), key.get_height() +  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2]] #Add key to keymap
+        
         letter = FONTS["p-sans-serif"].render(char,True,[0,0,0] if SETTINGS["theme"] == "light" else [255,255,255])
         key.blit(letter,[key.get_width() // 2 - letter.get_width() // 2, key.get_height() // 2 - letter.get_height() // 2]) #Project text onto key
         ROW.blit(key, (i * key.get_width() + 2*i ,0)) # Project key onto row
+        
     STATIC_CORE["keyboard_lower"].blit(ROW,((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2 ,ROW_INDEX * key.get_height())) #Project row onto keyboard
 STATIC_CORE["keyboard_lower"].blit(SPACEBAR, [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height()]) #Add the spacebar
 
