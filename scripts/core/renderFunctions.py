@@ -90,15 +90,36 @@ class holo:
             
             self.text = ""
             self.uppercase = False
+            self.visible = False
             self.surface = {"lower" : STATIC_CORE["keyboard_lower"], "upper" : STATIC_CORE["keyboard_upper"]} #Load keyboard
             self.keymap = KEYMAP
         
         def reset(self):
             
             self.text = ""
+            self.visible = False
             self.uppercase = False
             
         def update(self, mousePos):
             
             for i in list(KEYMAP["upper" if self.uppercase else "lower"].keys()):
-                pass
+                if mousePos[0] in range(KEYMAP["upper" if self.uppercase else "lower"][i][0][0], KEYMAP["upper" if self.uppercase else "lower"][i][1][0]):
+                    if mousePos[1] in range(KEYMAP["upper" if self.uppercase else "lower"][i][0][1], KEYMAP["upper" if self.uppercase else "lower"][i][1][1]):
+                        self.text += i
+                        break
+                    
+        def get_surface(self):
+            
+            return self.surface["upper"] if self.uppercase else self.surface["lower"]
+        
+        def show(self):
+            
+            self.visible = True
+            
+        def hide(self):
+            
+            self.visible = False
+            
+        def clear(self):
+            
+            self.text = ""

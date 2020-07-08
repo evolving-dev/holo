@@ -69,9 +69,15 @@ APP_CODE = ""
 ALERTS:list = []
 LOADERS:list = []
 APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
+KEYBOARD = holo.keyboard()
 exec(APPLAUNCHER) #LAUNCH HOME APP
 
 CHECKBOX = holo.checkbox([0,0])
+
+####DEBUG#####
+
+KEYBOARD.reset()
+KEYBOARD.show()
 
 while not CLOSE:
     if TIMEOUT > 0: #If screen timeout not reached
@@ -82,10 +88,12 @@ while not CLOSE:
         
         #DEBUG DRAWINGS (WILL BE REMOVED SOON)
         screen.blit(CHECKBOX.surface,(0,0))
-        screen.blit(STATIC_CORE["keyboard_upper"],(0,SETTINGS["height"] // 2))
         #END DEBUG
         
+        #KEYBOARD UPDATE ROUTINE
         
+        if KEYBOARD.visible:
+            screen.blit(KEYBOARD.get_surface(),(0, SETTINGS["height"] // 2))
         
         #ALERT UPDATE ROUTINE
         for index,alert in enumerate(ALERTS):
@@ -122,8 +130,9 @@ while not CLOSE:
                 if len(ALERTS) >= 1:
                     ALERTS[-1:][0].detectClick(list(pygame.mouse.get_pos())) #Only detect most recent alert
                 CHECKBOX.detectClick(list(pygame.mouse.get_pos()))
-                print(pygame.mouse.get_pos())
-                
+                if KEYBOARD.visible:
+                    KEYBOARD.update(list(pygame.mouse.get_pos()))
+                    print(KEYBOARD.text)
         
         
         
