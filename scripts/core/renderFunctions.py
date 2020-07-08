@@ -1,13 +1,18 @@
 class holo:
+    
     class loader:#Loader object
+        
         def __init__(self):
             self.frame = 0
             self.finished = False
             self.surface = STATIC_CORE["loading"][0].copy()
-            self.pos = [(SETTINGS["width"]//2) - self.surface.get_width() // 2, (SETTINGS["height"] // 2) - self.surface.get_height() // 2]
+            
+            self.pos = [(SETTINGS["width"]//2) - self.surface.get_width() // 2, (SETTINGS["height"] // 2) - self.surface.get_height() // 2] #Automatically align the laoder to the middle
+        
         def update(self):
-            self.frame = 0 if self.frame >= len(STATIC_CORE["loading"]) - 1 else self.frame+1 #Loop animation if end is reached
+            self.frame = 0 if self.frame >= len(STATIC_CORE["loading"]) - 1 else self.frame+1 #Loop animation if end is reached, if not, add 1 to the frame count
             self.surface = STATIC_CORE["loading"][self.frame].copy()
+    
     def new_loader():
         global LOADERS
         LOADERS += [holo.loader()]
@@ -49,6 +54,7 @@ class holo:
             if clickPos[0] in range(self.pos[0],self.pos[0]+self.width) and clickPos[1] in range(self.pos[1],self.pos[1]+self.height):
                 self.onClick()
     class alert:
+        
         def __init__(self,message):
             self.visible = True
             self.surface = STATIC_CORE["alert"].copy()
@@ -68,10 +74,31 @@ class holo:
                 self.surface.blit(self.texts[i],(self.width // 2 - self.texts[i].get_width() // 2, self.height * 0.05 + i * 1.05 * self.texts[i].get_height())) #Blit texts to surface
             
             self.xy = (SETTINGS["width"] // 2 - self.width // 2, SETTINGS["height"] // 2 - self.height // 2) #Position for the alert to be displayed
+        
         def detectClick(self, clickPos):
             if clickPos[0] in range(self.xy[0] + self.width // 2 - self.button_width // 2, self.xy[0] + self.width // 2 - self.button_width // 2 + self.button_width) and clickPos[1] in range(self.xy[1] + int(self.height*0.95 - self.button_height), self.xy[1] + int(self.height*0.95 - self.button_height) + self.button_height):
                 self.visible = False
+    
     def new_alert(message="Sample Text"):
+        
         global ALERTS
         ALERTS += [holo.alert(message)]
             
+    class keyboard:
+        
+        def __init__(self):
+            
+            self.text = ""
+            self.uppercase = False
+            self.surface = {"lower" : STATIC_CORE["keyboard_lower"], "upper" : STATIC_CORE["keyboard_upper"]} #Load keyboard
+            self.keymap = KEYMAP
+        
+        def reset(self):
+            
+            self.text = ""
+            self.uppercase = False
+            
+        def update(self, mousePos):
+            
+            for i in list(KEYMAP["upper" if self.uppercase else "lower"].keys()):
+                pass

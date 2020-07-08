@@ -1,5 +1,6 @@
 import sys
 import PIL
+import codecs
 from PIL import Image,ImageDraw,GifImagePlugin
 if "game" in globals():
     del game
@@ -21,6 +22,12 @@ else:
     def readfile(name):
         with open(name,"r") as f:
             return(f.read())
+    def readbinary(name):
+        with open(name,"rb") as f:
+            return(f.read())
+    def readdecodedbinary(name):
+        with open(name,"rb") as f:
+            return(f.read().decode("utf-8"))
 
 os.chdir(PATH)
 
