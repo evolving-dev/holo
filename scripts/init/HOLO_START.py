@@ -1,6 +1,5 @@
 import sys
 import PIL
-import codecs
 from PIL import Image,ImageDraw,GifImagePlugin
 if "game" in globals():
     del game
