@@ -72,10 +72,9 @@ APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
 KEYBOARD = holo.keyboard()
 exec(APPLAUNCHER) #LAUNCH HOME APP
 
-CHECKBOX = holo.checkbox([0,0])
-
 ####DEBUG#####
 
+CHECKBOX = holo.checkbox([0,0])
 KEYBOARD.reset()
 KEYBOARD.show()
 
@@ -88,6 +87,10 @@ while not CLOSE:
         
         #DEBUG DRAWINGS (WILL BE REMOVED SOON)
         screen.blit(CHECKBOX.surface,(0,0))
+        if CHECKBOX.isChecked:
+            KEYBOARD.show()
+        else:
+            KEYBOARD.hide()
         #END DEBUG
         
         #KEYBOARD UPDATE ROUTINE
@@ -130,7 +133,7 @@ while not CLOSE:
                 if len(ALERTS) >= 1:
                     ALERTS[-1:][0].detectClick(list(pygame.mouse.get_pos())) #Only detect most recent alert
                 CHECKBOX.detectClick(list(pygame.mouse.get_pos()))
-                if KEYBOARD.visible:
+                if KEYBOARD.visible and list(pygame.mouse.get_pos())[1] >= SETTINGS["height"] // 2:
                     KEYBOARD.update(list(pygame.mouse.get_pos()))
                     print(KEYBOARD.text)
         

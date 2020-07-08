@@ -105,7 +105,11 @@ class holo:
             for i in list(KEYMAP["upper" if self.uppercase else "lower"].keys()):
                 if mousePos[0] in range(KEYMAP["upper" if self.uppercase else "lower"][i][0][0], KEYMAP["upper" if self.uppercase else "lower"][i][1][0]):
                     if mousePos[1] in range(KEYMAP["upper" if self.uppercase else "lower"][i][0][1], KEYMAP["upper" if self.uppercase else "lower"][i][1][1]):
-                        self.text += i
+                        self.text += "\n" if i == "|" else "" if (i == "<<" or i == "^") else i #TODO: SPACE zur Keymap hinzufügen
+                        if i == "<<":
+                            self.text = self.text[:-1]
+                        if i == "^":
+                            self.uppercase = not self.uppercase
                         break
                     
         def get_surface(self):
