@@ -72,11 +72,6 @@ APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
 KEYBOARD = holo.keyboard()
 exec(APPLAUNCHER) #LAUNCH HOME APP
 
-####DEBUG#####
-
-CHECKBOX = holo.checkbox([0,0])
-KEYBOARD.reset()
-KEYBOARD.show()
 
 while not CLOSE:
     if TIMEOUT > 0: #If screen timeout not reached
@@ -85,13 +80,6 @@ while not CLOSE:
         else:
             screen.fill([0,0,0])
         
-        #DEBUG DRAWINGS (WILL BE REMOVED SOON)
-        screen.blit(CHECKBOX.surface,(0,0))
-        if CHECKBOX.isChecked:
-            KEYBOARD.show()
-        else:
-            KEYBOARD.hide()
-        #END DEBUG
         
         #KEYBOARD UPDATE ROUTINE
         
