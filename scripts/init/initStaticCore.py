@@ -16,7 +16,7 @@ KEYMAP:dict = {"upper":{},"lower":{}}
 ###
 #Background
 
-STATIC_CORE["background"] = Image.open(join(PATH,join("assets/images/backgrounds",SETTINGS["background"]+".png")))
+STATIC_CORE["background"] = Image.open(join(PATH,join("assets/images/backgrounds",SETTINGS["background"])))
 
 BACKGROUND_SIZE_CACHE = STATIC_CORE["background"].size
 
