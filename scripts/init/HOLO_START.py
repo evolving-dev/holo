@@ -117,7 +117,6 @@ while not CLOSE:
             if event.type == pygame.MOUSEBUTTONUP:
                 if len(ALERTS) >= 1:
                     ALERTS[-1:][0].detectClick(list(pygame.mouse.get_pos())) #Only detect most recent alert
-                CHECKBOX.detectClick(list(pygame.mouse.get_pos()))
                 if KEYBOARD.visible and list(pygame.mouse.get_pos())[1] >= SETTINGS["height"] // 2:
                     KEYBOARD.update(list(pygame.mouse.get_pos()))
                     print(KEYBOARD.text)

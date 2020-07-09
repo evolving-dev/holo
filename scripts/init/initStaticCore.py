@@ -1,5 +1,5 @@
 STATIC_CORE: dict = {
-"background":pygame.image.fromstring(Image.open(join(PATH,join("assets/images/backgrounds",SETTINGS["background"]+".png"))).resize((SETTINGS["width"],SETTINGS["height"])).convert("RGB").tobytes(),(SETTINGS["width"],SETTINGS["height"]),"RGB").convert(),
+"background":pygame.image.fromstring(Image.open(join(PATH,"assets/images/backgrounds/standard.png")).resize((SETTINGS["width"],SETTINGS["height"])).convert("RGB").tobytes(),(SETTINGS["width"],SETTINGS["height"]),"RGB").convert(),
 "checked":pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/checkbox/checked-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
 "unchecked":pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/checkbox/unchecked-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
 "alert":pygame.image.fromstring(Image.open(join(PATH,"assets/images/system/messagebox/alert-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//5*4,SETTINGS["height"]//5*3)).tobytes(),(SETTINGS["height"]//5*4,SETTINGS["height"]//5*3),"RGBA").convert_alpha(), #MAINTAIN 4:3 ASPECT RATIO
@@ -11,8 +11,37 @@ STATIC_CORE: dict = {
 "keyboard_upper":pygame.Surface([SETTINGS["width"],SETTINGS["height"] // 2], pygame.SRCALPHA).convert_alpha(),
 }
 KEYMAP:dict = {"upper":{},"lower":{}}
-
 #Static objects which belong to HOLO itself and persist until the end of the session.
+
+###
+#Background
+
+STATIC_CORE["background"] = Image.open(join(PATH,join("assets/images/backgrounds",SETTINGS["background"]+".png")))
+
+BACKGROUND_SIZE_CACHE = STATIC_CORE["background"].size
+
+TRANSFORM_CACHE = [
+    [SETTINGS["width"], round(BACKGROUND_SIZE_CACHE[1] * (SETTINGS["width"] / BACKGROUND_SIZE_CACHE[0]))],
+    [round(BACKGROUND_SIZE_CACHE[0] * (SETTINGS["height"] / BACKGROUND_SIZE_CACHE[1])), SETTINGS["height"]] #Try to resize the image to a small of a size as possible, while staying over the screen resolution and maintaining aspect ratio
+                   ]
+
+if TRANSFORM_CACHE[0][1] >= SETTINGS["height"]:
+    STATIC_CORE["background"] = STATIC_CORE["background"].resize(tuple(TRANSFORM_CACHE[0]))
+
+elif TRANSFORM_CACHE[1][0] >= SETTINGS["width"]:
+    STATIC_CORE["background"] = STATIC_CORE["background"].resize(tuple(TRANSFORM_CACHE[1]))
+
+
+STATIC_CORE["background"] = holo.responsive_scale(STATIC_CORE["background"],[SETTINGS["width"], SETTINGS["height"]]) #Crop to center of image
+
+STATIC_CORE["background"] = pygame.image.fromstring(STATIC_CORE["background"].convert("RGB").tobytes(),(SETTINGS["width"],SETTINGS["height"]),"RGB").convert()
+
+
+
+#CLEANUP
+del BACKGROUND_SIZE_CACHE
+del TRANSFORM_CACHE
+
 
 #LOADER OBJECT
 im = Image.open(join(PATH,"assets/animations/loading/loading.gif"))
