@@ -19,14 +19,11 @@ else:
     from os.path import join
     PATH = "/media/pi/DOKUMENTE 3/HOLO"
     def readfile(name):
-        with open(name,"r") as f:
-            return(f.read())
+        with open(name,"rb") as f:
+            return(f.read().decode("utf-8"))
     def readbinary(name):
         with open(name,"rb") as f:
             return(f.read())
-    def readdecodedbinary(name):
-        with open(name,"rb") as f:
-            return(f.read().decode("utf-8"))
 
 os.chdir(PATH)
 

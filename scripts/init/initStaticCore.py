@@ -76,7 +76,7 @@ del KEYSURFACE
 
 #################LOWERCASE KEYBOARD###################
 
-KEYBOARD_LAYOUT = eval(readdecodedbinary(join(PATH,"assets/text/keyboard_layouts.json")))[SETTINGS["keyboard"]] #Load the lowercase keyboard layout
+KEYBOARD_LAYOUT = eval(readfile(join(PATH,"assets/text/keyboard_layouts.json")))[SETTINGS["keyboard"]] #Load the lowercase keyboard layout
 
 BACKSPACE_DRAWN = False #Variable to compensate for the double width of the backspace character
 
@@ -127,7 +127,7 @@ KEYMAP["lower"][" "] = [[SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4
 #################UPPERCASE KEYBOARD###################
 
 
-KEYBOARD_LAYOUT = eval(readdecodedbinary(join(PATH,"assets/text/keyboard_layouts.json")))[SETTINGS["keyboard"]+"_upper"] #load the uppercase keyboard layout
+KEYBOARD_LAYOUT = eval(readfile(join(PATH,"assets/text/keyboard_layouts.json")))[SETTINGS["keyboard"]+"_upper"] #load the uppercase keyboard layout
 
 BACKSPACE_DRAWN = False #Variable to compensate for the double width of the backspace character
 

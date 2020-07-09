@@ -3,8 +3,8 @@ import time, os, math
 from os.path import join
 
 def readfile(name):
-    with open(name,"r") as f:
-        return(f.read())
+    with open(name,"rb") as f:
+        return(f.read().decode("utf-8"))
 def readbinary(name):
     with open(name,"rb") as f:
         return(f.read())
