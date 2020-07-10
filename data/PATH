@@ -1,5 +1,7 @@
 {
 'home' : {
-    'assets' : 'assets/apps/holo' , 'scripts' : 'scripts/apps/holo/home'
+    'assets' : 'assets/apps/holo/home' ,
+    'scripts' : 'scripts/apps/holo/home',
+    'about' : 'assets/apps/holo/home/ABOUT'
     }
 }

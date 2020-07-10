@@ -53,6 +53,8 @@ APP = "startup"
 data:dict = {}
 TIMEOUT = SETTINGS["timeout"]
 APP_CODE = ""
+APP_EVENTHANDLER = ""
+APP_PATH:dict = {}
 ALERTS:list = []
 LOADERS:list = []
 APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
@@ -67,6 +69,7 @@ while not CLOSE:
         else:
             screen.fill([0,0,0])
         
+        exec(APP_CODE) #Run the updatefile of the current app
         
         #KEYBOARD UPDATE ROUTINE
         
@@ -109,6 +112,8 @@ while not CLOSE:
                     ALERTS[-1:][0].detectClick(list(pygame.mouse.get_pos())) #Only detect most recent alert
                 if KEYBOARD.visible and list(pygame.mouse.get_pos())[1] >= SETTINGS["height"] // 2:
                     KEYBOARD.update(list(pygame.mouse.get_pos()))
+            
+            exec(APP_EVENTHANDLER) #Pass the event onto the currently active app
         
         
         

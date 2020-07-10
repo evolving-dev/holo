@@ -7,6 +7,9 @@ data:dict = {} #RESET APP DATA
 del LOADERS
 LOADERS:list = [] #RESET LOADERS
 
+del APP_PATH
+APP_PATH:dict = {}
+
 FRAME,SECOND = 0,0 #RESET TIMERS
 FPS = 6 #RESET FPS
 
@@ -22,7 +25,9 @@ else:
     
     try:
         
+        APP_PATH = PATHFILE[APP].copy()
         APP_CODE = readfile(join(PATH,join(PATHFILE[APP]['scripts'],'update.py'))) #Read the code that runs every frame
+        APP_EVENTHANDLER = readfile(join(PATH,join(PATHFILE[APP]['scripts'],'event_handler.py')))
         
         exec(readfile(join(PATH,join(PATHFILE[APP]['scripts'],'__init__.py')))) #Run the init file for the opened app.
         

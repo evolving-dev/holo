@@ -1,5 +1,13 @@
 class holo:
     
+    def path(path):
+        if PATH not in path:
+            return join(PATH,path)
+        return path
+        
+    
+    
+    
     class loader:#Loader object
         
         def __init__(self):
