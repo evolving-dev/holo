@@ -40,6 +40,6 @@ else:
             exec(APPLAUNCHER) #Start the home app
             
         else: #If the HOME app crashes, exit
-            print("ERROR: HOLO crashed due to an unexpected error. Please report the following error message on HOLO's GitHub page: ",e)
+            print("ERROR: HOLO crashed due to an unexpected error. Please report the following error message on HOLO's GitHub page: HOLO HOME: ",e)
             pygame.quit()
             sys.exit()

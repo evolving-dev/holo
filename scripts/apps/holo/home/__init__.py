@@ -3,11 +3,16 @@ data["assets"] = {
 }
 
 data["apps"] = {
-    "applist": [],
+    "apps": [],
+    "appnames": {},
     "appicons": {}
 }
 
 for i in PATHFILE.keys():
     if i != "home":
-        data["apps"]["applist"] += i
+        apps += [i]
+        if os.path.isfile(holo.path(PATHFILE[i]["about"])):
+            data["apps"]["appnames"][i] = eval(readfile(holo.path(PATHFILE[i]["about"])))["name"]
+        else:
+            data["apps"]["appnames"][i] = i + " (missing files)"
         data["apps"]["appicons"][i] = PATHFILE[i].get("icon",holo.path("assets/icons/default.png"))
