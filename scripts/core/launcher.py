@@ -10,6 +10,8 @@ LOADERS:list = [] #RESET LOADERS
 FRAME,SECOND = 0,0 #RESET TIMERS
 FPS = 6 #RESET FPS
 
+KEYBOARD.reset()
+
 if APP == "startup":
     
     #Code to be executed at startup

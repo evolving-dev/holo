@@ -1,29 +1,19 @@
 import sys
 import PIL
 from PIL import Image,ImageDraw,GifImagePlugin
-if "game" in globals():
-    del game
-    del execute
-    del engine
-    del ii
-    del FONTS
-    del clock
-    del screen
-    del event
-    del STARTUP_LANG_FILE
-    del STARTUP_TEXTS
-    del i
-    #RAM CLEANUP (START VIA LAUNCHER)
-else:
-    import os,pygame,time,math #DEBUG START
-    from os.path import join
-    PATH = "/media/pi/DOKUMENTE 3/HOLO"
-    def readfile(name):
-        with open(name,"rb") as f:
-            return(f.read().decode("utf-8"))
-    def readbinary(name):
-        with open(name,"rb") as f:
-            return(f.read())
+
+del game
+del execute
+del engine
+del ii
+del FONTS
+del clock
+del screen
+del event
+del STARTUP_LANG_FILE
+del STARTUP_TEXTS
+del i
+#RAM CLEANUP
 
 os.chdir(PATH)
 
@@ -119,7 +109,6 @@ while not CLOSE:
                     ALERTS[-1:][0].detectClick(list(pygame.mouse.get_pos())) #Only detect most recent alert
                 if KEYBOARD.visible and list(pygame.mouse.get_pos())[1] >= SETTINGS["height"] // 2:
                     KEYBOARD.update(list(pygame.mouse.get_pos()))
-                    print(KEYBOARD.text)
         
         
         
