@@ -5,7 +5,8 @@ data["assets"] = {
 data["apps"] = {
     "apps": [],
     "appnames": {},
-    "appicons": {}
+    "appicons": {},
+    "icons": {}
 }
 
 for i in PATHFILE.keys(): #For every app in the Pathfile
@@ -24,18 +25,25 @@ for i in PATHFILE.keys(): #For every app in the Pathfile
             data["apps"]["appnames"][i] = i + " (missing files?)"
             #If the app has no ABOUT file report that files might be missing and display the app name as the ID
             
-        data["apps"]["appnames"][i] = text_wrap(data["apps"]["appnames"][i], SETTINGS["width"] // 6, FONTS["p-sans-serif"])
+        data["apps"]["appnames"][i] = text_wrap(data["apps"]["appnames"][i], SETTINGS["width"] // 8, FONTS["p-sans-serif"])
             
-        data["apps"]["appicons"][i] = PATHFILE[i].get("icon",holo.path("assets/images/icons/default.png")) #Get the path of the icon. If it's missing, replace the path with the path of the default icon
+        data["apps"]["appicons"][i] = holo.path(PATHFILE[i].get("icon",holo.path("assets/images/icons/default.png"))) #Get the path of the icon. If it's missing, replace the path with the path of the default icon
         
         if not os.path.isfile(data["apps"]["appicons"][i]):
             data["apps"]["appicons"][i] = holo.path("assets/images/icons/default.png") #If the specified icon could not be found, replace it with HOLO's default icon
         
         
+        data["apps"]["icons"][i] = pygame.image.fromstring(Image.open(data["apps"]["appicons"][i]).resize((SETTINGS["width"] // 8,SETTINGS["width"] // 8)).convert("RGBA").tobytes(),(SETTINGS["width"] // 8,SETTINGS["width"] // 8),"RGBA").convert_alpha(),
+
         
-        
-        
-        
-        
-        
+
 data["apps"]["apps"].sort()
+
+
+
+
+data["surfaces"]:list = [pygame.Surface([SETTINGS["width"], SETTINGS["height"]])]
+for data["page"] in range(math.ceil(len(data["apps"]["apps"]) / (int(SETTINGS["height"]*0.9 / (SETTINGS["width"] / 7)) * 6))): #For every page that needs to be created
+    for i in range(int(SETTINGS["height"]*0.9 // (SETTINGS["width"] // 7))): #For every row
+        for m in range(6): #For every app
+            pass
