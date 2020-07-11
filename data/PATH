@@ -2,6 +2,11 @@
 'home' : {
     'assets' : 'assets/apps/holo/home' ,
     'scripts' : 'scripts/apps/holo/home',
-    'about' : 'assets/apps/holo/home/ABOUT'
+    'about' : 'scripts/apps/holo/home/ABOUT'
+    },
+'weather' : {
+    'assets' : 'assets/apps/holo/weather' ,
+    'scripts' : 'scripts/apps/holo/weather',
+    'about' : 'scripts/apps/holo/weather/ABOUT'
     }
 }
