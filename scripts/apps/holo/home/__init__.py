@@ -33,7 +33,7 @@ for i in PATHFILE.keys(): #For every app in the Pathfile
             data["apps"]["appicons"][i] = holo.path("assets/images/icons/default.png") #If the specified icon could not be found, replace it with HOLO's default icon
         
         
-        data["apps"]["icons"][i] = pygame.image.fromstring(Image.open(data["apps"]["appicons"][i]).resize((SETTINGS["width"] // 8,SETTINGS["width"] // 8)).convert("RGBA").tobytes(),(SETTINGS["width"] // 8,SETTINGS["width"] // 8),"RGBA").convert_alpha(),
+        data["apps"]["icons"][i] = pygame.image.fromstring(Image.open(data["apps"]["appicons"][i]).resize((SETTINGS["width"] // 8,SETTINGS["width"] // 8)).convert("RGBA").tobytes(),(SETTINGS["width"] // 8,SETTINGS["width"] // 8),"RGBA").convert_alpha()
 
         
 
@@ -42,8 +42,15 @@ data["apps"]["apps"].sort()
 
 
 
-data["surfaces"]:list = [pygame.Surface([SETTINGS["width"], SETTINGS["height"]])]
+data["surfaces"]:list = []
 for data["page"] in range(math.ceil(len(data["apps"]["apps"]) / (int(SETTINGS["height"]*0.9 / (SETTINGS["width"] / 7)) * 6))): #For every page that needs to be created
+    data["surfaces"] += [pygame.Surface([SETTINGS["width"], SETTINGS["height"]], pygame.SRCALPHA)]
     for i in range(int(SETTINGS["height"]*0.9 // (SETTINGS["width"] // 7))): #For every row
-        for m in range(6): #For every app
-            pass
+        for m in range(6): #For every app in a row
+            try:
+                data["surfaces"][data["page"]].blit(data["apps"]["icons"][data["apps"]["apps"][data["page"]*6*int(SETTINGS["height"]*0.9 // (SETTINGS["width"] // 7)) + i*6 + m]] , (0,0))
+            except:
+                pass
+                
+                
+data["page"] = 0
