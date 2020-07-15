@@ -69,7 +69,7 @@ for data["page"] in range(math.ceil(len(data["apps"]["apps"]) / (int(SETTINGS["h
             
             try:
                 
-                data["surfaces"][data["page"]].blit(data["apps"]["icons"][data["apps"]["apps"][data["page"]*6*int(SETTINGS["height"]*0.9 // (SETTINGS["width"] // 7)) + i*6 + m]] , (data["layout"]["margin_horizontal"] + m*(SETTINGS["width"] // 8) ,data["layout"]["margin_vertical"]))
+                data["surfaces"][data["page"]].blit(data["apps"]["icons"][data["apps"]["apps"][data["page"]*6*int(SETTINGS["height"]*0.9 // (SETTINGS["width"] // 7)) + i*6 + m]] , (data["layout"]["margin_horizontal"] + m*(SETTINGS["width"] // 6) ,data["layout"]["margin_vertical"]))
             
             except:pass #Ignore the spaces with no app assigned to it
                 
