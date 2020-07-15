@@ -8,7 +8,8 @@ data["apps"] = {
     "apps": [],
     "appnames": {},
     "appicons": {},
-    "icons": {}
+    "icons": {},
+    "areas": {}
 }
 
 data["layout"] = {
@@ -84,6 +85,8 @@ for data["page"] in range(math.ceil(len(data["apps"]["apps"]) / (int(SETTINGS["h
                 data["textsurfacecache"] = FONTS["p-sans-serif"].render(data["cache"]["displayname"].split("\n")[0] + "..." if "\n" in data["cache"]["displayname"] else data["cache"]["displayname"] , True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
                 
                 data["surfaces"][data["page"]].blit(data["textsurfacecache"], ((data["layout"]["margin_horizontal"] + m*(SETTINGS["width"] // 6) + ((SETTINGS["width"] // 18) - data["textsurfacecache"].get_width() // 2) ,data["layout"]["margin_vertical"] + row*(SETTINGS["width"] // 6) + SETTINGS["width"] // 9)))
+                
+                data["apps"]["areas"][data["apps"]["apps"][6*data["layout"]["rows"]*data["page"] + m + row*6]] = [[data["layout"]["margin_horizontal"] + m*(SETTINGS["width"] // 6) ,data["layout"]["margin_vertical"] + row*(SETTINGS["width"] // 6)] , [data["layout"]["margin_horizontal"] + m*(SETTINGS["width"] // 6) + SETTINGS["width"] // 6 ,data["layout"]["margin_vertical"] + row*(SETTINGS["width"] // 6) + SETTINGS["width"] // 6]]
                 
             except:pass #Ignore the spaces with no app assigned
                 
