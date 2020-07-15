@@ -18,7 +18,14 @@ del i
 os.chdir(PATH)
 
 #INIT
-PATHFILE = eval(readfile(join(PATH,"data/PATH"))) #APP PATH FILE
+try:
+    PATHFILE = eval(readfile(join(PATH,"data/PATH"))) #APP PATH FILE
+except:
+    try:
+        PATHFILE_ERROR = readfile(join(PATH,"data/PATH"))
+        print("ERROR: HOLO crashed due to an unexpected error. Please report the following error message on HOLO's GitHub page: HOLO_STARTUP: PATHFILE_READ_ERROR: ", PATHFILE_ERROR)
+    except:
+        print("ERROR: HOLO crashed due to an unexpected error. Please report the following error message on HOLO's GitHub page: HOLO_STARTUP: PATHFILE_READ_ERROR: NOT_READ. This error might likely be caused by third-party apps.")
 exec(readfile(join(PATH,"scripts/core/renderFunctions.py"))) #INITIALIZE CUSTOM RENDER FUNCTIONS
 exec(readfile(join(PATH,"scripts/core/text_wrapper.py"))) #INITIALIZE TEXT WRAPPER
 SETTINGS = eval(readfile(join(PATH,"USERS/settings"))) #INITIALIZE SETTINGS

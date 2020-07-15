@@ -8,5 +8,40 @@
     'assets' : 'assets/apps/holo/weather' ,
     'scripts' : 'scripts/apps/holo/weather',
     'about' : 'scripts/apps/holo/weather/ABOUT'
-    }
+    },
+'fakeapp-1' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-2' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-3' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-4' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-5' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-6' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-7' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
 }
