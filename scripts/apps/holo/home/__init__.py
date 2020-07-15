@@ -1,6 +1,7 @@
 data["assets"] = {
     "overlay": pygame.image.fromstring(Image.open(holo.path(join(APP_PATH["assets"] , "images/overlay-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["width"],SETTINGS["height"])).tobytes(),(SETTINGS["width"],SETTINGS["height"]),"RGBA").convert_alpha(),
-    "default-icon": pygame.image.fromstring(Image.open(holo.path("assets/images/icons/default.png")).resize((SETTINGS["width"] // 10,SETTINGS["width"] // 10)).convert("RGBA").tobytes(),(SETTINGS["width"] // 10,SETTINGS["width"] // 10),"RGBA").convert_alpha()
+    "default-icon": pygame.image.fromstring(Image.open(holo.path("assets/images/icons/default.png")).resize((SETTINGS["width"] // 10,SETTINGS["width"] // 10)).convert("RGBA").tobytes(),(SETTINGS["width"] // 10,SETTINGS["width"] // 10),"RGBA").convert_alpha(),
+    "warning":pygame.image.fromstring(Image.open(holo.path("assets/images/system/warning.png")).resize((SETTINGS["width"] // 20,SETTINGS["width"] // 20)).tobytes(),(SETTINGS["width"] // 20,SETTINGS["width"] // 20),"RGBA").convert_alpha()
 }
 
 data["apps"] = {
@@ -12,7 +13,12 @@ data["apps"] = {
 
 data["layout"] = {
     "margin_vertical" : SETTINGS["height"] // 30,
-    "margin_horizontal" : SETTINGS["width"] // 30
+    "margin_horizontal" : SETTINGS["width"] // 30,
+    "rows" : int(SETTINGS["height"]*0.9 // (SETTINGS["width"] // 7))
+}
+
+data["cache"] = {
+    "name":""
 }
 
 for i in PATHFILE.keys(): #For every app in the Pathfile
@@ -35,10 +41,10 @@ for i in PATHFILE.keys(): #For every app in the Pathfile
                 
         else:
             
-            data["apps"]["appnames"][i] = i + " (missing files?)"
+            data["apps"]["appnames"][i] = i + " (missing file(s))"
             #If the app has no ABOUT file report that files might be missing and display the app name as the ID
             
-        data["apps"]["appnames"][i] = text_wrap(data["apps"]["appnames"][i], SETTINGS["width"] // 8, FONTS["p-sans-serif"])
+        data["apps"]["appnames"][i] = text_wrap(data["apps"]["appnames"][i], SETTINGS["width"] // 9, FONTS["p-sans-serif"])
             
         data["apps"]["appicons"][i] = holo.path(PATHFILE[i].get("icon",holo.path("assets/images/icons/default.png"))) #Get the path of the icon. If it's missing, replace the path with the path of the default icon
         
@@ -47,7 +53,7 @@ for i in PATHFILE.keys(): #For every app in the Pathfile
         
         if data["apps"]["appicons"][i] == holo.path("assets/images/icons/default.png"):
             
-            data["apps"]["icons"][i] = data["assets"]["default-icon"] #If the current icon is the default icon, load the cached version to conserve CPU-time and memory
+            data["apps"]["icons"][i] = data["assets"]["default-icon"].copy() #If the current icon is the default icon, load the cached version to conserve CPU-time and memory
             
         else:
             
@@ -63,15 +69,33 @@ for data["page"] in range(math.ceil(len(data["apps"]["apps"]) / (int(SETTINGS["h
     
     data["surfaces"] += [pygame.Surface([SETTINGS["width"], SETTINGS["height"]], pygame.SRCALPHA)] #Create page
     
-    for i in range(int(SETTINGS["height"]*0.9 // (SETTINGS["width"] // 7))): #For every row
+    for row in range(data["layout"]["rows"]): #For every row
         
         for m in range(6): #For every app in a row
             
             try:
+                data["cache"]["displayname"] = data["apps"]["appnames"][data["apps"]["apps"][6*data["layout"]["rows"]*data["page"] + m + row*6]] #Cache the app's display name
                 
-                data["surfaces"][data["page"]].blit(data["apps"]["icons"][data["apps"]["apps"][data["page"]*6*int(SETTINGS["height"]*0.9 // (SETTINGS["width"] // 7)) + i*6 + m]] , (data["layout"]["margin_horizontal"] + m*(SETTINGS["width"] // 6) ,data["layout"]["margin_vertical"]))
-            
-            except:pass #Ignore the spaces with no app assigned to it
+                if "file(s)" in data["cache"]["displayname"] or "ABOUTFILE" in data["cache"]["displayname"]: #If the app files are incomplete
+                    data["apps"]["icons"][data["apps"]["apps"][data["page"]*6*data["layout"]["rows"] + row*6 + m]].blit(data["assets"]["warning"],(0,0)) #Render a warning sign on top of the app's logo
+                    
+                data["surfaces"][data["page"]].blit(data["apps"]["icons"][data["apps"]["apps"][data["page"]*6*data["layout"]["rows"] + row*6 + m]] , (data["layout"]["margin_horizontal"] + m*(SETTINGS["width"] // 6) ,data["layout"]["margin_vertical"] + row*(SETTINGS["width"] // 6)))
+                
+                data["textsurfacecache"] = FONTS["p-sans-serif"].render(data["cache"]["displayname"].split("\n")[0] + "..." if "\n" in data["cache"]["displayname"] else data["cache"]["displayname"] , True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
+                
+                data["surfaces"][data["page"]].blit(data["textsurfacecache"], ((data["layout"]["margin_horizontal"] + m*(SETTINGS["width"] // 6) + ((SETTINGS["width"] // 18) - data["textsurfacecache"].get_width() // 2) ,data["layout"]["margin_vertical"] + row*(SETTINGS["width"] // 6) + SETTINGS["width"] // 9)))
+                
+            except:pass #Ignore the spaces with no app assigned
                 
                 
 data["page"] = 0
+
+
+
+#CLEANUP
+del row
+del m
+del i
+del data["textsurfacecache"]
+del data["apps"]["icons"]
+del data["cache"]

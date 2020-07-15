@@ -9,7 +9,7 @@
     'scripts' : 'scripts/apps/holo/weather',
     'about' : 'scripts/apps/holo/weather/ABOUT'
     },
-'fakeapp-1' : {
+'a' : {
     'assets' : 'assets',
     'scripts' : 'scripts',
     'about' : 'USERS/FAKEAPPS_ABOUT'
@@ -40,6 +40,71 @@
     'about' : 'USERS/FAKEAPPS_ABOUT'
     },
 'fakeapp-7' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-8' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-9' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-10' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-11' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-12' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-13' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-14' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-15' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-16' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-17' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-18' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-19' : {
+    'assets' : 'assets',
+    'scripts' : 'scripts',
+    'about' : 'USERS/FAKEAPPS_ABOUT'
+    },
+'fakeapp-20' : {
     'assets' : 'assets',
     'scripts' : 'scripts',
     'about' : 'USERS/FAKEAPPS_ABOUT'
