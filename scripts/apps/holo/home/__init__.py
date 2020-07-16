@@ -19,7 +19,8 @@ data["layout"] = {
 }
 
 data["cache"] = {
-    "name":""
+    "name":"",
+    "swipecache":0
 }
 
 for i in PATHFILE.keys(): #For every app in the Pathfile
@@ -102,3 +103,5 @@ del i
 del data["textsurfacecache"]
 del data["apps"]["icons"]
 del data["cache"]
+
+data["cache"] = {"swipecache":0}
