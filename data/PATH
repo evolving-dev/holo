@@ -13,6 +13,6 @@
     'assets' : 'assets/apps/holo/widgets',
     'scripts' : 'scripts/apps/holo/widgets',
     'about' : 'scripts/apps/holo/widgets/ABOUT',
-    'icon' : 'assets/apps/holo/widgets/icon.png'
+    'icon' : 'assets/apps/holo/widgets/icon-' + SETTINGS["theme"] + '.png'
     },
 }
