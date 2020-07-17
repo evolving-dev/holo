@@ -1,6 +1,3 @@
-#FPS = 12 #Increase the FPS for better drag detection
-
-
 data["assets"] = {
     "overlay": pygame.image.fromstring(Image.open(holo.path(join(APP_PATH["assets"] , "images/overlay-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["width"],SETTINGS["height"])).tobytes(),(SETTINGS["width"],SETTINGS["height"]),"RGBA").convert_alpha(),
     "default-icon": pygame.image.fromstring(Image.open(holo.path("assets/images/icons/default.png")).resize((SETTINGS["width"] // 10,SETTINGS["width"] // 10)).convert("RGBA").tobytes(),(SETTINGS["width"] // 10,SETTINGS["width"] // 10),"RGBA").convert_alpha(),
@@ -23,7 +20,8 @@ data["layout"] = {
 
 data["cache"] = {
     "name":"",
-    "swipecache":0
+    "swipecache":0,
+    "mouseposcache":list(pygame.mouse.get_pos())[0]
 }
 
 for i in PATHFILE.keys(): #For every app in the Pathfile
