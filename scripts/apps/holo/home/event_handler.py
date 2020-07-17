@@ -20,6 +20,8 @@ if event.type == pygame.MOUSEBUTTONUP: #When the mousebutton is released
                         break
         else: #If a swipe has been detected
             if data["cache"]["mouseposcache"] - list(pygame.mouse.get_pos())[0] < 0:
+                data["cache"]["swipe"] = 2 if data["page"] > 0 else 0
                 data["page"] -= 1 if data["page"] > 0 else 0
             else:
+                data["cache"]["swipe"] = -1 if data["page"] + 1 <= len(data["surfaces"]) - 1 else 0
                 data["page"] += 1 if data["page"] + 1 <= len(data["surfaces"]) - 1 else 0
