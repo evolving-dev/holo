@@ -121,7 +121,9 @@ while not CLOSE:
                 if KEYBOARD.visible and list(pygame.mouse.get_pos())[1] >= SETTINGS["height"] // 2:
                     KEYBOARD.update(list(pygame.mouse.get_pos()))
             
-            exec(APP_EVENTHANDLER) #Pass the event onto the currently active app
+            if not event.type == pygame.MOUSEMOTION: #Mousemotion is ignored for touchscreen displays. Apps need to detect mouse motion themselves
+                
+                exec(APP_EVENTHANDLER) #Pass the event onto the currently active app
         
         
         
