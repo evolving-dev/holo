@@ -57,6 +57,7 @@ FRAME = 0
 SECOND = 0
 FPS = 6
 APP = "startup"
+APP_CRASHED = False
 data:dict = {}
 TIMEOUT = SETTINGS["timeout"]
 APP_CODE = ""

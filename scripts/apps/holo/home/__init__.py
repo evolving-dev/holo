@@ -20,8 +20,7 @@ data["layout"] = {
 
 data["cache"] = {
     "name":"",
-    "swipecache":0,
-    "mouseposcache":list(pygame.mouse.get_pos())[0]
+    "swipecache":0
 }
 
 for i in PATHFILE.keys(): #For every app in the Pathfile
@@ -106,4 +105,4 @@ del data["apps"]["icons"]
 del data["apps"]["appicons"]
 del data["cache"]
 
-data["cache"] = {"swipecache":0}
+data["cache"] = {"swipecache":0, "mouseposcache":list(pygame.mouse.get_pos())[0]}
