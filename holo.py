@@ -66,15 +66,15 @@ class execute:
             
 
 pygame.init()
-#programIcon = pygame.image.load('icon.png')
+ICON = pygame.image.load(join(PATH,'assets/images/icons/icon.png'))
 
-#pygame.display.set_icon(programIcon)
+pygame.display.set_icon(ICON)
 screen = pygame.display.set_mode(game.options.dimensions)
 clock = pygame.time.Clock()
 pygame.display.set_caption(game.options.gameTitle)
 pygame.key.set_repeat(100, 10)
 
-exec(readfile(os.path.join(PATH, "scripts/init/initFontsFirstTimeStartup.py")))
+exec(readfile(join(PATH, "scripts/init/initFontsFirstTimeStartup.py")))
 STARTUP_LANG_FILE = eval(readfile(os.path.join(PATH,"assets/text/startup_en-US"))) if not os.path.isdir(os.path.join(PATH,"USERS")) else eval(readfile(os.path.join(PATH,"assets/text/startup_"+eval(readfile(os.path.join(PATH,"USERS/settings")))["lang"])))
 STARTUP_TEXTS:dict = {}
 for i in list(STARTUP_LANG_FILE.keys()):

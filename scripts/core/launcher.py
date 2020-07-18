@@ -2,6 +2,7 @@ if not APP_CRASHED:
     del ALERTS
     ALERTS:list = [] #RESET ALERTS ONLY WHEN AN APP CRASHED. (keep error report)
 
+
 del data
 data:dict = {} #RESET APP DATA
 

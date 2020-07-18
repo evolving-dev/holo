@@ -5,11 +5,7 @@ class holo:
             return join(PATH,path)
         return path
         
-    def close_app():
-        APP = "home"
-        exec(APPLAUNCHER)
-    
-    
+        
     
     class loader:#Loader object
         

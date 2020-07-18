@@ -27,9 +27,9 @@ data["cache"] = {
 
 for i in PATHFILE.keys(): #For every app in the Pathfile
     
-    if i != "home": #Ignore the home app
+    if i != "home" and "scripts" in PATHFILE[i]: #Ignore the home app
         
-        data["apps"]["apps"] += [i] # Add the app to the list of 
+        data["apps"]["apps"] += [i] # Add the app to the list of apps
         
         if os.path.isfile(holo.path(PATHFILE[i].get("about", ""))): #If the app has an ABOUT file
             

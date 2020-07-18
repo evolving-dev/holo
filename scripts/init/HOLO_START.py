@@ -35,7 +35,7 @@ SYSTEM_TEXTS = eval(readfile(join(PATH, "assets/text/main_"+SETTINGS["lang"])))
 
 #Init pygame window
 pygame.init()
-#pygame.display.set_icon(pygame.image.load('icon.png')) # ICON
+pygame.display.set_icon(ICON)
 screen = pygame.display.set_mode([SETTINGS["width"],SETTINGS["height"]])
 clock = pygame.time.Clock()
 pygame.display.set_caption("HOLO")

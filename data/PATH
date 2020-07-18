@@ -15,4 +15,7 @@
     'about' : 'scripts/apps/holo/widgets/ABOUT',
     'icon' : 'assets/apps/holo/widgets/icon-' + SETTINGS["theme"] + '.png'
     },
+'clock' : {
+    'widget' : 'assets/apps/holo/clock/__widget__.py',
+    },
 }
