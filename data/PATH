@@ -1,21 +1,31 @@
 {
-'home' : {
+'home' :
+    {
     'assets' : 'assets/apps/holo/home' ,
     'scripts' : 'scripts/apps/holo/home',
     'about' : 'scripts/apps/holo/home/ABOUT'
     },
-'weather' : {
-    'assets' : 'assets/apps/holo/weather' ,
-    'scripts' : 'scripts/apps/holo/weather',
-    'about' : 'scripts/apps/holo/weather/ABOUT'
-    },
-'widgets' : {
+'widgets' :
+    {
     'assets' : 'assets/apps/holo/widgets',
     'scripts' : 'scripts/apps/holo/widgets',
     'about' : 'scripts/apps/holo/widgets/ABOUT',
     'icon' : 'assets/apps/holo/widgets/icon-' + SETTINGS["theme"] + '.png'
+     },
+'settings' : {
+   'assets' : 'assets/apps/holo/settings',
+   'scripts' : 'scripts/apps/holo/settings',
+   'about' : 'scripts/apps/holo/settings/ABOUT',
+   'icon' : 'assets/apps/holo/settings/icon-' + SETTINGS["theme"] + '.png'
+   },
+'weather' :
+    {
+    'assets' : 'assets/apps/holo/weather' ,
+    'scripts' : 'scripts/apps/holo/weather',
+    'about' : 'scripts/apps/holo/weather/ABOUT'
     },
-'clock' : {
+  'clock' :
+    {
     'widget' : 'assets/apps/holo/clock/__widget__.py',
     },
 }
