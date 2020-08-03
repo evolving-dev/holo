@@ -15,7 +15,7 @@ except:
     APP_CRASHED = True
     holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + SYSTEM_TEXTS["read_error"] + holo.path("USERS/WIDGETS")) #Show an alert of the exception thrown
     APP = "home"
-    exec(APPLAUNCHER) #Start the home app
+    exec(APPLAUNCHER) #Start the home app if the WIDGETFILE could not be read
 
 
 for i in data["widgetfile"].keys():
