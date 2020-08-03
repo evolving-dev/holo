@@ -17,10 +17,21 @@ except:
     APP = "home"
     exec(APPLAUNCHER) #Start the home app if the WIDGETFILE could not be read
 
+data["widgetcode"]:dict = {} #Update code for all the widgets
+data["var"]:dict = {} #Variables for the widgets
 
+#Load the code for all widgets and execute their init 
 for i in data["widgetfile"].keys():
-    pass
+    
+    data["widgetcode"][i] = readfile(data["widgetfile"][i]["update"])
+    
+    widget:dict = {} #Temporary variable for the widget data
+    exec(readfile(data["widgetfile"][i]["init"]))
+    data["var"][i] = widget.copy() #Move the data to its designated place
+    
+    del widget #Clean up the temporary data
 
-APP_CRASHED = False
-APP = "home"
-exec(APPLAUNCHER)
+
+#APP_CRASHED = False
+#APP = "home"
+#exec(APPLAUNCHER)
