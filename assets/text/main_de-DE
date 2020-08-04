@@ -1,1 +1,1 @@
-{"crash":" ist wegen eines Fehlers abgestürzt:", "loading":"Bitte warten...", "read_error":"Datenlesefehler: "}
+{"crash":" ist wegen eines Fehlers abgestürzt:", "loading":"Bitte warten...", "read_error":"Datenlesefehler: ", "widget_crash": "Das Widget __WIDGET__ wurde wegen eines Fehlers deaktiviert. Fehler: "}

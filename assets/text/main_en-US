@@ -1,1 +1,1 @@
-{"crash":" crashed due to an error:", "loading":"Please wait...", "read_error": "Error reading file: "}
+{"crash":" crashed due to an error:", "loading":"Please wait...", "read_error": "Error reading file: ", "widget_crash": "The widget __WIDGET__ has been deactivated because an error occured. Error: "}

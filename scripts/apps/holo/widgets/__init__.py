@@ -20,15 +20,16 @@ except:
     exec(APPLAUNCHER) #Start the home app if the WIDGETFILE could not be read
 
 if not APP_CRASHED:
-    data["widgetcode"]:dict = {} #Update code for all the widgets
-    data["var"]:dict = {} #Variables for the widgets
-    #Load the code for all widgets and execute their init 
-    for i in data["widgetfile"].keys():
-        
-        data["widgetcode"][i] = readfile(holo.path(data["widgetfile"][i]["update"]))
-        
-        widget:dict = {} #Temporary variable for the widget data
-        exec(readfile(holo.path(data["widgetfile"][i]["init"])))
-        data["var"][i] = widget.copy() #Move the data to its designated place
-        
-        del widget #Clean up the temporary data
+   data["widgetcode"]:dict = {} #Update code for all the widgets
+   data["var"]:dict = {} #Variables for the widgets
+   #Load the code for all widgets and execute their init 
+   for i in data["widgetfile"].keys():
+       
+       data["widgetcode"][i] = readfile(holo.path(data["widgetfile"][i]["update"]))
+       
+       widget = {"x": data["widgetfile"][i]["x"], "y": data["widgetfile"][i]["y"]} #Temporary variable for the widget data
+       
+       exec(readfile(holo.path(data["widgetfile"][i]["init"])))
+       data["var"][i] = widget.copy() #Move the data to its designated place
+       
+       del widget #Clean up the temporary data
