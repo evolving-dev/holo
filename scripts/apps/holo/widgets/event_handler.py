@@ -1,0 +1,1 @@
+data["mousePos"] = list(pygame.mouse.get_pos())

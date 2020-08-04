@@ -1,3 +1,5 @@
+FPS = 15
+
 #STEP 1: Create WIDGETFILE if it doesn't exist
 if not os.path.isfile(holo.path("USERS/WIDGETS")):
     with open(holo.path("USERS/WIDGETS"), "w") as f:
@@ -17,21 +19,16 @@ except:
     APP = "home"
     exec(APPLAUNCHER) #Start the home app if the WIDGETFILE could not be read
 
-data["widgetcode"]:dict = {} #Update code for all the widgets
-data["var"]:dict = {} #Variables for the widgets
-
-#Load the code for all widgets and execute their init 
-for i in data["widgetfile"].keys():
-    
-    data["widgetcode"][i] = readfile(data["widgetfile"][i]["update"])
-    
-    widget:dict = {} #Temporary variable for the widget data
-    exec(readfile(data["widgetfile"][i]["init"]))
-    data["var"][i] = widget.copy() #Move the data to its designated place
-    
-    del widget #Clean up the temporary data
-
-
-#APP_CRASHED = False
-#APP = "home"
-#exec(APPLAUNCHER)
+if not APP_CRASHED:
+    data["widgetcode"]:dict = {} #Update code for all the widgets
+    data["var"]:dict = {} #Variables for the widgets
+    #Load the code for all widgets and execute their init 
+    for i in data["widgetfile"].keys():
+        
+        data["widgetcode"][i] = readfile(holo.path(data["widgetfile"][i]["update"]))
+        
+        widget:dict = {} #Temporary variable for the widget data
+        exec(readfile(holo.path(data["widgetfile"][i]["init"])))
+        data["var"][i] = widget.copy() #Move the data to its designated place
+        
+        del widget #Clean up the temporary data

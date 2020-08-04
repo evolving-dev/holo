@@ -18,7 +18,6 @@ FPS = 6 #RESET FPS
 KEYBOARD.reset()
 APP_CRASHED = False
 
-
 if APP == "startup":
     
     #Code to be executed at startup
