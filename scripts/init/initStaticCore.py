@@ -8,6 +8,7 @@ STATIC_CORE: dict = {
 "surface_4_1":pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_4_1_"+SETTINGS["theme"]+".png")).resize(((SETTINGS["height"]//5)*4,SETTINGS["height"]//5)).tobytes(),((SETTINGS["height"]//5)*4,SETTINGS["height"]//5),"RGBA").convert_alpha(),
 "keyboard_lower":pygame.Surface([SETTINGS["width"],SETTINGS["height"] // 2], pygame.SRCALPHA).convert_alpha(),
 "keyboard_upper":pygame.Surface([SETTINGS["width"],SETTINGS["height"] // 2], pygame.SRCALPHA).convert_alpha(),
+"widget_small":pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_2_1_"+SETTINGS["theme"]+".png")).resize((SETTINGS["width"]//5,SETTINGS["width"]//10)).tobytes(),(SETTINGS["width"]//5,SETTINGS["width"]//10),"RGBA").convert_alpha(),
 }
 KEYMAP:dict = {"upper":{},"lower":{}}
 #Static objects which belong to HOLO itself and persist until the end of the session.
