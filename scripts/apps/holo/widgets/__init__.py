@@ -1,4 +1,8 @@
-FPS = 15
+FPS = 20
+
+data["mouseHold"] = 0 #Number of frames the mouse has been held down
+
+data["clickedObjectName"] = ""
 
 #STEP 1: Create WIDGETFILE if it doesn't exist
 if not os.path.isfile(holo.path("USERS/WIDGETS")):
