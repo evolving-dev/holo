@@ -16,7 +16,8 @@ SETTINGS = {
     'timeout':120,
     'keyboard':'qwerty',
     'timeformat': '%H:%M:%S',
-    'dateformat':'%d.%m.%Y'
+    'dateformat':'%d.%m.%Y',
+    'high_fps': 0
     }
 
 with open("settings","w") as f:

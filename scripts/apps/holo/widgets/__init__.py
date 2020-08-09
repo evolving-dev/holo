@@ -1,4 +1,4 @@
-FPS = 20
+FPS = 60 if SETTINGS["high_fps"] else 20
 
 data["mouseHold"] = 0 #Number of frames the mouse has been held down
 
