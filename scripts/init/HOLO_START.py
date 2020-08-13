@@ -54,6 +54,7 @@ STATIC:dict = {} #Static objects, such as texts, which persist until the given a
 DISPLAY = [SETTINGS["width"],SETTINGS["height"]]
 CLOSE = False #LOOP STATE
 DISPLAY_BACKGROUND = True
+alertcache = False
 FRAME = 0
 SECOND = 0
 FPS = 6
@@ -118,11 +119,13 @@ while not CLOSE:
                 TIMEOUT = SETTINGS["timeout"]
             if event.type == pygame.MOUSEBUTTONUP:
                 if len(ALERTS) >= 1:
-                    ALERTS[-1:][0].detectClick(list(pygame.mouse.get_pos())) #Only detect most recent alert
+                    alertcache = ALERTS[-1:][0].detectClick(list(pygame.mouse.get_pos())) #Only detect most recent alert
+                else:
+                    alertcache = False
                 if KEYBOARD.visible and list(pygame.mouse.get_pos())[1] >= SETTINGS["height"] // 2:
                     KEYBOARD.update(list(pygame.mouse.get_pos()))
             
-            if not event.type == pygame.MOUSEMOTION: #Mousemotion is ignored for touchscreen displays. Apps need to detect mouse motion themselves
+            if not event.type == pygame.MOUSEMOTION and not alertcache: #Mousemotion is ignored for touchscreen displays. Apps need to detect mouse motion themselves
                 
                 exec(APP_EVENTHANDLER) #Pass the event onto the currently active app
         

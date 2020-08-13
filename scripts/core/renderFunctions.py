@@ -85,6 +85,8 @@ class holo:
         def detectClick(self, clickPos):
             if clickPos[0] in range(self.xy[0] + self.width // 2 - self.button_width // 2, self.xy[0] + self.width // 2 - self.button_width // 2 + self.button_width) and clickPos[1] in range(self.xy[1] + int(self.height*0.95 - self.button_height), self.xy[1] + int(self.height*0.95 - self.button_height) + self.button_height):
                 self.visible = False
+                return True
+            return False
     
     def new_alert(message="Sample Text"):
         
