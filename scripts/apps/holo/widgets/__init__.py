@@ -4,6 +4,11 @@ data["mouseHold"] = 0 #Number of frames the mouse has been held down
 
 data["clickedObjectName"] = ""
 
+data["assets"] = {
+    "home": pygame.image.fromstring(Image.open(holo.path(join(APP_PATH["assets"], "icons/home-"+SETTINGS["theme"]+".png"))).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
+}
+
+
 #STEP 1: Create WIDGETFILE if it doesn't exist
 if not os.path.isfile(holo.path("USERS/WIDGETS")):
     with open(holo.path("USERS/WIDGETS"), "w") as f:
