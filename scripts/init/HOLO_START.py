@@ -79,7 +79,13 @@ while not CLOSE:
         else:
             screen.fill([0,0,0])
         
-        exec(APP_CODE) #Run the updatefile of the current app
+        try:
+            exec(APP_CODE) #Run the updatefile of the current app
+        except Exception as e: #CRASH PROTECTION
+            APP_CRASHED = True
+            holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + str(e)) #Show an alert of the exception thrown
+            APP = "home"
+            exec(APPLAUNCHER)
         
         #KEYBOARD UPDATE ROUTINE
         
