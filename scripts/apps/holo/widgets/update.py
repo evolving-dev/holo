@@ -11,14 +11,16 @@ for i in range(len(data["widgetcode"])):
         data["var"][data["keycache"]] = widget.copy()
         
         screen.blit(widget["surface"], [widget["x"], widget["y"]])
-        
-        del widget
     except Exception as e:
         holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", data["keycache"]) + str(e))
         #TODO: MEMDUMP DES WIDGETS IN DIE LOGS SCHREIBEN
-        del widget
         del data["var"][data["keycache"]]
         del data["widgetcode"][data["keycache"]]
+        del data["eventcode"][data["keycache"]]
+        data["widgetfile"][data["keycache"]]["enabled"] = 0
+        with open(holo.path("USERS/WIDGETS"), "w") as f:
+            f.write(str(data["widgetfile"]))
+            f.close()
 
 try:
     if pygame.mouse.get_pressed()[0] and data["mouseHold"] >= 6:

@@ -13,3 +13,18 @@ if pygame.mouse.get_pressed()[0] and data["mouseHold"] < 6:
     except:
         pass
     
+if event.type == pygame.MOUSEBUTTONUP and data["mouseHold"] < 6:
+    if data["clickObjectName"] != "":
+        try:
+            exec(data["eventcode"][data["clickObjectName"]])
+        except Exception as e:
+            holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", data["keycache"]) + str(e))
+            #TODO: MEMDUMP DES WIDGETS IN DIE LOGS SCHREIBEN
+            del widget
+            del data["var"][data["keycache"]]
+            del data["widgetcode"][data["keycache"]]
+            del data["eventcode"][data["keycache"]]
+            data["widgetfile"][data["keycache"]]["enabled"] = 0
+            with open(holo.path("USERS/WIDGETS"), "w") as f:
+                f.write(str(data["widgetfile"]))
+                f.close()

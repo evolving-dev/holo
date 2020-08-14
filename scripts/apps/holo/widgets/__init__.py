@@ -25,15 +25,26 @@ except:
 
 if not APP_CRASHED:
    data["widgetcode"]:dict = {} #Update code for all the widgets
+   data["eventcode"]:dict = {} #Event code for all the widgets
    data["var"]:dict = {} #Variables for the widgets
    #Load the code for all widgets and execute their init 
    for i in data["widgetfile"].keys():
-       
-       data["widgetcode"][i] = readfile(holo.path(data["widgetfile"][i]["update"]))
-       
-       widget = {"x": data["widgetfile"][i]["x"], "y": data["widgetfile"][i]["y"]} #Temporary variable for the widget data
-       
-       exec(readfile(holo.path(data["widgetfile"][i]["init"])))
-       data["var"][i] = widget.copy() #Move the data to its designated place
-       
-       del widget #Clean up the temporary data
+        if data["widgetfile"][i]["enabled"]:
+            data["widgetcode"][i] = readfile(holo.path(data["widgetfile"][i]["update"]))
+            data["eventcode"][i] = readfile(holo.path(data["widgetfile"][i]["event"]))
+            
+            widget = {"x": data["widgetfile"][i]["x"], "y": data["widgetfile"][i]["y"]} #Temporary variable for the widget data
+            try:
+                exec(readfile(holo.path(data["widgetfile"][i]["init"])))
+                data["var"][i] = widget.copy() #Move the data to its designated place
+            except Exception as e:
+                holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", i) + str(e))
+                #TODO: MEMDUMP DES WIDGETS IN DIE LOGS SCHREIBEN
+                del data["widgetcode"][i]
+                del data["eventcode"][i]
+                data["widgetfile"][i]["enabled"] = 0
+                with open(holo.path("USERS/WIDGETS"), "w") as f:
+                    f.write(str(data["widgetfile"]))
+                    f.close()
+           
+            del widget #Clean up the temporary data
