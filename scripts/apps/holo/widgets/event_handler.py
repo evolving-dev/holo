@@ -16,6 +16,9 @@ if pygame.mouse.get_pressed()[0] and data["mouseHold"] < 6:
 if event.type == pygame.MOUSEBUTTONUP and data["mouseHold"] < 6:
     if data["clickObjectName"] != "":
         try:
+            data["mousePos"] = [data["mousePos"][0] - data["var"][data["clickObjectName"]]["x"], data["mousePos"][1] - data["var"][data["clickObjectName"]]["y"]]
+            #Make mousePos relative to the widget
+            
             exec(data["eventcode"][data["clickObjectName"]])
         except Exception as e:
             holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", data["keycache"]) + str(e))
