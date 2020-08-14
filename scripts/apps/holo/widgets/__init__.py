@@ -5,9 +5,14 @@ data["mouseHold"] = 0 #Number of frames the mouse has been held down
 data["clickedObjectName"] = ""
 
 data["assets"] = {
+    "overlaySurface": pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 10]),
     "home": pygame.image.fromstring(Image.open(holo.path(join(APP_PATH["assets"], "icons/home-"+SETTINGS["theme"]+".png"))).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
-}
+    "add": pygame.image.fromstring(Image.open(holo.path(join(APP_PATH["assets"], "icons/add-"+SETTINGS["theme"]+".png"))).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
+    "delete": pygame.image.fromstring(Image.open(holo.path(join(APP_PATH["assets"], "icons/delete-"+SETTINGS["theme"]+".png"))).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
 
+}
+data["assets"]["overlaySurface"].fill([0,0,0] if SETTINGS["theme"] == "dark" else [255,255,255])
+data["assets"]["overlaySurface"].set_alpha(70)
 
 #STEP 1: Create WIDGETFILE if it doesn't exist
 if not os.path.isfile(holo.path("USERS/WIDGETS")):

@@ -38,3 +38,10 @@ try:
         data["moveObjectName"] = ""
 except:
     pass
+
+
+#OVERLAY
+screen.blit(data["assets"]["overlaySurface"], [0, SETTINGS["height"] - data["assets"]["overlaySurface"].get_height()])
+screen.blit(data["assets"]["home"], [SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2, SETTINGS["height"] // 20 - data["assets"]["home"].get_height() // 2 + int(SETTINGS["height"]*0.9)])
+screen.blit(data["assets"]["add"], [int(SETTINGS["width"]*0.01), SETTINGS["height"] // 20 - data["assets"]["home"].get_height() // 2 + int(SETTINGS["height"]*0.9)])
+screen.blit(data["assets"]["delete"], [SETTINGS["width"] - data["assets"]["home"].get_width(), SETTINGS["height"] // 20 - data["assets"]["home"].get_height() // 2 + int(SETTINGS["height"]*0.9)])
