@@ -40,3 +40,21 @@ def text_wrap(text, width, font, passes=10):
             pass
     return "\n".join(text_cached).rstrip() #Return the formatted text
             
+def text_cutoff(text, width, font, passes=10):
+    text_changed = " ".join(list(text))
+    text_changed = text_wrap(text_changed, width, font, passes)
+    
+    text_changed = text_changed.split(" ")
+    
+    for i in range(len(text_changed)):
+        if text_changed[i] == "":
+            text_changed[i] == " "
+    
+    text_changed = "".join(text_changed).replace("  ", " ")
+    
+    if text_changed != text:
+        text_changed += "..."
+        
+    return text_changed
+    
+    

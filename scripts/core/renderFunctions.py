@@ -136,3 +136,24 @@ class holo:
         def clear(self):
             
             self.text = ""
+    
+    
+    
+    class dropDown:
+        
+        def __init__(self, pos, items, width=SETTINGS["width"] // 4, text=""):
+            
+            self.pos = pos
+            self.width = width
+            self.text = text
+            
+            self.empty_surface = pygame.Surface(width, SETTINGS["height"] // 15], [50,50,50] if SETTINGS["theme"] == "dark" else [200,200,200]).convert_alpha()
+            self.empty_surface.blit(STATIC_CORE["dropdown_button"], [width - STATIC_CORE["dropdown_button"].get_width(), self.empty_surface.get_height() // 2 - STATIC_CORE["dropdown_button"].get_height() // 2])
+            self.surface = self.empty_surface.copy()
+            
+        def change_text(self, text):
+            
+            self.text = text
+            
+            self.text_render = FONTS["p-sans-serif"].render(text_cutoff(text, int(self.width*0.8), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
+            
