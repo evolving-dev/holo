@@ -39,9 +39,24 @@ try:
 except:
     pass
 
+data["widgetDelete"] = ""
+
+for i in data["var"]:
+    if data["var"][i]["y"] + int(data["var"][i]["size"][1] * 0.7) >= int(SETTINGS["height"] * 0.9) and data["var"][i]["x"] >= SETTINGS["width"] // 2:
+        data["widgetDelete"] = i
+if data["widgetDelete"] != "":
+    data["assets"]["overlaySurface"].fill([255,0,0])
+else:
+    data["assets"]["overlaySurface"].fill([255,255,255] if SETTINGS["theme"] == "light" else [0,0,0])
+
 
 #OVERLAY
 screen.blit(data["assets"]["overlaySurface"], [0, SETTINGS["height"] - data["assets"]["overlaySurface"].get_height()])
 screen.blit(data["assets"]["home"], [SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2, SETTINGS["height"] // 20 - data["assets"]["home"].get_height() // 2 + int(SETTINGS["height"]*0.9)])
 screen.blit(data["assets"]["add"], [int(SETTINGS["width"]*0.01), SETTINGS["height"] // 20 - data["assets"]["home"].get_height() // 2 + int(SETTINGS["height"]*0.9)])
 screen.blit(data["assets"]["delete"], [SETTINGS["width"] - data["assets"]["home"].get_width(), SETTINGS["height"] // 20 - data["assets"]["home"].get_height() // 2 + int(SETTINGS["height"]*0.9)])
+
+if data["quit"]:
+    APP_CRASHED = False
+    APP = "home"
+    exec(APPLAUNCHER)

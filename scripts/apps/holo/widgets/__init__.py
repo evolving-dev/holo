@@ -2,7 +2,9 @@ FPS = 60 if SETTINGS["high_fps"] else 20
 
 data["mouseHold"] = 0 #Number of frames the mouse has been held down
 
+data["widgetDelete"] = ""
 data["clickedObjectName"] = ""
+data["quit"] = False
 
 data["assets"] = {
     "overlaySurface": pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 10]),

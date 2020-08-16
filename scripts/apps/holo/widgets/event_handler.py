@@ -34,6 +34,15 @@ if event.type == pygame.MOUSEBUTTONUP and data["mouseHold"] < 6:
     if data["mousePos"][0] in range(SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2, SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2 + data["assets"]["home"].get_width()) and data["mousePos"][1] in range(int(SETTINGS["height"]*0.9), SETTINGS["height"]):
         pygame.draw.rect(screen, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2, int(SETTINGS["height"]*0.9), data["assets"]["home"].get_width(), SETTINGS["height"] // 10 + 1])
         pygame.display.flip()
-        APP_CRASHED = False
-        APP = "home"
-        exec(APPLAUNCHER)
+        data["quit"] = True
+
+if event.type == pygame.MOUSEBUTTONUP:
+    if data["widgetDelete"] != "":
+        data["widgetfile"][data["widgetDelete"]]["enabled"] = 0
+        del data["var"][data["widgetDelete"]]
+        del data["widgetcode"][data["widgetDelete"]]
+        del data["eventcode"][data["widgetDelete"]]
+        with open(holo.path("USERS/WIDGETS"), "w") as f:
+            f.write(str(data["widgetfile"]))
+            f.close()
+        data["widgetDelete"] = ""
