@@ -159,8 +159,16 @@ class holo:
             
         def change_text(self, text):
             
+            self.surface = self.empty_surface.copy()
+            
             self.text = text
             
             self.text_render = FONTS["p-sans-serif"].render(text_cutoff(text, int(self.width*0.8), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
+            
             self.surface.blit(self.text_render, [0.02* self.width, self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
             
+        def detect_click(self, pos):
+            
+            if pos[0] in range(self.pos[0], self.pos[0] + self.width) and pos[1] in range(self.pos[1], self.pos[1] + self.empty_surface.get_height()):
+                return True
+            return False
