@@ -1,7 +1,6 @@
 FPS = 15
 
 data["assets"] = {
-    "overlay": pygame.image.fromstring(Image.open(holo.path(join(APP_PATH["assets"] , "images/overlay-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["width"],SETTINGS["height"])).tobytes(),(SETTINGS["width"],SETTINGS["height"]),"RGBA").convert_alpha(),
     "default-icon": pygame.image.fromstring(Image.open(holo.path("assets/images/icons/default.png")).resize((SETTINGS["width"] // 10,SETTINGS["width"] // 10)).convert("RGBA").tobytes(),(SETTINGS["width"] // 10,SETTINGS["width"] // 10),"RGBA").convert_alpha(),
     "warning":pygame.image.fromstring(Image.open(holo.path("assets/images/system/warning.png")).resize((SETTINGS["width"] // 20,SETTINGS["width"] // 20)).tobytes(),(SETTINGS["width"] // 20,SETTINGS["width"] // 20),"RGBA").convert_alpha()
 } #Load in image assets

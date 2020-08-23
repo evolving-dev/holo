@@ -1,4 +1,4 @@
-screen.blit(data["assets"]["overlay"], (0,0)) #Blit black / white overlay onto the background image
+screen.blit(STATIC_CORE["overlay"], (0,0)) #Blit black / white overlay onto the background image
 
 
 if data["cache"]["swipeframe"] == 10:

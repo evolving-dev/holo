@@ -10,6 +10,7 @@ STATIC_CORE: dict = {
 "keyboard_upper":pygame.Surface([SETTINGS["width"],SETTINGS["height"] // 2], pygame.SRCALPHA).convert_alpha(),
 "widget_small":pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_2_1_"+SETTINGS["theme"]+".png")).resize((SETTINGS["width"]//5,SETTINGS["width"]//10)).tobytes(),(SETTINGS["width"]//5,SETTINGS["width"]//10),"RGBA").convert_alpha(),
 "dropdown_button": pygame.image.fromstring(Image.open(join(PATH,"assets/images/system/dropdown/dropdown-"+SETTINGS["theme"]+".png")).resize((SETTINGS["width"]//20,SETTINGS["width"]//20)).tobytes(),(SETTINGS["width"]//20,SETTINGS["width"]//20),"RGBA").convert_alpha(),
+"overlay": pygame.image.fromstring(Image.open(holo.path(join("assets/images/system/overlays/overlay-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["width"],SETTINGS["height"])).tobytes(),(SETTINGS["width"],SETTINGS["height"]),"RGBA").convert_alpha(),
 }
 KEYMAP:dict = {"upper":{},"lower":{}}
 #Static objects which belong to HOLO itself and persist until the end of the session.
