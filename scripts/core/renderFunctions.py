@@ -164,4 +164,3 @@ class holo:
             self.text_render = FONTS["p-sans-serif"].render(text_cutoff(text, int(self.width*0.8), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
             self.surface.blit(self.text_render, [0.02* self.width, self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
             
-        def 
