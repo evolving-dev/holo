@@ -57,6 +57,29 @@ screen.blit(data["assets"]["add"], [int(SETTINGS["width"]*0.01), SETTINGS["heigh
 screen.blit(data["assets"]["delete"], [SETTINGS["width"] - data["assets"]["home"].get_width(), SETTINGS["height"] // 20 - data["assets"]["home"].get_height() // 2 + int(SETTINGS["height"]*0.9)])
 
 if data["quit"]:
+    
+    for i in data["var"].keys():
+        data["widgetfile"][i]["x"] = data["var"][i]["x"]
+        data["widgetfile"][i]["y"] = data["var"][i]["y"]
+    
+    with open(holo.path("USERS/WIDGETS"), "r") as f:
+        data["widgetfile_OLD"] = f.read()
+        f.close()
+    
+    try:
+        data["widgetfile_OLD"] = eval(data["widgetfile_OLD"])
+    except:
+        APP_CRASHED = True
+        holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + SYSTEM_TEXTS["read_error"] + holo.path("USERS/WIDGETS")) #Show an alert of the exception thrown
+        APP = "home"
+        exec(APPLAUNCHER) #Start the home app if the WIDGETFILE could not be read
+    
+    if data["widgetfile"] != data["widgetfile_OLD"]:
+        with open(holo.path("USERS/WIDGETS"), "w") as f:
+            f.write(str(data["widgetfile"]))
+            f.close()
+        print("w")
+    
     APP_CRASHED = False
     APP = "home"
     exec(APPLAUNCHER)
