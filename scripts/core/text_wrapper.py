@@ -52,6 +52,15 @@ def text_cutoff(text, width, font, passes=10):
     
     text_changed = "".join(text_changed).replace("  ", " ")
     
+    if len(text_changed) > 0:
+    
+        text_changed = text_changed.split("\n")
+        text_changed = text_changed[0]
+    
+    else:
+        
+        return ""
+    
     if text_changed != text:
         text_changed += "..."
         

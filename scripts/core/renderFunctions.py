@@ -147,13 +147,21 @@ class holo:
             self.width = width
             self.text = text
             
-            self.empty_surface = pygame.Surface(width, SETTINGS["height"] // 15], [50,50,50] if SETTINGS["theme"] == "dark" else [200,200,200]).convert_alpha()
+            self.text_render = FONTS["p-sans-serif"].render(text_cutoff(text, int(self.width*0.8), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
+            
+            self.empty_surface = pygame.Surface([int(self.width), int(SETTINGS["height"] // 15)], pygame.SRCALPHA).convert_alpha()
+            
+            self.empty_surface.fill([50,50,50,128] if SETTINGS["theme"] == "dark" else [200,200,200,128])
+            
             self.empty_surface.blit(STATIC_CORE["dropdown_button"], [width - STATIC_CORE["dropdown_button"].get_width(), self.empty_surface.get_height() // 2 - STATIC_CORE["dropdown_button"].get_height() // 2])
             self.surface = self.empty_surface.copy()
+            self.surface.blit(self.text_render, [0.02* self.width, self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
             
         def change_text(self, text):
             
             self.text = text
             
             self.text_render = FONTS["p-sans-serif"].render(text_cutoff(text, int(self.width*0.8), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
+            self.surface.blit(self.text_render, [0.02* self.width, self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
             
+        def 
