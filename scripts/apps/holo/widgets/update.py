@@ -78,7 +78,6 @@ if data["quit"]:
         with open(holo.path("USERS/WIDGETS"), "w") as f:
             f.write(str(data["widgetfile"]))
             f.close()
-        print("w")
     
     APP_CRASHED = False
     APP = "home"
