@@ -61,7 +61,7 @@ class execute:
     def onSecondFunction():
         game.storage.trueFPS = clock.get_fps()
             
-
+pygame.mixer.pre_init(44100, channels=2)
 pygame.init()
 ICON = pygame.image.load(join(PATH,'assets/images/icons/icon.png'))
 

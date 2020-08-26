@@ -146,6 +146,10 @@ class holo:
             self.pos = pos
             self.width = width
             self.text = text
+            self.clicked = False
+            self.selected = 0
+            self.scroll = 0
+            self.items = items
             
             self.text_render = FONTS["p-sans-serif"].render(text_cutoff(text, int(self.width*0.8), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
             
@@ -157,7 +161,11 @@ class holo:
             self.surface = self.empty_surface.copy()
             self.surface.blit(self.text_render, [0.02* self.width, self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
             
-        def change_text(self, text):
+            self.text_renders = []
+            for i in items:
+                self.text_renders += FONTS["p-sans-serif"].render(text_cutoff(i, int(self.width*0.8), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
+        
+        def change_text(self, text=""):
             
             self.surface = self.empty_surface.copy()
             
@@ -170,5 +178,13 @@ class holo:
         def detect_click(self, pos):
             
             if pos[0] in range(self.pos[0], self.pos[0] + self.width) and pos[1] in range(self.pos[1], self.pos[1] + self.empty_surface.get_height()):
+                self.clicked = True
                 return True
+            self.clicked = False
             return False
+        def drawloop(self):
+            
+            screen.blit(STATIC_CORE["overlay"], [0,0])
+            for i in range(len(self.text_renders)):
+                pass
+                #screen.blit(self.text_renders[i], 0, )
