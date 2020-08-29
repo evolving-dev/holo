@@ -139,52 +139,56 @@ class holo:
     
     
     
-    class dropDown:
+    class list_selector:
         
-        def __init__(self, pos, items, width=SETTINGS["width"] // 4, text=""):
+        def __init__(self, pos, items, width=SETTINGS["width"] // 4):
             
             self.pos = pos
             self.width = width
-            self.text = text
-            self.clicked = False
             self.selected = 0
-            self.scroll = 0
             self.items = items
             
-            self.text_render = FONTS["p-sans-serif"].render(text_cutoff(text, int(self.width*0.8), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
+            self.text_renders = []
+            for i in items:
+                self.text_renders += [FONTS["p-sans-serif"].render(text_cutoff(i, int(self.width - (STATIC_CORE["arrow_left"].get_width() * 2) - int(self.width * 0.05)), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])]
+            
+            self.text_render = self.text_renders[self.selected]
             
             self.empty_surface = pygame.Surface([int(self.width), int(SETTINGS["height"] // 15)], pygame.SRCALPHA).convert_alpha()
             
             self.empty_surface.fill([50,50,50,128] if SETTINGS["theme"] == "dark" else [200,200,200,128])
             
-            self.empty_surface.blit(STATIC_CORE["dropdown_button"], [width - STATIC_CORE["dropdown_button"].get_width(), self.empty_surface.get_height() // 2 - STATIC_CORE["dropdown_button"].get_height() // 2])
-            self.surface = self.empty_surface.copy()
-            self.surface.blit(self.text_render, [0.02* self.width, self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
+            self.empty_surface.blit(STATIC_CORE["arrow_right"], [width - STATIC_CORE["arrow_right"].get_width(), self.empty_surface.get_height() // 2 - STATIC_CORE["arrow_right"].get_height() // 2])
+            self.empty_surface.blit(STATIC_CORE["arrow_left"], [0, self.empty_surface.get_height() // 2 - STATIC_CORE["arrow_right"].get_height() // 2])
             
-            self.text_renders = []
-            for i in items:
-                self.text_renders += FONTS["p-sans-serif"].render(text_cutoff(i, int(self.width*0.8), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
+            self.surface = self.empty_surface.copy()
+            self.surface.blit(self.text_render, [STATIC_CORE["arrow_left"].get_width(), self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
+            
+            
         
-        def change_text(self, text=""):
-            
-            self.surface = self.empty_surface.copy()
-            
-            self.text = text
-            
-            self.text_render = FONTS["p-sans-serif"].render(text_cutoff(text, int(self.width*0.8), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
-            
-            self.surface.blit(self.text_render, [0.02* self.width, self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
-            
         def detect_click(self, pos):
             
             if pos[0] in range(self.pos[0], self.pos[0] + self.width) and pos[1] in range(self.pos[1], self.pos[1] + self.empty_surface.get_height()):
-                self.clicked = True
-                return True
-            self.clicked = False
-            return False
-        def drawloop(self):
+                if pos[0] - self.pos[0] in range(0, STATIC_CORE["arrow_left"].get_width()):
+                    pygame.draw.rect(self.surface, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [0, 0, STATIC_CORE["arrow_left"].get_width(), STATIC_CORE["arrow_left"].get_height()])
+                    screen.blit(self.surface, self.pos)
+                    pygame.display.flip()
+                    self.selected -= 1 if self.selected > 0 else 0
+                    self.text_render = self.text_renders[self.selected]
+                    self.surface = self.empty_surface.copy()
+                    self.surface.blit(self.text_render, [STATIC_CORE["arrow_left"].get_width(), self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
+                if pos[0] - self.pos[0] in range(self.width - STATIC_CORE["arrow_right"].get_width(), self.width):
+                    pygame.draw.rect(self.surface, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [self.width - STATIC_CORE["arrow_right"].get_width(), 0, self.width , STATIC_CORE["arrow_left"].get_height()])
+                    screen.blit(self.surface, self.pos)
+                    pygame.display.flip()
+                    self.selected += 1 if len(self.items) - 1 > self.selected else 0
+                    self.text_render = self.text_renders[self.selected]
+                    self.surface = self.empty_surface.copy()
+                    self.surface.blit(self.text_render, [STATIC_CORE["arrow_left"].get_width(), self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
+
             
-            screen.blit(STATIC_CORE["overlay"], [0,0])
-            for i in range(len(self.text_renders)):
-                pass
-                #screen.blit(self.text_renders[i], 0, )
+            
+            
+                return True
+            
+            return False

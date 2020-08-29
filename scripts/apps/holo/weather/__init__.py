@@ -1,1 +1,1 @@
-data["dd"] = holo.dropDown([0,0],["hi","hallo"], text="test")
+data["dd"] = holo.list_selector(pos=[0,0],items=["item 1", "item 2", "item 3"])
