@@ -14,6 +14,8 @@ if pygame.mouse.get_pressed()[0] and data["mouseHold"] < 6:
         pass
     
 if event.type == pygame.MOUSEBUTTONUP and data["mouseHold"] < 6:
+    data["components"]["app_selector"].detect_click(data["mousePos"])
+    
     if data["clickObjectName"] != "":
         try:
             data["mousePos"] = [data["mousePos"][0] - data["var"][data["clickObjectName"]]["x"], data["mousePos"][1] - data["var"][data["clickObjectName"]]["y"]]

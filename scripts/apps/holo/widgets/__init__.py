@@ -60,3 +60,11 @@ if not APP_CRASHED:
                     f.close()
            
             del widget #Clean up the temporary data
+
+#STEP 3: Load visual components
+
+
+data["components"] = {
+    "app_selector": holo.list_selector(pos=[int(data["assets"]["add"].get_width() * 1.5), ((SETTINGS["height"] - SETTINGS["height"] // 15) + (SETTINGS["height"] - data["assets"]["overlaySurface"].get_height())) // 2], items=list(data["widgetfile"].keys()))
+}
+
