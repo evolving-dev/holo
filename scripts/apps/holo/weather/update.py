@@ -1,1 +1,0 @@
-screen.blit(data["dd"].surface,[0,0])

@@ -12,19 +12,14 @@
     'about' : 'scripts/apps/holo/widgets/ABOUT',
     'icon' : 'assets/apps/holo/widgets/icon-' + SETTINGS["theme"] + '.png'
      },
-'settings' : {
+'settings' :
+  {
    'assets' : 'assets/apps/holo/settings',
    'scripts' : 'scripts/apps/holo/settings',
    'about' : 'scripts/apps/holo/settings/ABOUT',
    'icon' : 'assets/apps/holo/settings/icon-' + SETTINGS["theme"] + '.png'
    },
-'weather' :
-    {
-    'assets' : 'assets/apps/holo/weather' ,
-    'scripts' : 'scripts/apps/holo/weather',
-    'about' : 'scripts/apps/holo/weather/ABOUT'
-    },
-  'clock' :
+'clock' :
     {
     'widget' : 'assets/apps/holo/clock/__widget__.py',
     },
