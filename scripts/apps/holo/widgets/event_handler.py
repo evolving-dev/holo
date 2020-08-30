@@ -37,6 +37,35 @@ if event.type == pygame.MOUSEBUTTONUP and data["mouseHold"] < 6:
         pygame.draw.rect(screen, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2, int(SETTINGS["height"]*0.9), data["assets"]["home"].get_width(), SETTINGS["height"] // 10 + 1])
         pygame.display.flip()
         data["quit"] = True
+    if data["mousePos"][0] in range(0, data["assets"]["add"].get_width()) and data["mousePos"][1] in range(int(SETTINGS["height"]*0.9), SETTINGS["height"]):
+        pygame.draw.rect(screen, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [int(SETTINGS["width"]*0.01), int(SETTINGS["height"]*0.9), data["assets"]["add"].get_width(), SETTINGS["height"] // 10 + 1])
+        pygame.display.flip()
+        
+        i = data["components"]["app_selector"].items[data["components"]["app_selector"].selected]
+        
+        widget = {"x": data["widgetfile"][i]["x"], "y": data["widgetfile"][i]["y"]} #Temporary variable for the widget data
+        
+        data["widgetfile"][i]["enabled"] = 1
+        
+        with open(holo.path("USERS/WIDGETS"), "w") as f:
+            f.write(str(data["widgetfile"]))
+            f.close()
+        data["widgetcode"][i] = readfile(holo.path(data["widgetfile"][i]["update"]))
+        data["eventcode"][i] = readfile(holo.path(data["widgetfile"][i]["event"]))
+        
+        try:
+            exec(readfile(holo.path(data["widgetfile"][i]["init"])))
+            data["var"][i] = widget.copy() #Move the data to its designated place
+        except Exception as e:
+            holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", i) + str(e))
+            #TODO: MEMDUMP DES WIDGETS IN DIE LOGS SCHREIBEN
+            del data["widgetcode"][i]
+            del data["eventcode"][i]
+            data["widgetfile"][i]["enabled"] = 0
+            with open(holo.path("USERS/WIDGETS"), "w") as f:
+                f.write(str(data["widgetfile"]))
+                f.close()
+    
 
 if event.type == pygame.MOUSEBUTTONUP:
     if data["widgetDelete"] != "":
