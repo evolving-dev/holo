@@ -170,7 +170,7 @@ class holo:
             
             if pos[0] in range(self.pos[0], self.pos[0] + self.width) and pos[1] in range(self.pos[1], self.pos[1] + self.empty_surface.get_height()):
                 if pos[0] - self.pos[0] in range(0, STATIC_CORE["arrow_left"].get_width()):
-                    pygame.draw.rect(self.surface, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [0, 0, STATIC_CORE["arrow_left"].get_width(), STATIC_CORE["arrow_left"].get_height()])
+                    pygame.draw.rect(self.surface, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [0, 0, STATIC_CORE["arrow_left"].get_width(), self.surface.get_height()])
                     screen.blit(self.surface, self.pos)
                     pygame.display.flip()
                     self.selected -= 1 if self.selected > 0 else 0
@@ -178,7 +178,7 @@ class holo:
                     self.surface = self.empty_surface.copy()
                     self.surface.blit(self.text_render, [STATIC_CORE["arrow_left"].get_width(), self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
                 if pos[0] - self.pos[0] in range(self.width - STATIC_CORE["arrow_right"].get_width(), self.width):
-                    pygame.draw.rect(self.surface, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [self.width - STATIC_CORE["arrow_right"].get_width(), 0, self.width , STATIC_CORE["arrow_left"].get_height()])
+                    pygame.draw.rect(self.surface, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [self.width - STATIC_CORE["arrow_right"].get_width(), 0, self.width , self.surface.get_height()])
                     screen.blit(self.surface, self.pos)
                     pygame.display.flip()
                     self.selected += 1 if len(self.items) - 1 > self.selected else 0
