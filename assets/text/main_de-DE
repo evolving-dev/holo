@@ -3,5 +3,17 @@
     "loading":"Bitte warten...",
     "read_error":"Datenlesefehler: ",
     "widget_crash": "Das Widget __WIDGET__ wurde wegen eines Fehlers deaktiviert. Fehler: ",
-    "weekdays": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"]
+    "weekdays": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
+    "settings":{
+      "type":{
+          "general":"Allgemein",
+          "general_desc":"Allgemeine Einstellungen wie Sprache, Zeit, und Tastaturlayout",
+          "display":"Anzeige",
+          "display_desc": "Anzeigeeinstellungen wie Hintergrund, Thema, und Bildschirmtimeout",
+          "network":"Netzwerk",
+          "network_desc":"Netzwerk- und Cloudeinstellungen",
+          "troubleshooting":"Fehlerbehebung",
+          "troubleshooting_desc" : "Verbindungstests, frühere Fehlermeldungen, Logeinstellungen", 
+        }
+    }
 }
