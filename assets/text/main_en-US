@@ -6,13 +6,13 @@
     "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     "settings":{
       "type":{
-          "general":"Allgemein",
-          "general_desc":"Allgemeine Einstellungen wie Sprache, Zeit, und Tastaturlayout",
-          "display":"Anzeige",
-          "display_desc": "Anzeigeeinstellungen wie Hintergrund, Thema, und Bildschirmtimeout",
-          "network":"Netzwerk",
-          "network_desc":"Netzwerk- und Cloudeinstellungen",
-          "troubleshooting":"Fehlerbehebung",
+          "general":"General",
+          "general_desc":"General settings like language, time, and keyboard layout",
+          "display":"Display",
+          "display_desc": "Display settings like background, theme, and screen timeout",
+          "network":"Network",
+          "network_desc":"Network- and cloud settings",
+          "troubleshooting":"Troubleshooting",
           "troubleshooting_desc" : "Verbindungstests, frühere Fehlermeldungen, Logeinstellungen",
         }
     }
