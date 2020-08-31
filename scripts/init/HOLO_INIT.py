@@ -22,6 +22,21 @@ SETTINGS = {
 with open("settings","w") as f:
     f.write(str(SETTINGS))
     f.close()
+    
+#Create WIDGETFILE
+    
+with open("WIDGETS", "w") as f:
+    f.write("""{
+    'clock': {
+    'enabled': 1,
+    'init': 'scripts/apps/holo/clock/__initwidget__.py',
+    'update': 'scripts/apps/holo/clock/__widget__.py',
+    'event': 'scripts/apps/holo/clock/__widgetevt__.py',
+    'x': 0,
+    'y': 0
+    }
+    }""")
+    f.close()
 
 os.chdir(PATH)
 os.remove("INITFILE")
