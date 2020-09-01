@@ -63,8 +63,18 @@ if not APP_CRASHED:
 
 #STEP 3: Load visual components
 
+data["name_list"] = []
+data["id_list"] = []
+for i in data["widgetfile"]:
+    if "name_" + SETTINGS["lang"] in data["widgetfile"][i]:
+        data["name_list"] += [data["widgetfile"][i]["name_" + SETTINGS["lang"]]]
+    elif "name" in data["widgetfile"][i]:
+        data["name_list"] += [data["widgetfile"][i]["name"]]
+    else:
+        data["name_list"] += [i]
+    data["id_list"] += [i]
 
 data["components"] = {
-    "app_selector": holo.list_selector(pos=[int(data["assets"]["add"].get_width() * 1.5), ((SETTINGS["height"] - SETTINGS["height"] // 15) + (SETTINGS["height"] - data["assets"]["overlaySurface"].get_height())) // 2], items=list(data["widgetfile"].keys()))
+    "app_selector": holo.list_selector(pos=[int(data["assets"]["add"].get_width() * 1.5), ((SETTINGS["height"] - SETTINGS["height"] // 15) + (SETTINGS["height"] - data["assets"]["overlaySurface"].get_height())) // 2], items=data["id_list"], display_text=data["name_list"])
 }
 

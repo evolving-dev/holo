@@ -141,16 +141,22 @@ class holo:
     
     class list_selector:
         
-        def __init__(self, pos, items, width=SETTINGS["width"] // 4):
+        def __init__(self, pos, items, width=SETTINGS["width"] // 4, display_text=0):
             
             self.pos = pos
             self.width = width
             self.selected = 0
             self.items = items
             
+            if display_text == 0:
+                self.display_text = items
+            else:
+                self.display_text = display_text
+            
             self.text_renders = []
-            for i in items:
+            for i in self.display_text:
                 self.text_renders += [FONTS["p-sans-serif"].render(text_cutoff(i, int(self.width - (STATIC_CORE["arrow_left"].get_width() * 2) - int(self.width * 0.05)), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])]
+            
             
             self.text_render = self.text_renders[self.selected]
             
