@@ -134,7 +134,19 @@ while not CLOSE:
             
             if not event.type == pygame.MOUSEMOTION and not alertcache: #Mousemotion is ignored for touchscreen displays. Apps need to detect mouse motion themselves
                 
-                exec(APP_EVENTHANDLER) #Pass the event onto the currently active app
+                try:
+                    exec(APP_EVENTHANDLER) #Pass the event onto the currently active app
+                except Exception as e:
+                    if APP != "home":
+                        APP_CRASHED = True
+                        holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + str(e)) #Show an alert of the exception thrown
+                        APP = "home"
+                        exec(APPLAUNCHER) #Start the home app
+            
+                    else: #If the HOME app crashes, exit
+                        print("ERROR: HOLO crashed due to an unexpected error. Please report the following error message on HOLO's GitHub page: HOLO HOME: ",e)
+                        pygame.quit()
+                        sys.exit()
         
         
         

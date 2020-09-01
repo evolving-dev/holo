@@ -13,6 +13,7 @@ STATIC_CORE: dict = {
 "arrow_left": pygame.image.fromstring(Image.open(join(PATH,"assets/images/system/dropdown/left_arrow-"+SETTINGS["theme"]+".png")).resize((SETTINGS["width"]//20,SETTINGS["width"]//20)).tobytes(),(SETTINGS["width"]//20,SETTINGS["width"]//20),"RGBA").convert_alpha(),
 "arrow_right": pygame.image.fromstring(Image.open(join(PATH,"assets/images/system/dropdown/right_arrow-"+SETTINGS["theme"]+".png")).resize((SETTINGS["width"]//20,SETTINGS["width"]//20)).tobytes(),(SETTINGS["width"]//20,SETTINGS["width"]//20),"RGBA").convert_alpha(),
 "overlay": pygame.image.fromstring(Image.open(holo.path(join("assets/images/system/overlays/overlay-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["width"],SETTINGS["height"])).tobytes(),(SETTINGS["width"],SETTINGS["height"]),"RGBA").convert_alpha(),
+"home": pygame.image.fromstring(Image.open(holo.path("assets/images/icons/home/home-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
 }
 KEYMAP:dict = {"upper":{},"lower":{}}
 #Static objects which belong to HOLO itself and persist until the end of the session.
