@@ -15,3 +15,7 @@ data["assets"]["bottomBar"].fill([0,0,0] if SETTINGS["theme"] == "dark" else [25
 data["assets"]["bottomBar"].set_alpha(70)
 
 data["screen"] = "menu"
+
+data["constants"] = {
+    "menu_items":["general", "display", "network", "troubleshooting"]
+}
