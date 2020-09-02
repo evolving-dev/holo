@@ -41,7 +41,9 @@ def text_wrap(text, width, font, passes=10):
     return "\n".join(text_cached).rstrip() #Return the formatted text
             
 def text_cutoff(text, width, font, passes=10):
-    text_changed = " ".join(list(text))
+    
+    text_changed = " ".join(list(text.replace(" ", "\_")))
+    
     text_changed = text_wrap(text_changed, width, font, passes)
     
     text_changed = text_changed.split(" ")
@@ -64,6 +66,6 @@ def text_cutoff(text, width, font, passes=10):
     if text_changed != text:
         text_changed += "..."
         
-    return text_changed
+    return text_changed.replace("\_"," ")
     
     

@@ -73,6 +73,7 @@ KEYBOARD = holo.keyboard()
 exec(APPLAUNCHER) #LAUNCH HOME APP
 
 
+
 while not CLOSE:
     if TIMEOUT > 0: #If screen timeout not reached
         if DISPLAY_BACKGROUND:
