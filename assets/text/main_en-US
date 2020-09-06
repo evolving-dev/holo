@@ -13,7 +13,7 @@
           "network":"Network",
           "network_desc":"Network- and cloud settings",
           "troubleshooting":"Troubleshooting",
-          "troubleshooting_desc" : "Verbindungstests, frühere Fehlermeldungen, Logeinstellungen",
+          "troubleshooting_desc" : "Connection tests, old error messages, logging settings",
         }
     }
 }

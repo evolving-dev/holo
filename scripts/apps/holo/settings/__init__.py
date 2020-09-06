@@ -19,3 +19,11 @@ data["screen"] = "menu"
 data["constants"] = {
     "menu_items":["general", "display", "network", "troubleshooting"]
 }
+data["constants"]["menu_headers"] = {}
+data["constants"]["menu_desc"] = {}
+for i in data["constants"]["menu_items"]:
+    data["constants"]["menu_headers"][i] = text_cutoff(SYSTEM_TEXTS["settings"]["type"][i][:], width=int(SETTINGS["width"] * 0.75), font=FONTS["p-sans-serif"])
+    data["constants"]["menu_desc"][i] = text_cutoff(SYSTEM_TEXTS["settings"]["type"][i+"_desc"][:], width=int(SETTINGS["width"] * 0.75), font=FONTS["p-sans-serif-small"])
+    
+    data["constants"]["menu_headers"][i] = FONTS["h4"].render(data["constants"]["menu_headers"][i], True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
+    data["constants"]["menu_desc"][i] = FONTS["p-sans-serif-small"].render(data["constants"]["menu_desc"][i], True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])

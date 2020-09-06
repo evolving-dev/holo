@@ -63,7 +63,8 @@ def text_cutoff(text, width, font, passes=10):
         
         return ""
     
-    if text_changed != text:
+    if text_changed.replace("\_"," ") != text:
+        
         text_changed += "..."
         
     return text_changed.replace("\_"," ")
