@@ -28,6 +28,8 @@ for i in data["constants"]["menu_items"]:
     data["constants"]["menu_headers"][i] = FONTS["h4"].render(data["constants"]["menu_headers"][i], True, STATIC_CORE["text_color"])
     data["constants"]["menu_desc"][i] = FONTS["p-sans-serif-small"].render(data["constants"]["menu_desc"][i], True, STATIC_CORE["text_color"])
     
+
 data["general"]:dict = {
-    "language": FONTS["p-sans-serif"].render(SYSTEM_TEXTS["settings"]["general"]["language"], True, STATIC_CORE["text_color"])
+    "language": FONTS["p-sans-serif"].render(SYSTEM_TEXTS["settings"]["general"]["language"], True, STATIC_CORE["text_color"]),
+    "languageSelector": holo.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.15)], width=SETTINGS["width"] // 2, items=list(SYSTEM_TEXTS["settings"]["general"]["languages"].keys()), display_text=list(SYSTEM_TEXTS["settings"]["general"]["languages"].values()))
 }

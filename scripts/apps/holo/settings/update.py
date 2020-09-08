@@ -17,7 +17,7 @@ if data["screen"] == "menu":
 
 
 if data["screen"] == "general":
-    pass
+    screen.blit(data["general"]["languageSelector"].surface, data["general"]["languageSelector"].pos)
 
 
 
