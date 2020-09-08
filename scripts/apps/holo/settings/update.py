@@ -16,7 +16,8 @@ if data["screen"] == "menu":
 
 
 
-
+if data["screen"] == "general":
+    pass
 
 
 

@@ -13,7 +13,11 @@
           "network":"Netzwerk",
           "network_desc":"Netzwerk- und Cloudeinstellungen",
           "troubleshooting":"Fehlerbehebung",
-          "troubleshooting_desc" : "Verbindungstests, frühere Fehlermeldungen, Logeinstellungen", 
-        }
+          "troubleshooting_desc" : "Verbindungstests, frühere Fehlermeldungen, Logeinstellungen",
+        },
+      "general":{
+          "language": "Sprache",
+          "languages": {"de-DE":"Deutsch", "en-US": "English"},
+      }
     }
 }

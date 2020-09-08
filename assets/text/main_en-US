@@ -14,6 +14,10 @@
           "network_desc":"Network- and cloud settings",
           "troubleshooting":"Troubleshooting",
           "troubleshooting_desc" : "Connection tests, old error messages, logging settings",
-        }
+        },
+      "general":{
+          "language":"Language",
+          "languages": {"de-DE":"Deutsch (German)", "en-US": "English"},
+      }
     }
 }

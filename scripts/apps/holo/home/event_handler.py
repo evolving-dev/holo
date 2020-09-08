@@ -8,6 +8,8 @@ if event.type == pygame.MOUSEBUTTONUP: #When the mousebutton is released
                         #When an app has been found, start it
                         holo.new_loader()
                         
+                        pygame.draw.rect(screen, STATIC_CORE["text_color"], [data["apps"]["areas"][i][1][0], data["apps"]["areas"][i][1][1], SETTINGS["width"] // 10, SETTINGS["width"] // 7])
+                        
                         #Update the loader manually
                         for loader in LOADERS:
                             if not (FRAME % math.ceil(FPS / 6)):
