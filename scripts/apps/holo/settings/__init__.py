@@ -8,11 +8,11 @@ data["assets"] = {
     "network": pygame.image.fromstring(Image.open(holo.path(join(APP_PATH["assets"] , "images/icons/network-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["height"] // 5,SETTINGS["height"] // 5)).tobytes(),(SETTINGS["height"] // 5,SETTINGS["height"] // 5),"RGBA").convert_alpha(),
     "troubleshooting": pygame.image.fromstring(Image.open(holo.path(join(APP_PATH["assets"] , "images/icons/troubleshooting-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["height"] // 5,SETTINGS["height"] // 5)).tobytes(),(SETTINGS["height"] // 5,SETTINGS["height"] // 5),"RGBA").convert_alpha(),
     "home":STATIC_CORE["home"],
-    "bottomBar": pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 10]),
+    "bar_background": pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 10]),
 }
 
-data["assets"]["bottomBar"].fill([0,0,0] if SETTINGS["theme"] == "dark" else [255,255,255])
-data["assets"]["bottomBar"].set_alpha(70)
+data["assets"]["bar_background"].fill([0,0,0] if SETTINGS["theme"] == "dark" else [255,255,255])
+data["assets"]["bar_background"].set_alpha(70)
 
 data["screen"] = "menu"
 
@@ -30,6 +30,6 @@ for i in data["constants"]["menu_items"]:
     
 
 data["general"]:dict = {
-    "language": FONTS["p-sans-serif"].render(SYSTEM_TEXTS["settings"]["general"]["language"], True, STATIC_CORE["text_color"]),
+    "language": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["language"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, STATIC_CORE["text_color"]),
     "languageSelector": holo.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.15)], width=SETTINGS["width"] // 2, items=list(SYSTEM_TEXTS["settings"]["general"]["languages"].keys()), display_text=list(SYSTEM_TEXTS["settings"]["general"]["languages"].values()))
 }
