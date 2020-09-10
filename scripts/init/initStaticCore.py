@@ -15,7 +15,13 @@ STATIC_CORE: dict = {
 "overlay": pygame.image.fromstring(Image.open(holo.path(join("assets/images/system/overlays/overlay-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["width"],SETTINGS["height"])).tobytes(),(SETTINGS["width"],SETTINGS["height"]),"RGBA").convert_alpha(),
 "home": pygame.image.fromstring(Image.open(holo.path("assets/images/icons/buttons/home/home-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
 "back": pygame.image.fromstring(Image.open(holo.path("assets/images/icons/buttons/back/back-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//10,SETTINGS["height"]//10)).tobytes(),(SETTINGS["height"]//10,SETTINGS["height"]//10),"RGBA").convert_alpha(),
-"text_color": [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0]
+"text_color": [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0],
+"arrows": {
+        "up":pygame.image.fromstring(Image.open(holo.path("assets/images/icons/buttons/arrows/up-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
+        "down":pygame.image.fromstring(Image.open(holo.path("assets/images/icons/buttons/arrows/down-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
+        "left":pygame.image.fromstring(Image.open(holo.path("assets/images/icons/buttons/arrows/left-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
+        "right":pygame.image.fromstring(Image.open(holo.path("assets/images/icons/buttons/arrows/right-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
+    },
 }
 KEYMAP:dict = {"upper":{},"lower":{}}
 #Static objects which belong to HOLO itself and persist until the end of the session.
