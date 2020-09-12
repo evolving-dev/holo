@@ -198,3 +198,8 @@ class holo:
                 return True
             
             return False
+    
+        def update(self):
+            self.text_render = self.text_renders[self.selected]
+            self.surface = self.empty_surface.copy()
+            self.surface.blit(self.text_render, [STATIC_CORE["arrow_left"].get_width(), self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])

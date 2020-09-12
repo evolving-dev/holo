@@ -20,6 +20,8 @@ else:
 if data["screen"] == "general":
     screen.blit(data["general"]["language"], [SETTINGS["width"] // 10, data["general"]["languageSelector"].pos[1]])
     screen.blit(data["general"]["languageSelector"].surface, data["general"]["languageSelector"].pos)
+    screen.blit(data["general"]["keyboard_layout"], [SETTINGS["width"] // 10, data["general"]["layoutSelector"].pos[1]])
+    screen.blit(data["general"]["layoutSelector"].surface, data["general"]["layoutSelector"].pos)
 
 
 

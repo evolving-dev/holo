@@ -16,8 +16,10 @@
           "troubleshooting_desc" : "Verbindungstests, frühere Fehlermeldungen, Logeinstellungen",
         },
       "general":{
+          "localization": "Lokalisierungseinstellungen",
           "language": "Sprache",
           "languages": {"de-DE":"Deutsch", "en-US": "English"},
+          "keyboard-layout": "Tastaturlayout"
       }
     }
 }

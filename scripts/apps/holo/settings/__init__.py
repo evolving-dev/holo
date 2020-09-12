@@ -17,7 +17,8 @@ data["assets"]["bar_background"].set_alpha(70)
 data["screen"] = "menu"
 
 data["constants"] = {
-    "menu_items":["general", "display", "network", "troubleshooting"]
+    "menu_items":["general", "display", "network", "troubleshooting"],
+    "keyboard_layouts": eval(readfile(join(PATH,"assets/text/keyboard_layouts.json")))["list"]
 }
 data["constants"]["menu_headers"] = {}
 data["constants"]["menu_desc"] = {}
@@ -31,5 +32,19 @@ for i in data["constants"]["menu_items"]:
 
 data["general"]:dict = {
     "language": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["language"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, STATIC_CORE["text_color"]),
-    "languageSelector": holo.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.15)], width=SETTINGS["width"] // 2, items=list(SYSTEM_TEXTS["settings"]["general"]["languages"].keys()), display_text=list(SYSTEM_TEXTS["settings"]["general"]["languages"].values()))
+    "languageSelector": holo.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.15)], width=SETTINGS["width"] // 2, items=list(SYSTEM_TEXTS["settings"]["general"]["languages"].keys()), display_text=list(SYSTEM_TEXTS["settings"]["general"]["languages"].values())),
+    "keyboard_layout": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["keyboard-layout"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, STATIC_CORE["text_color"]),
+    "layoutSelector": holo.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.25)], width=SETTINGS["width"] // 2, items=data["constants"]["keyboard_layouts"], display_text=[i.upper() for i in data["constants"]["keyboard_layouts"]])
 }
+
+try:
+    data["general"]["languageSelector"].selected = data["general"]["languageSelector"].items.index(SETTINGS["lang"])
+except ValueError:
+    data["general"]["languageSelector"].selected = 0
+data["general"]["languageSelector"].update()
+    
+try:
+    data["general"]["layoutSelector"].selected = data["general"]["layoutSelector"].items.index(SETTINGS["keyboard"])
+except ValueError:
+    data["general"]["layoutSelector"].selected = 0
+data["general"]["layoutSelector"].update()

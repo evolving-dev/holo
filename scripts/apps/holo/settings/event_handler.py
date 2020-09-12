@@ -18,3 +18,4 @@ if event.type == pygame.MOUSEBUTTONUP:
         
         if data["screen"] == "general":
             data["general"]["languageSelector"].detect_click(data["mousePos"])
+            data["general"]["layoutSelector"].detect_click(data["mousePos"])

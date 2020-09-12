@@ -16,8 +16,10 @@
           "troubleshooting_desc" : "Connection tests, old error messages, logging settings",
         },
       "general":{
+          "localization": "localization settings",
           "language":"Language",
           "languages": {"de-DE":"Deutsch (German)", "en-US": "English"},
+          "keyboard-layout": "Keyboard layout"
       }
     }
 }
