@@ -19,7 +19,9 @@
           "localization": "localization settings",
           "language":"Language",
           "languages": {"de-DE":"Deutsch (German)", "en-US": "English"},
-          "keyboard-layout": "Keyboard layout"
+          "keyboard-layout": "Keyboard layout",
+          "date_layout": "Date format",
+          "time_layout": "Time format"
       }
     }
 }

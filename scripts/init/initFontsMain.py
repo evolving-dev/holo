@@ -5,7 +5,7 @@ FONTS = {
 "h4": pygame.font.Font(os.path.join(PATH,"assets/fonts/Poppins/Poppins-Light.ttf"), SETTINGS["width"]//30),
 "p-serif": pygame.font.Font(os.path.join(PATH,"assets/fonts/PT_Serif/PTSerif-Regular.ttf"), SETTINGS["width"]//60),
 "p-sans-serif": pygame.font.Font(os.path.join(PATH,"assets/fonts/Roboto/Roboto-Regular.ttf"), SETTINGS["width"]//50),
-"p-sans-serif-small": pygame.font.Font(os.path.join(PATH,"assets/fonts/Roboto/Roboto-Regular.ttf"), SETTINGS["width"]//70),
+"p-sans-serif-small": pygame.font.Font(os.path.join(PATH,"assets/fonts/Roboto/Roboto-Regular.ttf"), SETTINGS["width"]//60),
 "p-thin-sans-serif": pygame.font.Font(os.path.join(PATH,"assets/fonts/Roboto/Roboto-Thin.ttf"), SETTINGS["width"]//50),
 "p-monospace": pygame.font.Font(os.path.join(PATH,"assets/fonts/Roboto_Mono/RobotoMono-Light.ttf"), SETTINGS["width"]//50),
 }

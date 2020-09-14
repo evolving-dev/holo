@@ -34,7 +34,8 @@ SYSTEM_TEXTS = eval(readfile(join(PATH, "assets/text/main_"+SETTINGS["lang"])))
 
 
 #Init pygame window
-pygame.mixer.pre_init(44100, channels=2)
+if SETTINGS["init_sound"]:
+    pygame.mixer.pre_init(44100, channels=2)
 pygame.init()
 pygame.display.set_icon(ICON)
 screen = pygame.display.set_mode([SETTINGS["width"],SETTINGS["height"]])

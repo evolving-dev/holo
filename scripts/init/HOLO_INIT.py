@@ -17,6 +17,7 @@ SETTINGS = {
     'keyboard':'qwerty',
     'timeformat': '%H:%M:%S',
     'dateformat':'%d.%m.%Y',
+    'init_sound': 0,
     }
 
 with open("settings","w") as f:
