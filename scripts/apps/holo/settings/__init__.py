@@ -12,14 +12,25 @@ data["assets"] = {
     "troubleshooting": pygame.image.fromstring(Image.open(holo.path(join(APP_PATH["assets"] , "images/icons/troubleshooting-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["height"] // 5,SETTINGS["height"] // 5)).tobytes(),(SETTINGS["height"] // 5,SETTINGS["height"] // 5),"RGBA").convert_alpha(),
     "home":STATIC_CORE["home"],
     "bar_background": pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 10]),
+    "button_change": pygame.Surface([SETTINGS["width"] // 8,int(FONTS["p-sans-serif"].render("CHANGE", False, [0,0,0]).get_height() * 1.5)]),
 }
 #STEP 2.1: Processing assets
 data["assets"]["bar_background"].fill([0,0,0] if SETTINGS["theme"] == "dark" else [255,255,255])
 data["assets"]["bar_background"].set_alpha(70)
 
+
+data["assets"]["button_change"].fill([0,0,0] if SETTINGS["theme"] == "dark" else [255,255,255])
+data["assets"]["button_change"].set_alpha(200)
+
+data["cache"] = FONTS["p-sans-serif"].render(SYSTEM_TEXTS["settings"]["general"]["change"], True, STATIC_CORE["text_color"])
+data["assets"]["button_change"].blit(data["cache"],[(SETTINGS["width"] // 16 - data["cache"].get_width() // 2), data["assets"]["button_change"].get_height() // 2 - data["cache"].get_height() // 2])
+
+
+del data["cache"]
+
 #STEP 3: Initializing constants
 data["constants"] = {
-    "menu_items":["general", "display", "network", "troubleshooting"],
+    "menu_items":["general", "display", "network", "troubleshooting", "date_format", "time_format"],
     "keyboard_layouts": eval(readfile(join(PATH,"assets/text/keyboard_layouts.json")))["list"]
 }
 #STEP 3.1: Initialize dictionaries for the menu items

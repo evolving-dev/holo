@@ -25,7 +25,10 @@ if data["screen"] == "general":
     screen.blit(data["general"]["languageSelector"].surface, data["general"]["languageSelector"].pos)
     screen.blit(data["general"]["keyboard_layout"], [SETTINGS["width"] // 10, data["general"]["layoutSelector"].pos[1]])
     screen.blit(data["general"]["layoutSelector"].surface, data["general"]["layoutSelector"].pos)
-
+    screen.blit(data["general"]["date_format"], [SETTINGS["width"] // 10, int(SETTINGS["height"]*0.35)])
+    screen.blit(data["general"]["time_format"], [SETTINGS["width"] // 10, int(SETTINGS["height"]*0.45)])
+    screen.blit(data["assets"]["button_change"], [SETTINGS["width"] // 2, int(SETTINGS["height"]*0.35)])
+    screen.blit(data["assets"]["button_change"], [SETTINGS["width"] // 2, int(SETTINGS["height"]*0.45)])
 
 
 

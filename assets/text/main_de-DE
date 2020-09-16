@@ -14,6 +14,10 @@
           "network_desc":"Netzwerk- und Cloudeinstellungen",
           "troubleshooting":"Fehlerbehebung",
           "troubleshooting_desc" : "Verbindungstests, frühere Fehlermeldungen, Logeinstellungen",
+          "date_format": "Datumsformat",
+          "date_format_desc": "",
+          "time_format": "Zeitformat",
+          "time_format_desc": ""
         },
       "general":{
           "localization": "Lokalisierungseinstellungen",
@@ -21,7 +25,8 @@
           "languages": {"de-DE":"Deutsch", "en-US": "English"},
           "keyboard-layout": "Tastaturlayout",
           "date_layout": "Datumsformat",
-          "time_layout": "Zeitformat"
+          "time_layout": "Zeitformat",
+          "change": "Ändern"
       }
     }
 }
