@@ -27,6 +27,10 @@
           "date_layout": "Datumsformat",
           "time_layout": "Zeitformat",
           "change": "Ändern"
-      }
+      },
+      "time_date":{
+          "reference_date": ["%d: Monatstag", "%m: Monat", "%y: Jahr ohne Jahrtausend", "%Y: Jahr mit Jahrtausend", "%% um ein Prozentzeichen zu schreiben"],
+          "reference_time": ["%H: Stunde (24 Stunden)", "%I: Stunde (12 Stunden)", "%M: Minute", "%S: Sekunde", "%% um ein Prozentzeichen zu schreiben"]
+      },
     }
 }

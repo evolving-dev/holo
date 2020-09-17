@@ -26,7 +26,11 @@
           "keyboard-layout": "Keyboard layout",
           "date_layout": "Date format",
           "time_layout": "Time format",
-          "change": "Change"
-      }
+          "change": "Change",
+      },
+      "time_date":{
+          "reference_date": ["%d: Day of month", "%m: Month", "%y: Year without century", "%Y: Year with century", "%% to write a literal percent character"],
+          "reference_time": ["%H: Hour (24-hour-clock)", "%I: Hour (12-hour-clock)", "%M: Minute", "%S: Second", "%% to write a literal percent character"]
+      },
     }
 }

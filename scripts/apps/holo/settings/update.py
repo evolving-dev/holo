@@ -1,8 +1,9 @@
 screen.blit(data["assets"]["overlay"], [0,0]) #Render the overlay
 
 #Bottom bar and home button
-screen.blit(data["assets"]["bar_background"], [0, int(SETTINGS["height"] * 0.9)])
-screen.blit(data["assets"]["home"], [SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2, SETTINGS["height"] // 20 - data["assets"]["home"].get_height() // 2 + int(SETTINGS["height"]*0.9)])
+if not KEYBOARD.visible:
+    screen.blit(data["assets"]["bar_background"], [0, int(SETTINGS["height"] * 0.9)])
+    screen.blit(data["assets"]["home"], [SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2, SETTINGS["height"] // 20 - data["assets"]["home"].get_height() // 2 + int(SETTINGS["height"]*0.9)])
 
 
 
@@ -30,7 +31,8 @@ if data["screen"] == "general":
     screen.blit(data["assets"]["button_change"], [SETTINGS["width"] // 2, int(SETTINGS["height"]*0.35)])
     screen.blit(data["assets"]["button_change"], [SETTINGS["width"] // 2, int(SETTINGS["height"]*0.45)])
 
-
+if data["screen"] in ["time_format", "date_format"]:
+    screen.blit(data["assets"]["textbox"], [SETTINGS["width"] // 10,int((SETTINGS["height"] // 10)*1.1)])
 
 
 

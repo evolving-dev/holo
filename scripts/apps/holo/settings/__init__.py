@@ -12,11 +12,15 @@ data["assets"] = {
     "troubleshooting": pygame.image.fromstring(Image.open(holo.path(join(APP_PATH["assets"] , "images/icons/troubleshooting-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["height"] // 5,SETTINGS["height"] // 5)).tobytes(),(SETTINGS["height"] // 5,SETTINGS["height"] // 5),"RGBA").convert_alpha(),
     "home":STATIC_CORE["home"],
     "bar_background": pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 10]),
+    "textbox": pygame.Surface([SETTINGS["width"] // 5 * 4, SETTINGS["height"] // 10]),
     "button_change": pygame.Surface([SETTINGS["width"] // 8,int(FONTS["p-sans-serif"].render("CHANGE", False, [0,0,0]).get_height() * 1.5)]),
 }
 #STEP 2.1: Processing assets
 data["assets"]["bar_background"].fill([0,0,0] if SETTINGS["theme"] == "dark" else [255,255,255])
 data["assets"]["bar_background"].set_alpha(70)
+
+data["assets"]["textbox"].fill([0,0,0] if SETTINGS["theme"] == "dark" else [255,255,255])
+data["assets"]["textbox"].set_alpha(150)
 
 
 data["assets"]["button_change"].fill([0,0,0] if SETTINGS["theme"] == "dark" else [255,255,255])

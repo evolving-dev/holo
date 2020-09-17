@@ -2,4 +2,4 @@
 
 widget["texts_old"] = ["",""]
 
-widget["size"] = [SETTINGS["width"] // 5, SETTINGS["width"] // 10]
+widget["size"] = [SETTINGS["width"] // 4, SETTINGS["width"] // 10]

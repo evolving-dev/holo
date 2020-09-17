@@ -7,12 +7,15 @@ if event.type == pygame.MOUSEBUTTONUP:
         pygame.draw.rect(screen, STATIC_CORE["text_color"], [0,0,STATIC_CORE["back"].get_width(),STATIC_CORE["back"].get_height()])
         pygame.display.flip()
         data["screen"] = "menu"
+        KEYBOARD.reset()
     else:
         if data["mousePos"][0] in range(SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2, SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2 + data["assets"]["home"].get_width()) and data["mousePos"][1] in range(int(SETTINGS["height"]*0.9), SETTINGS["height"]):
             #Home button
-            pygame.draw.rect(screen, STATIC_CORE["text_color"], [SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2, int(SETTINGS["height"]*0.9), data["assets"]["home"].get_width(), SETTINGS["height"] // 10 + 1])
-            pygame.display.flip()
-            data["quit"] = True
+            if not KEYBOARD.visible:
+                pygame.draw.rect(screen, STATIC_CORE["text_color"], [SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2, int(SETTINGS["height"]*0.9), data["assets"]["home"].get_width(), SETTINGS["height"] // 10 + 1])
+                pygame.display.flip()
+                data["quit"] = True
+                KEYBOARD.reset()
         elif data["mousePos"][1] in range(0, int(SETTINGS["height"] *0.8)) and data["screen"] == "menu":
             #Main menu click
             data["screen"] = data["constants"]["menu_items"][int((data["mousePos"][1] / int(SETTINGS["height"] *0.8))*4)]
@@ -28,8 +31,12 @@ if event.type == pygame.MOUSEBUTTONUP:
                 pygame.draw.rect(screen, STATIC_CORE["text_color"], [SETTINGS["width"] // 2, int(SETTINGS["height"]*0.35), data["assets"]["button_change"].get_width(), data["assets"]["button_change"].get_height()])
                 pygame.display.flip()
                 data["screen"] = "date_format"
+                KEYBOARD.show()
+                KEYBOARD.text = SETTINGS["dateformat"]
                 
             if (data["mousePos"][0] in range(SETTINGS["width"] // 2, SETTINGS["width"] // 2 + data["assets"]["button_change"].get_width()) and data["mousePos"][1] in range(int(SETTINGS["height"]*0.45), int(SETTINGS["height"]*0.45) + data["assets"]["button_change"].get_height())):
                 pygame.draw.rect(screen, STATIC_CORE["text_color"], [SETTINGS["width"] // 2, int(SETTINGS["height"]*0.45), data["assets"]["button_change"].get_width(), data["assets"]["button_change"].get_height()])
                 pygame.display.flip()
                 data["screen"] = "time_format"
+                KEYBOARD.show()
+                KEYBOARD.text = SETTINGS["timeformat"]
