@@ -62,6 +62,32 @@ data["general"]:dict = {
 }
 
 
+data["time_date"]:dict = {
+    
+}
+
+for i in SYSTEM_TEXTS["settings"]["time_date"]:
+    data["time_date"][i] = []
+    for m in SYSTEM_TEXTS["settings"]["time_date"][i]:
+        data["time_date"][i] += [FONTS["p-sans-serif"].render(m, True, STATIC_CORE["text_color"])]
+
+data["time_surface"] = pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 2], pygame.SRCALPHA)
+data["date_surface"] = pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 2], pygame.SRCALPHA)
+
+for i, m in enumerate(data["time_date"]["reference_time"]):
+    data["time_surface"].blit(m, [0, int(SETTINGS["height"] * 0.225) + i*data["time_date"]["reference_time"][0].get_height()])
+    
+for i, m in enumerate(data["time_date"]["reference_date"]):
+    data["date_surface"].blit(m, [0, int(SETTINGS["height"] * 0.225) + i*data["time_date"]["reference_time"][0].get_height()])
+
+del data["time_date"]
+
+
+
+data["display"]:dict = {
+    "theme_text": FONTS["p-sans-serif"].render(SYSTEM_TEXTS["settings"]["display"]["theme"], True, STATIC_CORE["text_color"]),
+    "theme_selector": holo.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.15)], width=SETTINGS["width"] // 2, items=list(SYSTEM_TEXTS["settings"]["display"]["themes"].keys()), display_text=list(SYSTEM_TEXTS["settings"]["display"]["themes"].values())),
+}
 
 #STEP 5: Display the current settings in the initialized components
 
@@ -78,3 +104,7 @@ try:
 except ValueError:
     data["general"]["layoutSelector"].selected = 0
 data["general"]["layoutSelector"].update()
+
+#DISPLAY->THEME
+data["display"]["theme_selector"].selected = 0 if SETTINGS["theme"] == "light" else 1
+data["display"]["theme_selector"].update()

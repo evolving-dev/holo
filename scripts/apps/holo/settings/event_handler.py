@@ -40,3 +40,8 @@ if event.type == pygame.MOUSEBUTTONUP:
                 data["screen"] = "time_format"
                 KEYBOARD.show()
                 KEYBOARD.text = SETTINGS["timeformat"]
+        
+        
+        if data["screen"] == "display":
+            #display settings
+            data["display"]["theme_selector"].detect_click(data["mousePos"])

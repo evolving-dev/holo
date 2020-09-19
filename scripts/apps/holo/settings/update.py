@@ -32,7 +32,27 @@ if data["screen"] == "general":
     screen.blit(data["assets"]["button_change"], [SETTINGS["width"] // 2, int(SETTINGS["height"]*0.45)])
 
 if data["screen"] in ["time_format", "date_format"]:
+    while len(KEYBOARD.text) > 32:
+        KEYBOARD.text = KEYBOARD.text[:-1]
+    
     screen.blit(data["assets"]["textbox"], [SETTINGS["width"] // 10,int((SETTINGS["height"] // 10)*1.1)])
+    data["input_text"] = FONTS["p-sans-serif"].render(KEYBOARD.text, True, STATIC_CORE["text_color"])
+    screen.blit(data["input_text"], [SETTINGS["width"] // 10,int((SETTINGS["height"] // 10)*1.1) + (data["assets"]["textbox"].get_height() // 2 - data["input_text"].get_height() // 2)])
+    screen.blit(data["time_surface"] if data["screen"] == "time_format" else data["date_surface"], [0,0])
+    
+    try:
+        data["time_date_example"] = SYSTEM_TEXTS["settings"]["general"]["example"] + time.strftime(KEYBOARD.text)
+    except:
+        data["time_date_example"] = SYSTEM_TEXTS["settings"]["general"]["example"] + SYSTEM_TEXTS["error"]
+    
+    data["time_date_example"] = FONTS["p-sans-serif"].render(data["time_date_example"], True, STATIC_CORE["text_color"])
+    screen.blit(data["time_date_example"], [SETTINGS["width"] // 2, (SETTINGS["height"] // 2 - data["time_date_example"].get_height()) // 2])
+
+
+
+if data["screen"] == "display":
+    screen.blit(data["display"]["theme_text"], [SETTINGS["width"] // 10, data["display"]["theme_selector"].pos[1]])
+    screen.blit(data["display"]["theme_selector"].surface, data["display"]["theme_selector"].pos)
 
 
 
