@@ -4,6 +4,7 @@ data["mouseHold"] = 0 #Number of frames the mouse has been held down
 
 data["widgetDelete"] = ""
 data["clickedObjectName"] = ""
+data["clickObjectName"] = ""
 data["quit"] = False
 
 data["assets"] = {
