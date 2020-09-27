@@ -18,7 +18,9 @@
           "date_format": "Date format",
           "date_format_desc": "",
           "time_format": "Time format",
-          "time_format_desc": ""
+          "time_format_desc": "",
+          "autostart": "Autostart",
+          "autostart_desc": ""
         },
       "general":{
           "localization": "localization settings",
@@ -28,15 +30,20 @@
           "date_layout": "Date format",
           "time_layout": "Time format",
           "change": "Change",
-          "example": "Example: "
+          "example": "Example: ",
+          "autostart": "Autostart",
       },
       "time_date":{
           "reference_date": ["%d: Day of month", "%m: Month", "%y: Year without century", "%Y: Year with century", "%% to write a literal percent character"],
           "reference_time": ["%H: Hour (24-hour-clock)", "%I: Hour (12-hour-clock)", "%M: Minute", "%S: Second", "%% to write a literal percent character"]
       },
+      "autostart":{
+          "description": "Background processes that start to run automatically after each restart. Warning: Many processes might slow down your device."
+      },
       "display":{
           "theme": "Theme",
-          "themes": {"light":"light", "dark":"dark"}
+          "themes": {"light":"light", "dark":"dark"},
+          "background": "Background image",
       },
     }
 }

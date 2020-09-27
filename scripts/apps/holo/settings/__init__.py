@@ -34,7 +34,7 @@ del data["cache"]
 
 #STEP 3: Initializing constants
 data["constants"] = {
-    "menu_items":["general", "display", "network", "troubleshooting", "date_format", "time_format"],
+    "menu_items":["general", "display", "network", "troubleshooting", "date_format", "time_format", "autostart"],
     "keyboard_layouts": eval(readfile(join(PATH,"assets/text/keyboard_layouts.json")))["list"]
 }
 #STEP 3.1: Initialize dictionaries for the menu items
@@ -59,7 +59,19 @@ data["general"]:dict = {
     "layoutSelector": holo.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.25)], width=SETTINGS["width"] // 2, items=data["constants"]["keyboard_layouts"], display_text=[i.upper() for i in data["constants"]["keyboard_layouts"]]),
     "date_format": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["date_layout"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, STATIC_CORE["text_color"]),
     "time_format": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["time_layout"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, STATIC_CORE["text_color"]),
+    "autostart": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["autostart"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, STATIC_CORE["text_color"]),
 }
+
+data["autostart"] = {
+    "description": text_wrap(SYSTEM_TEXTS["settings"]["autostart"]["description"], width=int(SETTINGS["width"]*0.95), font=FONTS["p-sans-serif"])
+}
+
+data["cache"] = data["autostart"]["description"].split("\n")
+
+data["autostart"]["description"] = pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 2], pygame.SRCALPHA)
+
+for n,i in enumerate(data["cache"]):
+    data["autostart"]["description"].blit(FONTS["p-sans-serif"].render(i, True, STATIC_CORE["text_color"]), [(SETTINGS["width"] - FONTS["p-sans-serif"].render(i, True, STATIC_CORE["text_color"]).get_width()) // 2, int(FONTS["p-sans-serif"].render(i, True, STATIC_CORE["text_color"]).get_height() * 1.2) * n])
 
 
 data["time_date"]:dict = {
@@ -108,3 +120,5 @@ data["general"]["layoutSelector"].update()
 #DISPLAY->THEME
 data["display"]["theme_selector"].selected = 0 if SETTINGS["theme"] == "light" else 1
 data["display"]["theme_selector"].update()
+
+del data["cache"]

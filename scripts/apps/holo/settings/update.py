@@ -28,8 +28,10 @@ if data["screen"] == "general":
     screen.blit(data["general"]["layoutSelector"].surface, data["general"]["layoutSelector"].pos)
     screen.blit(data["general"]["date_format"], [SETTINGS["width"] // 10, int(SETTINGS["height"]*0.35)])
     screen.blit(data["general"]["time_format"], [SETTINGS["width"] // 10, int(SETTINGS["height"]*0.45)])
+    screen.blit(data["general"]["autostart"], [SETTINGS["width"] // 10, int(SETTINGS["height"]*0.55)])
     screen.blit(data["assets"]["button_change"], [SETTINGS["width"] // 2, int(SETTINGS["height"]*0.35)])
     screen.blit(data["assets"]["button_change"], [SETTINGS["width"] // 2, int(SETTINGS["height"]*0.45)])
+    screen.blit(data["assets"]["button_change"], [SETTINGS["width"] // 2, int(SETTINGS["height"]*0.55)])
 
 if data["screen"] in ["time_format", "date_format"]:
     while len(KEYBOARD.text) > 32:
@@ -53,6 +55,10 @@ if data["screen"] in ["time_format", "date_format"]:
 if data["screen"] == "display":
     screen.blit(data["display"]["theme_text"], [SETTINGS["width"] // 10, data["display"]["theme_selector"].pos[1]])
     screen.blit(data["display"]["theme_selector"].surface, data["display"]["theme_selector"].pos)
+
+
+if data["screen"] == "autostart":
+    screen.blit(data["autostart"]["description"], [0, int((SETTINGS["height"] // 10) * 1.02)])
 
 
 

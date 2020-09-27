@@ -1,6 +1,11 @@
 import pygame
 import time, os, math
 from os.path import join
+try:
+    import _thread
+except ImportError:
+    import _dummy_thread as _thread
+    print("[HOLO:STARTUP/WARNING]: The threading module could not be loaded, background processes might not work as expected.")
 
 def readfile(name):
     with open(name,"rb") as f:

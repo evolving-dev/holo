@@ -40,6 +40,11 @@ if event.type == pygame.MOUSEBUTTONUP:
                 data["screen"] = "time_format"
                 KEYBOARD.show()
                 KEYBOARD.text = SETTINGS["timeformat"]
+            
+            if (data["mousePos"][0] in range(SETTINGS["width"] // 2, SETTINGS["width"] // 2 + data["assets"]["button_change"].get_width()) and data["mousePos"][1] in range(int(SETTINGS["height"]*0.55), int(SETTINGS["height"]*0.55) + data["assets"]["button_change"].get_height())):
+                pygame.draw.rect(screen, STATIC_CORE["text_color"], [SETTINGS["width"] // 2, int(SETTINGS["height"]*0.55), data["assets"]["button_change"].get_width(), data["assets"]["button_change"].get_height()])
+                pygame.display.flip()
+                data["screen"] = "autostart"
         
         
         if data["screen"] == "display":
