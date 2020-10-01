@@ -32,6 +32,8 @@
           "change": "Ändern",
           "example": "Beispiel: ",
           "autostart": "Autostart",
+          "use_sound": "Sounds aktivieren",
+          "sound_warning": "WARNUNG: Das Aktivieren dieser Option könnte zu Abstürzen führen, wenn kein Audio-Ausgabegerät verfügbar ist."
       },
       "time_date":{
           "reference_date": ["%d: Monatstag", "%m: Monat", "%y: Jahr ohne Jahrtausend", "%Y: Jahr mit Jahrtausend", "%% um ein Prozentzeichen zu schreiben"],

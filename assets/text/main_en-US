@@ -32,6 +32,8 @@
           "change": "Change",
           "example": "Example: ",
           "autostart": "Autostart",
+          "use_sound": "Enable sounds",
+          "sound_warning": "WARNING: Enabling this option might lead to crashes in some apps if there is no output device available."
       },
       "time_date":{
           "reference_date": ["%d: Day of month", "%m: Month", "%y: Year without century", "%Y: Year with century", "%% to write a literal percent character"],

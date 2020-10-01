@@ -60,6 +60,8 @@ data["general"]:dict = {
     "date_format": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["date_layout"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, STATIC_CORE["text_color"]),
     "time_format": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["time_layout"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, STATIC_CORE["text_color"]),
     "autostart": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["autostart"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, STATIC_CORE["text_color"]),
+    "use_sound": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["use_sound"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, STATIC_CORE["text_color"]),
+    "sound_checkbox": holo.checkbox([SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.65)])
 }
 
 data["autostart"] = {
@@ -116,6 +118,10 @@ try:
 except ValueError:
     data["general"]["layoutSelector"].selected = 0
 data["general"]["layoutSelector"].update()
+
+#GENERAL->SOUNDS
+if SETTINGS['init_sound']:
+    data["general"]["sound_checkbox"].on_click()
 
 #DISPLAY->THEME
 data["display"]["theme_selector"].selected = 0 if SETTINGS["theme"] == "light" else 1

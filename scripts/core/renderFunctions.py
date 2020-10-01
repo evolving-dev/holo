@@ -40,11 +40,7 @@ class holo:
         if FONTS.get(font) == None:
             return False
         return FONTS[font].render(text,True,color)
-    def static(item,itemID):
-        if STATIC.get(itemID) == None:
-            STATIC[itemID] = item #Make item static if an item of the given ID doesn't exist.
-            return True
-        return False
+
     class checkbox:
         def __init__(self,pos):
             self.isChecked = False
@@ -52,14 +48,16 @@ class holo:
             self.width = self.surface.get_width()
             self.height = self.surface.get_height()
             self.pos = pos
-        def updateSurface(self):
+        def update_surface(self):
             self.surface = STATIC_CORE["checked" if self.isChecked else "unchecked"]
-        def onClick(self):
+        def on_click(self):
             self.isChecked = not self.isChecked
-            self.updateSurface()
-        def detectClick(self,clickPos):
+            self.update_surface()
+        def detect_click(self,clickPos):
             if clickPos[0] in range(self.pos[0],self.pos[0]+self.width) and clickPos[1] in range(self.pos[1],self.pos[1]+self.height):
-                self.onClick()
+                self.on_click()
+                return True
+            return False
     class alert:
         
         def __init__(self,message):
