@@ -5,6 +5,8 @@
     "widget_crash": "Das Widget __WIDGET__ wurde wegen eines Fehlers deaktiviert. Fehler: ",
     "weekdays": ["Sonntag", "Montag", "Dienstag", "Mittwoch", "Donnerstag", "Freitag", "Samstag"],
     "error": "Fehler",
+    "background_process_error: "Einige Hintergrundprozesse konnten nicht gestartet werden.",
+    "process_crash": "Der Prozess __PROCESS__ wurde wegen eines Fehlers beendet. Fehler: "
     "settings":{
       "type":{
           "general":"Allgemein",

@@ -2,9 +2,11 @@
     "crash":" crashed due to an error:",
     "loading":"Please wait...",
     "read_error": "Error reading file: ",
-    "widget_crash": "The widget __WIDGET__ has been deactivated because an error occured. Error: ",
+    "widget_crash": "The widget __WIDGET__ has been deactivated because an error occurred. Error: ",
     "weekdays": ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
     "error": "Error",
+    "background_process_error: "Some background processes could not be started.",
+    "process_crash": "The process __PROCESS__ has been stopped because an error occurred. Error: "
     "settings":{
       "type":{
           "general":"General",

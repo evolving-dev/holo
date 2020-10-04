@@ -3,24 +3,28 @@
     {
     'assets' : 'assets/apps/holo/home' ,
     'scripts' : 'scripts/apps/holo/home',
-    'about' : 'scripts/apps/holo/home/ABOUT'
+    'about' : 'scripts/apps/holo/home/ABOUT',
+    'priority':0
     },
 'widgets' :
     {
     'assets' : 'assets/apps/holo/widgets',
     'scripts' : 'scripts/apps/holo/widgets',
     'about' : 'scripts/apps/holo/widgets/ABOUT',
-    'icon' : 'assets/apps/holo/widgets/icon-' + SETTINGS["theme"] + '.png'
+    'icon' : 'assets/apps/holo/widgets/icon-' + SETTINGS["theme"] + '.png',
+    'priority':0
      },
 'settings' :
   {
    'assets' : 'assets/apps/holo/settings',
    'scripts' : 'scripts/apps/holo/settings',
    'about' : 'scripts/apps/holo/settings/ABOUT',
-   'icon' : 'assets/apps/holo/settings/icon-' + SETTINGS["theme"] + '.png'
+   'icon' : 'assets/apps/holo/settings/icon-' + SETTINGS["theme"] + '.png',
+   'priority':0
    },
 'clock' :
     {
     'widget' : 'assets/apps/holo/clock/__widget__.py',
+    'priority':0
     },
 }
