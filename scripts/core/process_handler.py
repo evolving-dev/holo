@@ -1,8 +1,9 @@
 if not "PROCESSES" in globals():
     PROCESSES:dict = {}
+    PROCESS_LAST_RUN = ""
 
 #Start processes
-for a,b in enumerate(AUTOSTART.keys()):
+for a,b in enumerate(AUTOSTART):
     if AUTOSTART[b]["enabled"]:
         #Load unloaded processes into memory
         if not b in PROCESSES:
@@ -15,4 +16,3 @@ for a,b in enumerate(AUTOSTART.keys()):
                 #Disable process
                 del PROCESSES[b]
                 AUTOSTART[b]["enabled"] = 0
-                

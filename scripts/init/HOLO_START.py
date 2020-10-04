@@ -67,11 +67,13 @@ data:dict = {}
 TIMEOUT = SETTINGS["timeout"]
 APP_CODE = ""
 APP_EVENTHANDLER = ""
+BLOCK_PROCESS_HANDLER = 0
 APP_PATH:dict = {}
 ALERTS:list = []
 LOADERS:list = []
 APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
 KEYBOARD = holo.keyboard()
+PROCESS_HANDLER = readfile(join(PATH,"scripts/core/process_handler.py"))
 exec(APPLAUNCHER) #LAUNCH HOME APP
 
 
@@ -82,7 +84,7 @@ while not CLOSE:
             screen.blit(STATIC_CORE["background"],(0,0))
         else:
             screen.fill([0,0,0])
-        
+
         try:
             exec(APP_CODE) #Run the updatefile of the current app
         except Exception as e: #CRASH PROTECTION
@@ -90,12 +92,12 @@ while not CLOSE:
             holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + str(e)) #Show an alert of the exception thrown
             APP = "home"
             exec(APPLAUNCHER)
-        
+
         #KEYBOARD UPDATE ROUTINE
-        
+
         if KEYBOARD.visible:
             screen.blit(KEYBOARD.get_surface(),(0, SETTINGS["height"] // 2))
-        
+
         #ALERT UPDATE ROUTINE
         for index,alert in enumerate(ALERTS):
             if not alert.visible:
@@ -103,7 +105,7 @@ while not CLOSE:
         for alert in ALERTS:
             screen.blit(alert.surface,(SETTINGS["width"] // 2 - alert.width // 2, SETTINGS["height"] // 2 - alert.height // 2))
         ###
-        
+
         #LOADER UPDATE ROUTINE
         for index,loader in enumerate(LOADERS):
             if loader.finished:
@@ -112,7 +114,16 @@ while not CLOSE:
             if not (FRAME % math.ceil(FPS / 6)):
                 loader.update()
             screen.blit(loader.surface,tuple(loader.pos))
-        
+
+        if not BLOCK_PROCESS_HANDLER:
+            try:
+                exec(PROCESS_HANDLER)
+            except Exception as e:
+                BLOCK_PROCESS_HANDLER = 1
+                print("[HOLO:MAIN_LOOP/ERROR]: The background process handler crashed. Stacktrace below:\n" + str(e))
+                holo.new_alert(SYSTEM_TEXTS["background_process_error"])
+            except:pass
+
         clock.tick(FPS)
         pygame.display.flip()
         FRAME += 1
@@ -121,7 +132,7 @@ while not CLOSE:
             FRAME = 0
             if TIMEOUT:
                 TIMEOUT -= 1
-                
+
         for event in pygame.event.get():
             if event.type == pygame.QUIT:
                 CLOSE = True
@@ -134,9 +145,9 @@ while not CLOSE:
                     alertcache = False
                 if KEYBOARD.visible and list(pygame.mouse.get_pos())[1] >= SETTINGS["height"] // 2:
                     KEYBOARD.update(list(pygame.mouse.get_pos()))
-            
+
             if not event.type == pygame.MOUSEMOTION and not alertcache: #Mousemotion is ignored for touchscreen displays. Apps need to detect mouse motion themselves
-                
+
                 try:
                     exec(APP_EVENTHANDLER) #Pass the event onto the currently active app
                 except Exception as e:
@@ -145,17 +156,17 @@ while not CLOSE:
                         holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + str(e)) #Show an alert of the exception thrown
                         APP = "home"
                         exec(APPLAUNCHER) #Start the home app
-            
+
                     else: #If the HOME app crashes, exit
                         print("ERROR: HOLO crashed due to an unexpected error. Please report the following error message on HOLO's GitHub page: HOLO HOME: ",e)
                         pygame.quit()
                         sys.exit()
-        
-        
-        
-        
-        
-        
+
+
+
+
+
+
     else: #If screen timeout reached
         while 1:
             for event in pygame.event.get():
@@ -170,6 +181,6 @@ while not CLOSE:
                 clock.tick(1)
                 screen.fill([0,0,0])
                 pygame.display.flip()
-            
-            
+
+
 pygame.quit()
