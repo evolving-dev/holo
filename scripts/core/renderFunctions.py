@@ -211,3 +211,7 @@ class holo:
             
         def render(self, text):
             return self.font.render(text, self.antialiasing, self.color)
+    
+    def add_to_autostart(path):
+        AUTOSTART += {"app": APP, "path":holo.path(str(path))}
+        holo.new_alert(SYSTEM_TEXTS["settings"]["general"]["alert_autostart"] + " " + APP)

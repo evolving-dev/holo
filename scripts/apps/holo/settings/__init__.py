@@ -14,6 +14,7 @@ data["assets"] = {
     "bar_background": pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 10]),
     "textbox": pygame.Surface([SETTINGS["width"] // 5 * 4, SETTINGS["height"] // 10]),
     "button_change": pygame.Surface([SETTINGS["width"] // 8,int(FONTS["p-sans-serif"].render("CHANGE", False, [0,0,0]).get_height() * 1.5)]),
+    "button_remove": pygame.Surface([SETTINGS["width"] // 8,int(FONTS["p-sans-serif"].render("REMOVE", False, [0,0,0]).get_height() * 1.5)]),
 }
 #STEP 2.1: Processing assets
 data["assets"]["bar_background"].fill([0,0,0] if SETTINGS["theme"] == "dark" else [255,255,255])
@@ -28,6 +29,13 @@ data["assets"]["button_change"].set_alpha(200)
 
 data["cache"] = FONTS["p-sans-serif"].render(SYSTEM_TEXTS["settings"]["general"]["change"], True, STATIC_CORE["text_color"])
 data["assets"]["button_change"].blit(data["cache"],[(SETTINGS["width"] // 16 - data["cache"].get_width() // 2), data["assets"]["button_change"].get_height() // 2 - data["cache"].get_height() // 2])
+
+
+data["assets"]["button_remove"].fill([0,0,0] if SETTINGS["theme"] == "dark" else [255,255,255])
+data["assets"]["button_remove"].set_alpha(200)
+
+data["cache"] = FONTS["p-sans-serif"].render(SYSTEM_TEXTS["settings"]["general"]["remove"], True, STATIC_CORE["text_color"])
+data["assets"]["button_remove"].blit(data["cache"],[(SETTINGS["width"] // 16 - data["cache"].get_width() // 2), data["assets"]["button_remove"].get_height() // 2 - data["cache"].get_height() // 2])
 
 
 del data["cache"]
@@ -46,11 +54,11 @@ for i in data["constants"]["menu_items"]:
     #STEP 3.2.1: Shorten the text to fit on the screen
     data["constants"]["menu_headers"][i] = text_cutoff(SYSTEM_TEXTS["settings"]["type"][i][:], width=int(SETTINGS["width"] * 0.75), font=FONTS["p-sans-serif"])
     data["constants"]["menu_desc"][i] = text_cutoff(SYSTEM_TEXTS["settings"]["type"][i+"_desc"][:], width=int(SETTINGS["width"] * 0.75), font=FONTS["p-sans-serif-small"])
-    
+
     #STEP 3.2.2: Render the text
     data["constants"]["menu_headers"][i] = FONTS["h4"].render(data["constants"]["menu_headers"][i], True, STATIC_CORE["text_color"])
     data["constants"]["menu_desc"][i] = FONTS["p-sans-serif-small"].render(data["constants"]["menu_desc"][i], True, STATIC_CORE["text_color"])
-    
+
 #STEP 4: Initialize sub-menus
 data["general"]:dict = {
     "language": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["language"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, STATIC_CORE["text_color"]),
@@ -77,7 +85,7 @@ for n,i in enumerate(data["cache"]):
 
 
 data["time_date"]:dict = {
-    
+
 }
 
 for i in SYSTEM_TEXTS["settings"]["time_date"]:
@@ -90,7 +98,7 @@ data["date_surface"] = pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 
 
 for i, m in enumerate(data["time_date"]["reference_time"]):
     data["time_surface"].blit(m, [0, int(SETTINGS["height"] * 0.225) + i*data["time_date"]["reference_time"][0].get_height()])
-    
+
 for i, m in enumerate(data["time_date"]["reference_date"]):
     data["date_surface"].blit(m, [0, int(SETTINGS["height"] * 0.225) + i*data["time_date"]["reference_time"][0].get_height()])
 
@@ -111,7 +119,7 @@ try:
 except ValueError:
     data["general"]["languageSelector"].selected = 0
 data["general"]["languageSelector"].update()
-    
+
 #GENERAL->KEYBOARD LAYOUT
 try:
     data["general"]["layoutSelector"].selected = data["general"]["layoutSelector"].items.index(SETTINGS["keyboard"])
