@@ -62,6 +62,7 @@ FRAME = 0
 SECOND = 0
 FPS = 6
 APP = "startup"
+PRIORITY_MODE_ACTIVE = 0
 APP_CRASHED = False
 data:dict = {}
 TIMEOUT = SETTINGS["timeout"]
@@ -115,7 +116,8 @@ while not CLOSE:
                 loader.update()
             screen.blit(loader.surface,tuple(loader.pos))
 
-        if not BLOCK_PROCESS_HANDLER:
+
+        if not BLOCK_PROCESS_HANDLER and not PRIORITY_MODE_ACTIVE:
             try:
                 exec(PROCESS_HANDLER)
             except Exception as e:

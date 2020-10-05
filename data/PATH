@@ -20,7 +20,7 @@
    'scripts' : 'scripts/apps/holo/settings',
    'about' : 'scripts/apps/holo/settings/ABOUT',
    'icon' : 'assets/apps/holo/settings/icon-' + SETTINGS["theme"] + '.png',
-   'priority':0
+   'priority':1
    },
 'clock' :
     {
