@@ -3,7 +3,7 @@ if not "PROCESSES" in globals():
     PROCESS_LAST_RUN = ""
 
 #Start processes
-for a,b in enumerate(AUTOSTART):
+for a,b in enumerate(AUTOSTART.keys()):
     if AUTOSTART[b]["enabled"]:
         #Load unloaded processes into memory
         if not b in PROCESSES:
@@ -16,3 +16,14 @@ for a,b in enumerate(AUTOSTART):
                 #Disable process
                 del PROCESSES[b]
                 AUTOSTART[b]["enabled"] = 0
+                holo.new_alert(SYSTEM_TEXTS["process_crash"].replace("__PROCESS__", b))
+
+    try:
+        process = PROCESSES[b]["var"]
+        exec(PROCESSES[b]["code"])
+        PROCESSES[b]["var"] = process
+        del process
+    except:
+        del PROCESSES[b]
+        AUTOSTART[b]["enabled"] = 0
+        holo.new_alert(SYSTEM_TEXTS["process_crash"].replace("__PROCESS__", b))
