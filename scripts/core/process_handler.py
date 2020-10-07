@@ -1,6 +1,5 @@
 if not "PROCESSES" in globals():
     PROCESSES:dict = {}
-    PROCESS_LAST_RUN = ""
 
 #Start processes
 for a,b in enumerate(AUTOSTART.keys()):
@@ -19,11 +18,12 @@ for a,b in enumerate(AUTOSTART.keys()):
                 holo.new_alert(SYSTEM_TEXTS["process_crash"].replace("__PROCESS__", b) + str(e))
 
         try:
-            process = PROCESSES[b]["var"]
+            process = PROCESSES[b]["var"] #Load memory section for the active process
             exec(PROCESSES[b]["code"])
             PROCESSES[b]["var"] = process
             del process
         except Exception as e:
+            #Disable process
             del PROCESSES[b]
             AUTOSTART[b]["enabled"] = 0
             holo.new_alert(SYSTEM_TEXTS["process_crash"].replace("__PROCESS__", b) + str(e))
