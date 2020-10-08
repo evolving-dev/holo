@@ -44,7 +44,8 @@
           "reference_time": ["%H: Stunde (24 Stunden)", "%I: Stunde (12 Stunden)", "%M: Minute", "%S: Sekunde", "%% um ein Prozentzeichen zu schreiben"]
       },
       "autostart":{
-          "description": "Hintergrundprozesse, die nach einem Neustart automatisch starten. Warnung: Viele Prozesse könnten das Gerät verlangsamen."
+          "description": "Hintergrundprozesse, die nach einem Neustart automatisch starten. Warnung: Viele Prozesse könnten das Gerät verlangsamen.",
+          "empty": "Keine Prozesse im Autostart."
       },
       "display":{
           "theme": "Thema",

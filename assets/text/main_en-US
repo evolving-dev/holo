@@ -44,7 +44,8 @@
           "reference_time": ["%H: Hour (24-hour-clock)", "%I: Hour (12-hour-clock)", "%M: Minute", "%S: Second", "%% to write a literal percent character"]
       },
       "autostart":{
-          "description": "Background processes that start to run automatically after each restart. Warning: Many processes might slow down your device."
+          "description": "Background processes that start to run automatically after each restart. Warning: Many processes might slow down your device.",
+          "empty": "No processes in autostart."
       },
       "display":{
           "theme": "Theme",

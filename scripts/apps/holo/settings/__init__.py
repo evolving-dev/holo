@@ -82,6 +82,25 @@ data["autostart"]["description"] = pygame.Surface([SETTINGS["width"], SETTINGS["
 
 for n,i in enumerate(data["cache"]):
     data["autostart"]["description"].blit(FONTS["p-sans-serif"].render(i, True, STATIC_CORE["text_color"]), [(SETTINGS["width"] - FONTS["p-sans-serif"].render(i, True, STATIC_CORE["text_color"]).get_width()) // 2, int(FONTS["p-sans-serif"].render(i, True, STATIC_CORE["text_color"]).get_height() * 1.2) * n])
+data["autostart"]["processes"]:dict = {}
+for i,n in enumerate(AUTOSTART.keys()):
+    data["autostart"]["active"] = n
+    data["autostart"]["processes"][n] = AUTOSTART[n].copy()
+    data["autostart"]["processes"][n]["main"] = pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 8], pygame.SRCALPHA)
+    data["autostart"]["processes"][n]["main"].blit(
+        FONTS["p-sans-serif"].render(text_cutoff(n, int(SETTINGS["width"]*0.7), FONTS["p-sans-serif"]), True, STATIC_CORE["text_color"]),
+        [SETTINGS["width"] // 15 ,SETTINGS["height"] // 100]
+    )
+    data["autostart"]["processes"][n]["main"].blit(
+        FONTS["p-sans-serif-small"].render(text_cutoff(AUTOSTART[n]["path"], int(SETTINGS["width"]*0.7), FONTS["p-sans-serif-small"]), True, STATIC_CORE["text_color"]),
+        [SETTINGS["width"] // 15 ,SETTINGS["height"] // 15]
+    )
+    data["autostart"]["processes"][n]["checkbox"] = holo.checkbox([int(SETTINGS["width"] * 0.85), int((SETTINGS["height"] // 3) * 1.05)])
+
+data["autostart"]["list"] = list(AUTOSTART.keys())
+
+data["autostart"]["empty"] = FONTS["p-sans-serif"].render(SYSTEM_TEXTS["settings"]["autostart"]["empty"], True, STATIC_CORE["text_color"])
+
 
 
 data["time_date"]:dict = {
