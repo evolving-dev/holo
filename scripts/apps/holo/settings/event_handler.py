@@ -55,5 +55,4 @@ if event.type == pygame.MOUSEBUTTONUP:
             data["display"]["theme_selector"].detect_click(data["mousePos"])
 
         if data["screen"] == "autostart":
-            for i in data["autostart"]["processes"].keys():
-                data["autostart"]["processes"][i]["checkbox"].detect_click(data["mousePos"])
+            data["autostart"]["processes"][data["autostart"]["active"]]["checkbox"].detect_click(data["mousePos"])
