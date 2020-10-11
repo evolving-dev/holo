@@ -55,4 +55,17 @@ if event.type == pygame.MOUSEBUTTONUP:
             data["display"]["theme_selector"].detect_click(data["mousePos"])
 
         if data["screen"] == "autostart":
-            data["autostart"]["processes"][data["autostart"]["active"]]["checkbox"].detect_click(data["mousePos"])
+            if len(data["autostart"]["process_list"]) != 0:
+                data["autostart"]["processes"][data["autostart"]["active"]]["checkbox"].detect_click(data["mousePos"])
+            if data["mousePos"][0] in range(0, STATIC_CORE["arrows"]["left"].get_width()) and data["mousePos"][1] in range(SETTINGS["height"] // 3, SETTINGS["height"] // 3 + STATIC_CORE["arrows"]["left"].get_height()):
+                try:
+                    data["autostart"]["active"] = data["autostart"]["process_list"][data["autostart"]["process_list"].index(data["autostart"]["active"]) - 1]
+                except:
+                    if len(data["autostart"]["process_list"]) != 0:
+                        data["autostart"]["active"] = data["autostart"]["process_list"][0]
+            if data["mousePos"][0] in range(SETTINGS["width"] - STATIC_CORE["arrows"]["left"].get_width(), SETTINGS["width"]) and data["mousePos"][1] in range(SETTINGS["height"] // 3, SETTINGS["height"] // 3 + STATIC_CORE["arrows"]["left"].get_height()):
+                try:
+                    data["autostart"]["active"] = data["autostart"]["process_list"][data["autostart"]["process_list"].index(data["autostart"]["active"]) + 1]
+                except:
+                    if len(data["autostart"]["process_list"]) != 0:
+                        data["autostart"]["active"] = data["autostart"]["process_list"][0]

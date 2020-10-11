@@ -60,8 +60,9 @@ if data["screen"] == "display":
 
 
 if data["screen"] == "autostart":
+    data["autostart"]["process_list"] = list(data["autostart"]["processes"].keys())
     screen.blit(data["autostart"]["description"], [0, int((SETTINGS["height"] // 10) * 1.02)])
-    if (len(data["autostart"]["processes"]) == 0):
+    if (len(data["autostart"]["process_list"]) == 0):
         screen.blit(data["autostart"]["empty"], [SETTINGS["width"] // 2 - data["autostart"]["empty"].get_width() // 2, int((SETTINGS["height"] // 3)*1.05)])
     else:
         screen.blit(STATIC_CORE["arrows"]["left"], [0, SETTINGS["height"] // 3])
