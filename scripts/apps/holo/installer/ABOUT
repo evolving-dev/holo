@@ -1,0 +1,8 @@
+{
+    'name':'App Installer',
+    'name_de-DE': 'App Installer',
+    'name_en-US': 'App Installer',
+    'author':'EvolvingDev',
+    'license':'https://raw.githubusercontent.com/evolving-dev/holo/master/LICENSE',
+    'source':'https://github.com/evolving-dev/holo'
+}

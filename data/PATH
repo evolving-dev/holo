@@ -27,4 +27,12 @@
     'widget' : 'assets/apps/holo/clock/__widget__.py',
     'priority':0
     },
+'installer' :
+  {
+   'assets' : 'assets/apps/holo/installer',
+   'scripts' : 'scripts/apps/holo/installer',
+   'about' : 'scripts/apps/holo/installer/ABOUT',
+   'icon' : 'assets/apps/holo/installer/icon-' + SETTINGS["theme"] + '.png',
+   'priority':1
+   },
 }
