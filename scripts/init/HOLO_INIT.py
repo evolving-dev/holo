@@ -18,14 +18,16 @@ SETTINGS = {
     'timeformat': '%H:%M:%S',
     'dateformat':'%d.%m.%Y',
     'init_sound': 0,
+    'keyboard_mode': "both",
+    'connectivity_enabled': 1,
     }
 
 with open("settings","w") as f:
     f.write(str(SETTINGS))
     f.close()
-    
+
 #Create WIDGETFILE
-    
+
 with open("WIDGETS", "w") as f:
     f.write("""{
     'clock': {

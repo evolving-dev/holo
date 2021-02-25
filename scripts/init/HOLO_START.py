@@ -75,8 +75,11 @@ LOADERS:list = []
 APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
 KEYBOARD = holo.keyboard()
 PROCESS_HANDLER = readfile(join(PATH,"scripts/core/process_handler.py"))
-exec(APPLAUNCHER) #LAUNCH HOME APP
 
+exec(readfile(holo.path("scripts/core/pass_types.py")))
+exec(readfile(holo.path("scripts/core/holo_io.py")))
+
+exec(APPLAUNCHER) #LAUNCH HOME APP
 
 
 while not CLOSE:

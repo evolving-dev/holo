@@ -1,1 +1,1 @@
-{'clock': {'name': 'Clock', 'name_de-DE': 'Uhr', 'name_en-US': 'Clock', 'enabled': 1, 'init': 'scripts/apps/holo/clock/__initwidget__.py', 'update': 'scripts/apps/holo/clock/__widget__.py', 'event': 'scripts/apps/holo/clock/__widgetevt__.py', 'x': 0, 'y': 0}}
+{'clock': {'name': 'Clock', 'name_de-DE': 'Uhr', 'name_en-US': 'Clock', 'enabled': 1, 'init': 'scripts/apps/holo/clock/__initwidget__.py', 'update': 'scripts/apps/holo/clock/__widget__.py', 'event': 'scripts/apps/holo/clock/__widgetevt__.py', 'x': -10, 'y': 9}}

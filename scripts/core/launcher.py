@@ -2,7 +2,8 @@ if not APP_CRASHED:
     del ALERTS
     ALERTS:list = [] #RESET ALERTS ONLY WHEN AN APP CRASHED. (keep error report)
 
-pygame.mixer.stop()
+if SETTINGS["init_sound"]:
+    pygame.mixer.stop()
 
 del data
 data:dict = {} #RESET APP DATA
@@ -28,7 +29,7 @@ if APP == "startup":
     exec(APPLAUNCHER)
 
 else:
-    
+
     PRIORITY_MODE_ACTIVE = PATHFILE[APP].get("priority", 0)
 
     try:
