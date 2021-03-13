@@ -47,8 +47,12 @@ screen.blit(LOADING,(0,0))
 pygame.display.flip()
 del LOADING
 
-
 exec(readfile(join(PATH, "scripts/init/initFontsMain.py")))#INITIALIZE FONTS
+
+exec(readfile(holo.path("scripts/core/pass_types.py")))
+exec(readfile(holo.path("scripts/core/holo_io.py")))
+exec(readfile(holo.path("scripts/core/holo_gui.py")))
+
 exec(readfile(join(PATH, "scripts/init/initStaticCore.py")))#INITIALIZE STATIC OBJECTS
 
 
@@ -76,8 +80,6 @@ APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
 KEYBOARD = holo.keyboard()
 PROCESS_HANDLER = readfile(join(PATH,"scripts/core/process_handler.py"))
 
-exec(readfile(holo.path("scripts/core/pass_types.py")))
-exec(readfile(holo.path("scripts/core/holo_io.py")))
 
 exec(APPLAUNCHER) #LAUNCH HOME APP
 

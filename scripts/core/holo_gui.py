@@ -4,9 +4,9 @@ class holo_gui:
         if aa:#Antialiasing enabled
 
             if alpha:#Alpha channel enabled
-                return pygame.image.fromstring(Image.open(path).resize(tuple(size)).tobytes(), (tuple(size), "RGBA").convert_alpha()
+                return pygame.image.fromstring(Image.open(path).resize(tuple(size)).tobytes(), tuple(size), "RGBA").convert_alpha()
             else:
-                return pygame.image.fromstring(Image.open(path).resize(tuple(size)).tobytes(), (tuple(size), "RGB").convert()
+                return pygame.image.fromstring(Image.open(path).resize(tuple(size)).tobytes(), tuple(size), "RGB").convert()
 
         else:
 
