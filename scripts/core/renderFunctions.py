@@ -58,6 +58,7 @@ class holo:
                 self.on_click()
                 return True
             return False
+
     class alert:
 
         def __init__(self,message):
@@ -156,15 +157,6 @@ class holo:
             self.surface = self.empty_surface.copy()
             self.surface.blit(self.text_render, [STATIC_CORE["arrow_left"].get_width(), self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
 
-
-    class text_preset:
-        def __init__(self, font, color, antialiasing=True):
-            self.font = font
-            self.color = color
-            self.antialiasing = antialiasing
-
-        def render(self, text):
-            return self.font.render(text, self.antialiasing, self.color)
 
     def add_to_autostart(path):
         AUTOSTART += {"app": APP, "path":holo.path(str(path))}
