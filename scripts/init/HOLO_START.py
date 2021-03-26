@@ -52,6 +52,8 @@ exec(readfile(join(PATH, "scripts/init/initFontsMain.py")))#INITIALIZE FONTS
 exec(readfile(holo.path("scripts/core/pass_types.py")))
 exec(readfile(holo.path("scripts/core/holo_io.py")))
 exec(readfile(holo.path("scripts/core/holo_gui.py")))
+exec(readfile(holo.path("scripts/core/holo_keyboard.py")))
+
 
 exec(readfile(join(PATH, "scripts/init/initStaticCore.py")))#INITIALIZE STATIC OBJECTS
 
@@ -77,7 +79,7 @@ APP_PATH:dict = {}
 ALERTS:list = []
 LOADERS:list = []
 APPLAUNCHER = readfile(join(PATH,"scripts/core/launcher.py"))
-KEYBOARD = holo.keyboard()
+KEYBOARD = holo_keyboard.Keyboard()
 PROCESS_HANDLER = readfile(join(PATH,"scripts/core/process_handler.py"))
 
 
