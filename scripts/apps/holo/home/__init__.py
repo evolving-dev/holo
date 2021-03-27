@@ -1,8 +1,8 @@
 FPS = 15
 
 data["assets"] = {
-    "default-icon": pygame.image.fromstring(Image.open(holo.path("assets/images/icons/default.png")).resize((SETTINGS["width"] // 10,SETTINGS["width"] // 10)).convert("RGBA").tobytes(),(SETTINGS["width"] // 10,SETTINGS["width"] // 10),"RGBA").convert_alpha(),
-    "warning":pygame.image.fromstring(Image.open(holo.path("assets/images/system/warning.png")).resize((SETTINGS["width"] // 20,SETTINGS["width"] // 20)).tobytes(),(SETTINGS["width"] // 20,SETTINGS["width"] // 20),"RGBA").convert_alpha()
+    "default-icon": pygame.image.fromstring(Image.open(holo_io.path.to_absolute("assets/images/icons/default.png")).resize((SETTINGS["width"] // 10,SETTINGS["width"] // 10)).convert("RGBA").tobytes(),(SETTINGS["width"] // 10,SETTINGS["width"] // 10),"RGBA").convert_alpha(),
+    "warning":pygame.image.fromstring(Image.open(holo_io.path.to_absolute("assets/images/system/warning.png")).resize((SETTINGS["width"] // 20,SETTINGS["width"] // 20)).tobytes(),(SETTINGS["width"] // 20,SETTINGS["width"] // 20),"RGBA").convert_alpha()
 } #Load in image assets
 
 data["apps"] = {
@@ -30,11 +30,11 @@ for i in PATHFILE.keys(): #For every app in the Pathfile
         
         data["apps"]["apps"] += [i] # Add the app to the list of apps
         
-        if os.path.isfile(holo.path(PATHFILE[i].get("about", ""))): #If the app has an ABOUT file
+        if os.path.isfile(holo_io.path.to_absolute(PATHFILE[i].get("about", ""))): #If the app has an ABOUT file
             
             try:
                 
-                data["apps"]["appnames"][i] = eval(readfile(holo.path(PATHFILE[i]["about"]))).get("name", i + " (incomplete ABOUTFILE)") if not "name_" + SETTINGS["lang"] in eval(readfile(holo.path(PATHFILE[i]["about"]))) else eval(readfile(holo.path(PATHFILE[i]["about"])))["name_"+SETTINGS["lang"]]
+                data["apps"]["appnames"][i] = eval(readfile(holo_io.path.to_absolute(PATHFILE[i]["about"]))).get("name", i + " (incomplete ABOUTFILE)") if not "name_" + SETTINGS["lang"] in eval(readfile(holo_io.path.to_absolute(PATHFILE[i]["about"]))) else eval(readfile(holo_io.path.to_absolute(PATHFILE[i]["about"])))["name_"+SETTINGS["lang"]]
                 #Get the language-specific app name. Get the universal app name if the specific name does not exist
                 
             except:
@@ -49,12 +49,12 @@ for i in PATHFILE.keys(): #For every app in the Pathfile
             
         data["apps"]["appnames"][i] = text_wrap(data["apps"]["appnames"][i], SETTINGS["width"] // 9, FONTS["p-sans-serif"])
             
-        data["apps"]["appicons"][i] = holo.path(PATHFILE[i].get("icon",holo.path("assets/images/icons/default.png"))) #Get the path of the icon. If it's missing, replace the path with the path of the default icon
+        data["apps"]["appicons"][i] = holo_io.path.to_absolute(PATHFILE[i].get("icon",holo_io.path.to_absolute("assets/images/icons/default.png"))) #Get the path of the icon. If it's missing, replace the path with the path of the default icon
         
         if not os.path.isfile(data["apps"]["appicons"][i]):
-            data["apps"]["appicons"][i] = holo.path("assets/images/icons/default.png") #If the specified icon could not be found, replace it with HOLO's default icon
+            data["apps"]["appicons"][i] = holo_io.path.to_absolute("assets/images/icons/default.png") #If the specified icon could not be found, replace it with HOLO's default icon
         
-        if data["apps"]["appicons"][i] == holo.path("assets/images/icons/default.png"):
+        if data["apps"]["appicons"][i] == holo_io.path.to_absolute("assets/images/icons/default.png"):
             
             data["apps"]["icons"][i] = data["assets"]["default-icon"].copy() #If the current icon is the default icon, load the cached version to conserve CPU-time and memory
             

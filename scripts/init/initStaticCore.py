@@ -1,26 +1,26 @@
 STATIC_CORE: dict = {
-"checked": holo_gui.load_image(holo.path("assets/images/icons/checkbox/checked-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
-"unchecked": holo_gui.load_image(holo.path("assets/images/icons/checkbox/unchecked-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
-"alert":holo_gui.load_image(holo.path("assets/images/system/messagebox/alert-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//5*4,SETTINGS["height"]//5*3)), #MAINTAIN 4:3 ASPECT RATIO
-"ok_button":holo_gui.load_image(holo.path("assets/images/icons/buttons/OK/okbutton-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//5,SETTINGS["height"]//10)), #MAINTAIN 2:1 ASPECT RATIO
+"checked": holo_gui.load_image(holo_io.path.to_absolute("assets/images/icons/checkbox/checked-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
+"unchecked": holo_gui.load_image(holo_io.path.to_absolute("assets/images/icons/checkbox/unchecked-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
+"alert":holo_gui.load_image(holo_io.path.to_absolute("assets/images/system/messagebox/alert-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//5*4,SETTINGS["height"]//5*3)), #MAINTAIN 4:3 ASPECT RATIO
+"ok_button":holo_gui.load_image(holo_io.path.to_absolute("assets/images/icons/buttons/OK/okbutton-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//5,SETTINGS["height"]//10)), #MAINTAIN 2:1 ASPECT RATIO
 "loading":[],
-"surface_1_1":holo_gui.load_image(holo.path("assets/images/icons/surface_1_1_"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//5,SETTINGS["height"]//5)),
-"surface_4_1":holo_gui.load_image(holo.path("assets/images/icons/surface_4_1_"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//5*4,SETTINGS["height"]//5)),
+"surface_1_1":holo_gui.load_image(holo_io.path.to_absolute("assets/images/icons/surface_1_1_"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//5,SETTINGS["height"]//5)),
+"surface_4_1":holo_gui.load_image(holo_io.path.to_absolute("assets/images/icons/surface_4_1_"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//5*4,SETTINGS["height"]//5)),
 "keyboard_lower":pygame.Surface([SETTINGS["width"],SETTINGS["height"] // 2], pygame.SRCALPHA).convert_alpha(),
 "keyboard_upper":pygame.Surface([SETTINGS["width"],SETTINGS["height"] // 2], pygame.SRCALPHA).convert_alpha(),
-"widget_small":holo_gui.load_image(holo.path("assets/images/icons/surface_2_1_"+SETTINGS["theme"]+".png"), (SETTINGS["width"]//5,SETTINGS["width"]//10)),
-"dropdown_button": holo_gui.load_image(holo.path("assets/images/system/dropdown/dropdown-"+SETTINGS["theme"]+".png"), (SETTINGS["width"]//20,SETTINGS["width"]//20)),
-"arrow_left": holo_gui.load_image(holo.path("assets/images/system/dropdown/left_arrow-"+SETTINGS["theme"]+".png"), (SETTINGS["width"]//20,SETTINGS["width"]//20)),
-"arrow_right": holo_gui.load_image(holo.path("assets/images/system/dropdown/right_arrow-"+SETTINGS["theme"]+".png"), (SETTINGS["width"]//20,SETTINGS["width"]//20)),
-"overlay": holo_gui.load_image(holo.path("assets/images/system/overlays/overlay-"+SETTINGS["theme"]+".png"), (SETTINGS["width"],SETTINGS["height"])),
-"home": holo_gui.load_image(holo.path("assets/images/icons/buttons/home/home-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
-"back": holo_gui.load_image(holo.path("assets/images/icons/buttons/back/back-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//10,SETTINGS["height"]//10)),
+"widget_small":holo_gui.load_image(holo_io.path.to_absolute("assets/images/icons/surface_2_1_"+SETTINGS["theme"]+".png"), (SETTINGS["width"]//5,SETTINGS["width"]//10)),
+"dropdown_button": holo_gui.load_image(holo_io.path.to_absolute("assets/images/system/dropdown/dropdown-"+SETTINGS["theme"]+".png"), (SETTINGS["width"]//20,SETTINGS["width"]//20)),
+"arrow_left": holo_gui.load_image(holo_io.path.to_absolute("assets/images/system/dropdown/left_arrow-"+SETTINGS["theme"]+".png"), (SETTINGS["width"]//20,SETTINGS["width"]//20)),
+"arrow_right": holo_gui.load_image(holo_io.path.to_absolute("assets/images/system/dropdown/right_arrow-"+SETTINGS["theme"]+".png"), (SETTINGS["width"]//20,SETTINGS["width"]//20)),
+"overlay": holo_gui.load_image(holo_io.path.to_absolute("assets/images/system/overlays/overlay-"+SETTINGS["theme"]+".png"), (SETTINGS["width"],SETTINGS["height"])),
+"home": holo_gui.load_image(holo_io.path.to_absolute("assets/images/icons/buttons/home/home-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
+"back": holo_gui.load_image(holo_io.path.to_absolute("assets/images/icons/buttons/back/back-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//10,SETTINGS["height"]//10)),
 "text_color": [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0],
 "arrows": {
-        "up":holo_gui.load_image(holo.path("assets/images/icons/buttons/arrows/up-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
-        "down":holo_gui.load_image(holo.path("assets/images/icons/buttons/arrows/down-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
-        "left":holo_gui.load_image(holo.path("assets/images/icons/buttons/arrows/left-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
-        "right":holo_gui.load_image(holo.path("assets/images/icons/buttons/arrows/right-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
+        "up":holo_gui.load_image(holo_io.path.to_absolute("assets/images/icons/buttons/arrows/up-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
+        "down":holo_gui.load_image(holo_io.path.to_absolute("assets/images/icons/buttons/arrows/down-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
+        "left":holo_gui.load_image(holo_io.path.to_absolute("assets/images/icons/buttons/arrows/left-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
+        "right":holo_gui.load_image(holo_io.path.to_absolute("assets/images/icons/buttons/arrows/right-"+SETTINGS["theme"]+".png"), (SETTINGS["height"]//12,SETTINGS["height"]//12)),
     },
 }
 KEYMAP:dict = {"upper":{},"lower":{}}
@@ -89,7 +89,7 @@ del TEXTCACHE
 del LOADERWIDTH
 
 
-exec(readfile(holo.path("scripts/init/initKeyboard.py")))
+exec(readfile(holo_io.path.to_absolute("scripts/init/initKeyboard.py")))
 
 #KEYBOARD CLEANUP
 del SPACEBAR

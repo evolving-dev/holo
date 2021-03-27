@@ -30,7 +30,7 @@ if event.type == pygame.MOUSEBUTTONUP and data["mouseHold"] < 6:
             del data["widgetcode"][data["keycache"]]
             del data["eventcode"][data["keycache"]]
             data["widgetfile"][data["keycache"]]["enabled"] = 0
-            with open(holo.path("USERS/WIDGETS"), "w") as f:
+            with open(holo_io.path.to_absolute("USERS/WIDGETS"), "w") as f:
                 f.write(str(data["widgetfile"]))
                 f.close()
     if data["mousePos"][0] in range(SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2, SETTINGS["width"] // 2 - data["assets"]["home"].get_width() // 2 + data["assets"]["home"].get_width()) and data["mousePos"][1] in range(int(SETTINGS["height"]*0.9), SETTINGS["height"]):
@@ -47,14 +47,14 @@ if event.type == pygame.MOUSEBUTTONUP and data["mouseHold"] < 6:
         
         data["widgetfile"][i]["enabled"] = 1
         
-        with open(holo.path("USERS/WIDGETS"), "w") as f:
+        with open(holo_io.path.to_absolute("USERS/WIDGETS"), "w") as f:
             f.write(str(data["widgetfile"]))
             f.close()
-        data["widgetcode"][i] = readfile(holo.path(data["widgetfile"][i]["update"]))
-        data["eventcode"][i] = readfile(holo.path(data["widgetfile"][i]["event"]))
+        data["widgetcode"][i] = readfile(holo_io.path.to_absolute(data["widgetfile"][i]["update"]))
+        data["eventcode"][i] = readfile(holo_io.path.to_absolute(data["widgetfile"][i]["event"]))
         
         try:
-            exec(readfile(holo.path(data["widgetfile"][i]["init"])))
+            exec(readfile(holo_io.path.to_absolute(data["widgetfile"][i]["init"])))
             data["var"][i] = widget.copy() #Move the data to its designated place
         except Exception as e:
             holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", i) + str(e))
@@ -62,7 +62,7 @@ if event.type == pygame.MOUSEBUTTONUP and data["mouseHold"] < 6:
             del data["widgetcode"][i]
             del data["eventcode"][i]
             data["widgetfile"][i]["enabled"] = 0
-            with open(holo.path("USERS/WIDGETS"), "w") as f:
+            with open(holo_io.path.to_absolute("USERS/WIDGETS"), "w") as f:
                 f.write(str(data["widgetfile"]))
                 f.close()
     
@@ -73,7 +73,7 @@ if event.type == pygame.MOUSEBUTTONUP:
         del data["var"][data["widgetDelete"]]
         del data["widgetcode"][data["widgetDelete"]]
         del data["eventcode"][data["widgetDelete"]]
-        with open(holo.path("USERS/WIDGETS"), "w") as f:
+        with open(holo_io.path.to_absolute("USERS/WIDGETS"), "w") as f:
             f.write(str(data["widgetfile"]))
             f.close()
         data["widgetDelete"] = ""

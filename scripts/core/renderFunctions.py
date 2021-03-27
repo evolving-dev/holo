@@ -159,5 +159,5 @@ class holo:
 
 
     def add_to_autostart(path):
-        AUTOSTART += {"app": APP, "path":holo.path(str(path))}
+        AUTOSTART += {"app": APP, "path":holo_io.path.to_absolute(str(path))}
         holo.new_alert(SYSTEM_TEXTS["settings"]["general"]["alert_autostart"] + " " + APP)

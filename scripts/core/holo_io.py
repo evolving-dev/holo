@@ -36,3 +36,11 @@ class holo_io:
                     return HoloResponse(True, requests.delete(url, **kwargs))
                 except:pass
             return HoloResponse(False)
+
+
+    class path:
+
+        def to_absolute(p): #Turn relative path (e.g. assets/example.xy) into absolute path (e.g. /home/holo/holo/assets/example.xy or C:/Users/holo/Desktop/holo/assets/example.xy)
+            if PATH not in p:
+                return join(PATH,p) #Join system path and input path together
+            return p
