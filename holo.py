@@ -6,7 +6,7 @@ exec(readfile("scripts/init/modules.py")) #Import necessary modules
 
 PATH = os.path.dirname(os.path.abspath(__file__)) #Get startup path
 
-exec(readfile("scripts/core/holo_io.py")) #Define core I/O functions like holo_io.file.read
+exec(readfile("scripts/core/holo_io.py")) #Initialize core I/O functions like holo_io.file.read
 
 del readfile
 
@@ -63,6 +63,6 @@ while not done:
 
 del error_loop
 if run_setup:
-    exec(holo_io.file.read(join(PATH,"scripts/init/setup.py")),globals())
+    exec(holo_io.file.read("scripts/init/setup.py"))
 else:
-    exec(holo_io.file.read(join(PATH,"scripts/init/startup.py")),globals())
+    exec(holo_io.file.read("scripts/init/startup.py"))

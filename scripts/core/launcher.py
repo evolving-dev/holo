@@ -5,7 +5,8 @@ if not APP_CRASHED:
 if SETTINGS["init_sound"]:
     pygame.mixer.stop()
 
-del data
+if "data" in globals():
+    del data
 data:dict = {} #RESET APP DATA
 
 del LOADERS

@@ -7,6 +7,10 @@
     "error": "Error",
     "background_process_error": "Some background processes could not be started.",
     "process_crash": "The process __PROCESS__ has been stopped because an error occurred. Error: ",
+    "startup_1": "Loading code...",
+    "startup_2": "Loading assets...",
+    "startup_3": "Preparing system variables...",
+    "startup_4": "Launching HOME app",
     "settings":{
       "type":{
           "general":"General",

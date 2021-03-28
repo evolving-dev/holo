@@ -7,6 +7,10 @@
     "error": "Fehler",
     "background_process_error": "Einige Hintergrundprozesse konnten nicht gestartet werden.",
     "process_crash": "Der Prozess __PROCESS__ wurde wegen eines Fehlers beendet. Fehler: ",
+    "startup_1": "Lade Code...",
+    "startup_2": "Lade Assets...",
+    "startup_3": "Bereite Systemvariablen vor...",
+    "startup_4": "Starte HOME-App...",
     "settings":{
       "type":{
           "general":"Allgemein",

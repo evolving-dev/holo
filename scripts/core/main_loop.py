@@ -61,13 +61,13 @@ while not CLOSE:
                 TIMEOUT = SETTINGS["timeout"]
             if event.type == pygame.MOUSEBUTTONUP:
                 if len(ALERTS) >= 1:
-                    alertcache = ALERTS[-1:][0].detectClick(list(pygame.mouse.get_pos())) #Only detect most recent alert
+                    ALERT_CLICKED = ALERTS[-1:][0].detectClick(list(pygame.mouse.get_pos())) #Only detect most recent alert
                 else:
-                    alertcache = False
+                    ALERT_CLICKED = False
                 if KEYBOARD.visible and list(pygame.mouse.get_pos())[1] >= SETTINGS["height"] // 2:
                     KEYBOARD.update(list(pygame.mouse.get_pos()))
 
-            if not event.type == pygame.MOUSEMOTION and not alertcache: #Mousemotion is ignored for touchscreen displays. Apps need to detect mouse motion themselves
+            if not event.type == pygame.MOUSEMOTION and not ALERT_CLICKED: #Mousemotion is ignored for touchscreen displays. Apps need to detect mouse motion themselves
 
                 try:
                     exec(APP_EVENTHANDLER) #Pass the event onto the currently active app
