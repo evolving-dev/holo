@@ -2,9 +2,6 @@ import sys
 import PIL
 from PIL import Image,ImageDraw,GifImagePlugin
 
-del game
-del execute
-del ii
 del FONTS
 del clock
 del screen
@@ -12,6 +9,7 @@ del event
 del STARTUP_LANG_FILE
 del STARTUP_TEXTS
 del i
+del run_setup
 #RAM CLEANUP
 
 os.chdir(PATH)
@@ -41,6 +39,7 @@ pygame.display.set_icon(ICON)
 screen = pygame.display.set_mode([SETTINGS["width"],SETTINGS["height"]])
 clock = pygame.time.Clock()
 pygame.display.set_caption("HOLO")
+PLATFORM = "HOLO"
 AUTOSTART = eval(holo_io.file.read(holo_io.path.to_absolute("data/AUTOSTART")))
 LOADING = pygame.image.load(join(PATH,"assets/images/icons/startup.png")).convert_alpha()
 screen.blit(LOADING,(0,0))
