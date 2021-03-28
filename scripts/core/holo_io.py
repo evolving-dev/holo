@@ -1,6 +1,6 @@
 class holo_io:
 
-    class http:
+    class http: #HTTP Requests
 
         def get(url, **kwargs):
             if SETTINGS['connectivity_enabled']:
@@ -38,7 +38,7 @@ class holo_io:
             return HoloResponse(False)
 
 
-    class path:
+    class path: #File path operations
 
         def to_absolute(p): #Turn relative path (e.g. assets/example.xy) into absolute path (e.g. /home/holo/holo/assets/example.xy or C:/Users/holo/Desktop/holo/assets/example.xy)
             if PATH not in p:

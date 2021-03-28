@@ -49,7 +49,7 @@ del LOADING
 
 MAIN_LOOP = holo_io.file.read(join(PATH, "scripts/core/main_loop.py"))
 
-exec(holo_io.file.read(join(PATH, "scripts/init/initFontsMain.py")))#INITIALIZE FONTS
+exec(holo_io.file.read(join(PATH, "scripts/init/fonts_main.py")))#INITIALIZE FONTS
 
 exec(holo_io.file.read(holo_io.path.to_absolute("scripts/core/pass_types.py")))
 #exec(holo_io.file.read(holo_io.path.to_absolute("scripts/core/holo_io.py"))) #MOVED TO TOP TEMPORARILY

@@ -58,7 +58,7 @@ pygame.key.set_repeat(100, 10)
 
 PLATFORM = "HOLO"
 
-exec(holo_io.file.read(join(PATH, "scripts/init/initFontsFirstTimeStartup.py")))
+exec(holo_io.file.read(join(PATH, "scripts/init/fonts_setup.py")))
 STARTUP_LANG_FILE = eval(holo_io.file.read(join(PATH,"assets/text/startup_en-US"))) if not os.path.isdir(join(PATH,"USERS")) else eval(holo_io.file.read(join(PATH,"assets/text/startup_"+eval(holo_io.file.read(join(PATH,"USERS/settings")))["lang"])))
 STARTUP_TEXTS:dict = {}
 for i in list(STARTUP_LANG_FILE.keys()):
