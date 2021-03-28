@@ -9,7 +9,7 @@ for a,b in enumerate(AUTOSTART.keys()):
             PROCESSES[b]:dict = {}
             try:
                 PROCESSES[b]["path"] = AUTOSTART[b]["path"]
-                PROCESSES[b]["code"] = readfile(holo_io.path.to_absolute(PROCESSES[b]["path"]))
+                PROCESSES[b]["code"] = holo_io.file.read(holo_io.path.to_absolute(PROCESSES[b]["path"]))
                 PROCESSES[b]["var"]:dict = {}
             except Exception as e:
                 #Disable process

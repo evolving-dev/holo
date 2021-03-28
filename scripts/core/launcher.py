@@ -35,10 +35,10 @@ else:
     try:
 
         APP_PATH = PATHFILE[APP].copy()
-        APP_CODE = readfile(join(PATH,join(PATHFILE[APP]['scripts'],'update.py'))) #Read the code that runs every frame
-        APP_EVENTHANDLER = readfile(join(PATH,join(PATHFILE[APP]['scripts'],'event_handler.py'))) #Read the code that handles events
+        APP_CODE = holo_io.file.read(join(PATH,join(PATHFILE[APP]['scripts'],'update.py'))) #Read the code that runs every frame
+        APP_EVENTHANDLER = holo_io.file.read(join(PATH,join(PATHFILE[APP]['scripts'],'event_handler.py'))) #Read the code that handles events
 
-        exec(readfile(join(PATH,join(PATHFILE[APP]['scripts'],'__init__.py')))) #Run the init file for the opened app.
+        exec(holo_io.file.read(join(PATH,join(PATHFILE[APP]['scripts'],'__init__.py')))) #Run the init file for the opened app.
 
     except Exception as e:
 

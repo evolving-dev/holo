@@ -1,11 +1,11 @@
 os.chdir(PATH)
 
-with open(os.path.join(PATH,"INITFILE"),"r") as f:
+with open(join(PATH,"INITFILE"),"r") as f:
     INITFILE = f.readlines()
     f.close()
 
 os.mkdir("USERS")
-os.chdir(os.path.join(PATH,"USERS"))
+os.chdir(join(PATH,"USERS"))
 
 SETTINGS = {
     "width":int(INITFILE[0]),
@@ -45,4 +45,4 @@ os.chdir(PATH)
 os.remove("INITFILE")
 #CREATING USER DIRECTORY AND WRITING SETTINGS FILE TO IT
 
-exec(readfile(os.path.join(PATH,"scripts/init/HOLO_START.py")),globals())
+exec(holo_io.file.read(join(PATH,"scripts/init/startup.py")),globals())

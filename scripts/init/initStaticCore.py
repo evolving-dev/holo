@@ -89,7 +89,7 @@ del TEXTCACHE
 del LOADERWIDTH
 
 
-exec(readfile(holo_io.path.to_absolute("scripts/init/initKeyboard.py")))
+exec(holo_io.file.read(holo_io.path.to_absolute("scripts/init/initKeyboard.py")))
 
 #KEYBOARD CLEANUP
 del SPACEBAR

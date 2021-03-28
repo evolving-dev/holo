@@ -34,7 +34,7 @@ for i in PATHFILE.keys(): #For every app in the Pathfile
             
             try:
                 
-                data["apps"]["appnames"][i] = eval(readfile(holo_io.path.to_absolute(PATHFILE[i]["about"]))).get("name", i + " (incomplete ABOUTFILE)") if not "name_" + SETTINGS["lang"] in eval(readfile(holo_io.path.to_absolute(PATHFILE[i]["about"]))) else eval(readfile(holo_io.path.to_absolute(PATHFILE[i]["about"])))["name_"+SETTINGS["lang"]]
+                data["apps"]["appnames"][i] = eval(holo_io.file.read(holo_io.path.to_absolute(PATHFILE[i]["about"]))).get("name", i + " (incomplete ABOUTFILE)") if not "name_" + SETTINGS["lang"] in eval(holo_io.file.read(holo_io.path.to_absolute(PATHFILE[i]["about"]))) else eval(holo_io.file.read(holo_io.path.to_absolute(PATHFILE[i]["about"])))["name_"+SETTINGS["lang"]]
                 #Get the language-specific app name. Get the universal app name if the specific name does not exist
                 
             except:

@@ -43,12 +43,12 @@ if not APP_CRASHED:
    #Load the code for all widgets and execute their init 
    for i in data["widgetfile"].keys():
         if data["widgetfile"][i]["enabled"]:
-            data["widgetcode"][i] = readfile(holo_io.path.to_absolute(data["widgetfile"][i]["update"]))
-            data["eventcode"][i] = readfile(holo_io.path.to_absolute(data["widgetfile"][i]["event"]))
+            data["widgetcode"][i] = holo_io.file.read(holo_io.path.to_absolute(data["widgetfile"][i]["update"]))
+            data["eventcode"][i] = holo_io.file.read(holo_io.path.to_absolute(data["widgetfile"][i]["event"]))
             
             widget = {"x": data["widgetfile"][i]["x"], "y": data["widgetfile"][i]["y"]} #Temporary variable for the widget data
             try:
-                exec(readfile(holo_io.path.to_absolute(data["widgetfile"][i]["init"])))
+                exec(holo_io.file.read(holo_io.path.to_absolute(data["widgetfile"][i]["init"])))
                 data["var"][i] = widget.copy() #Move the data to its designated place
             except Exception as e:
                 holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", i) + str(e))

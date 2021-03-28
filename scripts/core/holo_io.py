@@ -64,3 +64,15 @@ class holo_io:
 
             def get_data_path():
                 pass
+
+
+
+    class file:
+
+        def read(name):
+            with open(name,"rb") as f:
+                return(f.read().decode("utf-8"))
+
+        def read_bin(name):
+            with open(name,"rb") as f:
+                return(f.read())

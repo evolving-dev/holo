@@ -43,7 +43,7 @@ del data["cache"]
 #STEP 3: Initializing constants
 data["constants"] = {
     "menu_items":["general", "display", "network", "troubleshooting", "date_format", "time_format", "autostart"],
-    "keyboard_layouts": eval(readfile(join(PATH,"assets/text/keyboard_layouts.json")))["list"]
+    "keyboard_layouts": eval(holo_io.file.read(join(PATH,"assets/text/keyboard_layouts.json")))["list"]
 }
 #STEP 3.1: Initialize dictionaries for the menu items
 data["constants"]["menu_headers"] = {}

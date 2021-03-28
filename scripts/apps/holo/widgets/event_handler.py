@@ -50,11 +50,11 @@ if event.type == pygame.MOUSEBUTTONUP and data["mouseHold"] < 6:
         with open(holo_io.path.to_absolute("USERS/WIDGETS"), "w") as f:
             f.write(str(data["widgetfile"]))
             f.close()
-        data["widgetcode"][i] = readfile(holo_io.path.to_absolute(data["widgetfile"][i]["update"]))
-        data["eventcode"][i] = readfile(holo_io.path.to_absolute(data["widgetfile"][i]["event"]))
+        data["widgetcode"][i] = holo_io.file.read(holo_io.path.to_absolute(data["widgetfile"][i]["update"]))
+        data["eventcode"][i] = holo_io.file.read(holo_io.path.to_absolute(data["widgetfile"][i]["event"]))
         
         try:
-            exec(readfile(holo_io.path.to_absolute(data["widgetfile"][i]["init"])))
+            exec(holo_io.file.read(holo_io.path.to_absolute(data["widgetfile"][i]["init"])))
             data["var"][i] = widget.copy() #Move the data to its designated place
         except Exception as e:
             holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", i) + str(e))
