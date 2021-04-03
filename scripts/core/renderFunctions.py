@@ -70,7 +70,7 @@ class holo:
             ###Text rendering###
             self.texts = []
             for i in self.message.split("\n"):
-                self.texts += [FONTS["p-sans-serif"].render(i,True,[255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])]
+                self.texts += [FONTS["p-sans-serif"].render(i,True,holo_color.system.text_color)]
             ###
             self.button_width = holo_assets.prefabs.alert.ok_button.get_width()
             self.button_height = holo_assets.prefabs.alert.ok_button.get_height()
@@ -108,7 +108,7 @@ class holo:
 
             self.text_renders = []
             for i in self.display_text:
-                self.text_renders += [FONTS["p-sans-serif"].render(text_cutoff(i, int(self.width - (holo_assets.prefabs.dropdown.arrow_left.get_width() * 2) - int(self.width * 0.05)), FONTS["p-sans-serif"]), True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])]
+                self.text_renders += [FONTS["p-sans-serif"].render(text_cutoff(i, int(self.width - (holo_assets.prefabs.dropdown.arrow_left.get_width() * 2) - int(self.width * 0.05)), FONTS["p-sans-serif"]), True, holo_color.system.text_color)]
 
 
             self.text_render = self.text_renders[self.selected]
@@ -129,7 +129,7 @@ class holo:
 
             if pos[0] in range(self.pos[0], self.pos[0] + self.width) and pos[1] in range(self.pos[1], self.pos[1] + self.empty_surface.get_height()):
                 if pos[0] - self.pos[0] in range(0, holo_assets.prefabs.dropdown.arrow_left.get_width()):
-                    pygame.draw.rect(self.surface, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [0, 0, holo_assets.prefabs.dropdown.arrow_left.get_width(), self.surface.get_height()])
+                    pygame.draw.rect(self.surface, holo_color.system.text_color, [0, 0, holo_assets.prefabs.dropdown.arrow_left.get_width(), self.surface.get_height()])
                     screen.blit(self.surface, self.pos)
                     pygame.display.flip()
                     self.selected -= 1 if self.selected > 0 else 0
@@ -137,7 +137,7 @@ class holo:
                     self.surface = self.empty_surface.copy()
                     self.surface.blit(self.text_render, [holo_assets.prefabs.dropdown.arrow_left.get_width(), self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
                 if pos[0] - self.pos[0] in range(self.width - holo_assets.prefabs.dropdown.arrow_right.get_width(), self.width):
-                    pygame.draw.rect(self.surface, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [self.width - holo_assets.prefabs.dropdown.arrow_right.get_width(), 0, self.width , self.surface.get_height()])
+                    pygame.draw.rect(self.surface, holo_color.system.text_color, [self.width - holo_assets.prefabs.dropdown.arrow_right.get_width(), 0, self.width , self.surface.get_height()])
                     screen.blit(self.surface, self.pos)
                     pygame.display.flip()
                     self.selected += 1 if len(self.items) - 1 > self.selected else 0

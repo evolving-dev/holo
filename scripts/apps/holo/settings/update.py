@@ -40,7 +40,7 @@ if data["screen"] in ["time_format", "date_format"]:
         KEYBOARD.text = KEYBOARD.text[:-1]
 
     screen.blit(data["assets"]["textbox"], [SETTINGS["width"] // 10,int((SETTINGS["height"] // 10)*1.1)])
-    data["input_text"] = FONTS["p-sans-serif"].render(KEYBOARD.text, True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
+    data["input_text"] = FONTS["p-sans-serif"].render(KEYBOARD.text, True, holo_color.system.text_color)
     screen.blit(data["input_text"], [SETTINGS["width"] // 10,int((SETTINGS["height"] // 10)*1.1) + (data["assets"]["textbox"].get_height() // 2 - data["input_text"].get_height() // 2)])
     screen.blit(data["time_surface"] if data["screen"] == "time_format" else data["date_surface"], [0,0])
 
@@ -49,7 +49,7 @@ if data["screen"] in ["time_format", "date_format"]:
     except:
         data["time_date_example"] = SYSTEM_TEXTS["settings"]["general"]["example"] + SYSTEM_TEXTS["error"]
 
-    data["time_date_example"] = FONTS["p-sans-serif"].render(data["time_date_example"], True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
+    data["time_date_example"] = FONTS["p-sans-serif"].render(data["time_date_example"], True, holo_color.system.text_color)
     screen.blit(data["time_date_example"], [SETTINGS["width"] // 2, (SETTINGS["height"] // 2 - data["time_date_example"].get_height()) // 2])
 
 

@@ -64,7 +64,7 @@ for ROW_INDEX,ROW_ITEM in enumerate(KEYBOARD_LAYOUT):
 
         KEYMAP["lower"][char] = [[((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i),  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2], [((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i) + key.get_width(), key.get_height() +  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2]] #Add key to keymap
 
-        letter = FONTS["p-sans-serif"].render(char,True,[255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0]) #Render letter to blit onto the key
+        letter = FONTS["p-sans-serif"].render(char,True,holo_color.system.text_color) #Render letter to blit onto the key
 
         key.blit(letter,[key.get_width() // 2 - letter.get_width() // 2, key.get_height() // 2 - letter.get_height() // 2]) #Blit text onto key
         ROW.blit(key, (i * key.get_width() + 2*i ,0)) # Blit key onto row
@@ -116,7 +116,7 @@ for ROW_INDEX,ROW_ITEM in enumerate(KEYBOARD_LAYOUT):
 
         KEYMAP["upper"][char] = [[((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i),  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2], [((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i) + key.get_width(), key.get_height() +  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2]] #Add key to keymap
 
-        letter = FONTS["p-sans-serif"].render(char,True,[255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0]) # Render letter to blit onto the key
+        letter = FONTS["p-sans-serif"].render(char,True,holo_color.system.text_color) # Render letter to blit onto the key
 
         key.blit(letter,[key.get_width() // 2 - letter.get_width() // 2, key.get_height() // 2 - letter.get_height() // 2]) #Blit text onto key
         ROW.blit(key, (i * key.get_width() + 2*i ,0)) # Blit key onto row

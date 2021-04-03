@@ -48,7 +48,7 @@ except EOFError:
     del im #Cleanup if all of the frames have been converted
 
 LOADERWIDTH = holo_assets.system.loading[0].get_width()
-TEXTCACHE = FONTS["p-sans-serif"].render(SYSTEM_TEXTS["loading"], True, [0,0,0] if SETTINGS["theme"] == "light" else [255,255,255])
+TEXTCACHE = FONTS["p-sans-serif"].render(SYSTEM_TEXTS["loading"], True, holo_color.system.text_color)
 
 for i in range(len(holo_assets.system.loading)):
 

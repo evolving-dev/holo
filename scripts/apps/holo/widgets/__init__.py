@@ -14,7 +14,7 @@ data["assets"] = {
     "delete": pygame.image.fromstring(Image.open(holo_io.path.to_absolute(join(APP_PATH["assets"], "icons/delete-"+SETTINGS["theme"]+".png"))).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
 
 }
-data["assets"]["overlaySurface"].fill([0,0,0] if SETTINGS["theme"] == "dark" else [255,255,255])
+data["assets"]["overlaySurface"].fill(holo_color.system.theme_color)
 data["assets"]["overlaySurface"].set_alpha(70)
 
 #STEP 1: Create WIDGETFILE if it doesn't exist

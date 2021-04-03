@@ -9,7 +9,7 @@ for i in range(len(data["widgetcode"])):
         widget = data["var"][data["keycache"]].copy()
         exec(data["widgetcode"][data["keycache"]])
         data["var"][data["keycache"]] = widget.copy()
-        
+
         screen.blit(widget["surface"], [widget["x"], widget["y"]])
     except Exception as e:
         holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", data["keycache"]) + str(e))
@@ -33,7 +33,7 @@ try:
         else:
             data["var"][data["moveObjectName"]]["x"] = data["mousePos"][0] - (data["var"][data["moveObjectName"]]["size"][0] // 2)
             data["var"][data["moveObjectName"]]["y"] = data["mousePos"][1] - (data["var"][data["moveObjectName"]]["size"][1] // 2)
-            
+
     else:
         data["moveObjectName"] = ""
 except:
@@ -47,7 +47,7 @@ for i in data["var"]:
 if data["widgetDelete"] != "":
     data["assets"]["overlaySurface"].fill([255,0,0])
 else:
-    data["assets"]["overlaySurface"].fill([255,255,255] if SETTINGS["theme"] == "light" else [0,0,0])
+    data["assets"]["overlaySurface"].fill(holo_color.system.theme_color)
 
 
 #OVERLAY
@@ -58,15 +58,15 @@ screen.blit(data["assets"]["delete"], [SETTINGS["width"] - data["assets"]["home"
 screen.blit(data["components"]["app_selector"].surface, [int(data["assets"]["add"].get_width() * 1.5), ((SETTINGS["height"] - SETTINGS["height"] // 15) + (SETTINGS["height"] - data["assets"]["overlaySurface"].get_height())) // 2])
 
 if data["quit"]:
-    
+
     for i in data["var"].keys():
         data["widgetfile"][i]["x"] = data["var"][i]["x"]
         data["widgetfile"][i]["y"] = data["var"][i]["y"]
-    
+
     with open(holo_io.path.to_absolute("USERS/WIDGETS"), "r") as f:
         data["widgetfile_OLD"] = f.read()
         f.close()
-    
+
     try:
         data["widgetfile_OLD"] = eval(data["widgetfile_OLD"])
     except:
@@ -74,12 +74,12 @@ if data["quit"]:
         holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + SYSTEM_TEXTS["read_error"] + holo_io.path.to_absolute("USERS/WIDGETS")) #Show an alert of the exception thrown
         APP = "home"
         exec(APPLAUNCHER) #Start the home app if the WIDGETFILE could not be read
-    
+
     if data["widgetfile"] != data["widgetfile_OLD"]:
         with open(holo_io.path.to_absolute("USERS/WIDGETS"), "w") as f:
             f.write(str(data["widgetfile"]))
             f.close()
-    
+
     APP_CRASHED = False
     APP = "home"
     exec(APPLAUNCHER)
