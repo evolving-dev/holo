@@ -1,6 +1,6 @@
 if not APP_CRASHED:
     del ALERTS
-    ALERTS:list = [] #RESET ALERTS ONLY WHEN AN APP CRASHED. (keep error report)
+    ALERTS:list = [] #RESET ALERTS ONLY WHEN AN APP EXITED NORMALLY. (keep error report)
 
 if SETTINGS["init_sound"]:
     pygame.mixer.stop()

@@ -17,8 +17,8 @@ if data["screen"] == "menu":
 else:
     #Top bar to go back to the main menu
     screen.blit(data["assets"]["bar_background"], [0,0])
-    screen.blit(STATIC_CORE["back"], [0,0])
-    screen.blit(data["constants"]["menu_headers"][data["screen"]], [STATIC_CORE["back"].get_width(), SETTINGS["height"] // 20 - (data["constants"]["menu_headers"][data["screen"]].get_height() // 2)])
+    screen.blit(SYSTEM_ASSETS["back"], [0,0])
+    screen.blit(data["constants"]["menu_headers"][data["screen"]], [SYSTEM_ASSETS["back"].get_width(), SETTINGS["height"] // 20 - (data["constants"]["menu_headers"][data["screen"]].get_height() // 2)])
 
 if data["screen"] == "general":
     #General settings
@@ -40,7 +40,7 @@ if data["screen"] in ["time_format", "date_format"]:
         KEYBOARD.text = KEYBOARD.text[:-1]
 
     screen.blit(data["assets"]["textbox"], [SETTINGS["width"] // 10,int((SETTINGS["height"] // 10)*1.1)])
-    data["input_text"] = FONTS["p-sans-serif"].render(KEYBOARD.text, True, STATIC_CORE["text_color"])
+    data["input_text"] = FONTS["p-sans-serif"].render(KEYBOARD.text, True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
     screen.blit(data["input_text"], [SETTINGS["width"] // 10,int((SETTINGS["height"] // 10)*1.1) + (data["assets"]["textbox"].get_height() // 2 - data["input_text"].get_height() // 2)])
     screen.blit(data["time_surface"] if data["screen"] == "time_format" else data["date_surface"], [0,0])
 
@@ -49,7 +49,7 @@ if data["screen"] in ["time_format", "date_format"]:
     except:
         data["time_date_example"] = SYSTEM_TEXTS["settings"]["general"]["example"] + SYSTEM_TEXTS["error"]
 
-    data["time_date_example"] = FONTS["p-sans-serif"].render(data["time_date_example"], True, STATIC_CORE["text_color"])
+    data["time_date_example"] = FONTS["p-sans-serif"].render(data["time_date_example"], True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
     screen.blit(data["time_date_example"], [SETTINGS["width"] // 2, (SETTINGS["height"] // 2 - data["time_date_example"].get_height()) // 2])
 
 
@@ -65,8 +65,8 @@ if data["screen"] == "autostart":
     if (len(data["autostart"]["process_list"]) == 0):
         screen.blit(data["autostart"]["empty"], [SETTINGS["width"] // 2 - data["autostart"]["empty"].get_width() // 2, int((SETTINGS["height"] // 3)*1.05)])
     else:
-        screen.blit(STATIC_CORE["arrows"]["left"], [0, SETTINGS["height"] // 3])
-        screen.blit(STATIC_CORE["arrows"]["right"], [SETTINGS["width"] - STATIC_CORE["arrows"]["right"].get_width(), int((SETTINGS["height"] // 3)*1.05)])
+        screen.blit(SYSTEM_ASSETS["arrows"]["left"], [0, SETTINGS["height"] // 3])
+        screen.blit(SYSTEM_ASSETS["arrows"]["right"], [SETTINGS["width"] - SYSTEM_ASSETS["arrows"]["right"].get_width(), int((SETTINGS["height"] // 3)*1.05)])
         screen.blit(data["autostart"]["processes"][data["autostart"]["active"]]["main"], [0,SETTINGS["height"] // 3])
         screen.blit(data["autostart"]["processes"][data["autostart"]["active"]]["checkbox"].surface, data["autostart"]["processes"]["test"]["checkbox"].pos)
 

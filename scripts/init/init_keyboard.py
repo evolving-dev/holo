@@ -64,14 +64,14 @@ for ROW_INDEX,ROW_ITEM in enumerate(KEYBOARD_LAYOUT):
 
         KEYMAP["lower"][char] = [[((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i),  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2], [((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i) + key.get_width(), key.get_height() +  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2]] #Add key to keymap
 
-        letter = FONTS["p-sans-serif"].render(char,True,[0,0,0] if SETTINGS["theme"] == "light" else [255,255,255]) #Render letter to blit onto the key
+        letter = FONTS["p-sans-serif"].render(char,True,[255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0]) #Render letter to blit onto the key
 
         key.blit(letter,[key.get_width() // 2 - letter.get_width() // 2, key.get_height() // 2 - letter.get_height() // 2]) #Blit text onto key
         ROW.blit(key, (i * key.get_width() + 2*i ,0)) # Blit key onto row
 
-    STATIC_CORE["keyboard_lower"].blit(ROW,((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2 ,ROW_INDEX * key.get_height())) #Blit row onto keyboard
+    SYSTEM_ASSETS["keyboard_lower"].blit(ROW,((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2 ,ROW_INDEX * key.get_height())) #Blit row onto keyboard
 
-STATIC_CORE["keyboard_lower"].blit(SPACEBAR, [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height()]) #Add the spacebar
+SYSTEM_ASSETS["keyboard_lower"].blit(SPACEBAR, [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height()]) #Add the spacebar
 
 KEYMAP["lower"][" "] = [[SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height() + SETTINGS["height"] // 2], [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) + SPACEBAR.get_width(),4 * key.get_height() + SPACEBAR.get_height() + SETTINGS["height"] // 2]] # Add the spacebar to the keymap
 
@@ -116,13 +116,13 @@ for ROW_INDEX,ROW_ITEM in enumerate(KEYBOARD_LAYOUT):
 
         KEYMAP["upper"][char] = [[((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i),  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2], [((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2) + (i * key.get_width() + 2*i) + key.get_width(), key.get_height() +  (ROW_INDEX * key.get_height()) + SETTINGS["height"] // 2]] #Add key to keymap
 
-        letter = FONTS["p-sans-serif"].render(char,True,[0,0,0] if SETTINGS["theme"] == "light" else [255,255,255]) # Render letter to blit onto the key
+        letter = FONTS["p-sans-serif"].render(char,True,[255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0]) # Render letter to blit onto the key
 
         key.blit(letter,[key.get_width() // 2 - letter.get_width() // 2, key.get_height() // 2 - letter.get_height() // 2]) #Blit text onto key
         ROW.blit(key, (i * key.get_width() + 2*i ,0)) # Blit key onto row
 
-    STATIC_CORE["keyboard_upper"].blit(ROW,((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2 ,ROW_INDEX * key.get_height())) #Blit row onto keyboard
+    SYSTEM_ASSETS["keyboard_upper"].blit(ROW,((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2 ,ROW_INDEX * key.get_height())) #Blit row onto keyboard
 
-STATIC_CORE["keyboard_upper"].blit(SPACEBAR, [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height()]) #Add the spacebar
+SYSTEM_ASSETS["keyboard_upper"].blit(SPACEBAR, [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height()]) #Add the spacebar
 
 KEYMAP["upper"][" "] = [[SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height() + SETTINGS["height"] // 2], [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) + SPACEBAR.get_width(),4 * key.get_height() + SPACEBAR.get_height() + SETTINGS["height"] // 2]] # Add the spacebar to the keymap

@@ -84,7 +84,7 @@ for data["page"] in range(math.ceil(len(data["apps"]["apps"]) / (int(SETTINGS["h
                     
                 data["surfaces"][data["page"]].blit(data["apps"]["icons"][data["apps"]["apps"][data["page"]*6*data["layout"]["rows"] + row*6 + m]] , (data["layout"]["margin_horizontal"] + m*(SETTINGS["width"] // 6) ,data["layout"]["margin_vertical"] + row*(SETTINGS["width"] // 6)))
                 
-                data["textsurfacecache"] = FONTS["p-sans-serif"].render(data["cache"]["displayname"].split("\n")[0] + "..." if "\n" in data["cache"]["displayname"] else data["cache"]["displayname"] , True, STATIC_CORE["text_color"])
+                data["textsurfacecache"] = FONTS["p-sans-serif"].render(data["cache"]["displayname"].split("\n")[0] + "..." if "\n" in data["cache"]["displayname"] else data["cache"]["displayname"] , True, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0])
                 
                 data["surfaces"][data["page"]].blit(data["textsurfacecache"], ((data["layout"]["margin_horizontal"] + m*(SETTINGS["width"] // 6) + ((SETTINGS["width"] // 18) - data["textsurfacecache"].get_width() // 2) ,data["layout"]["margin_vertical"] + row*(SETTINGS["width"] // 6) + SETTINGS["width"] // 9)))
                 

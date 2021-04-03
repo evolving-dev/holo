@@ -1,7 +1,7 @@
 while not CLOSE:
     if TIMEOUT > 0: #If screen timeout not reached
         if DISPLAY_BACKGROUND:
-            screen.blit(STATIC_CORE["background"],(0,0))
+            screen.blit(SYSTEM_ASSETS["background"],(0,0))
         else:
             screen.fill([0,0,0])
 

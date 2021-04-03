@@ -9,7 +9,7 @@ data["quit"] = False
 
 data["assets"] = {
     "overlaySurface": pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 10]),
-    "home": STATIC_CORE["home"],
+    "home": SYSTEM_ASSETS["home"],
     "add": pygame.image.fromstring(Image.open(holo_io.path.to_absolute(join(APP_PATH["assets"], "icons/add-"+SETTINGS["theme"]+".png"))).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
     "delete": pygame.image.fromstring(Image.open(holo_io.path.to_absolute(join(APP_PATH["assets"], "icons/delete-"+SETTINGS["theme"]+".png"))).resize((SETTINGS["height"]//12,SETTINGS["height"]//12)).tobytes(),(SETTINGS["height"]//12,SETTINGS["height"]//12),"RGBA").convert_alpha(),
 
