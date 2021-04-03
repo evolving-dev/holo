@@ -2,9 +2,9 @@ data["mousePos"] = list(pygame.mouse.get_pos())
 
 
 if event.type == pygame.MOUSEBUTTONUP:
-    if data["screen"] != "menu" and data["mousePos"][0] in range(0, SYSTEM_ASSETS["back"].get_width()) and data["mousePos"][1] in range(0, SYSTEM_ASSETS["back"].get_height()):
+    if data["screen"] != "menu" and data["mousePos"][0] in range(0, holo_assets.buttons.back.get_width()) and data["mousePos"][1] in range(0, holo_assets.buttons.back.get_height()):
         #Back button
-        pygame.draw.rect(screen, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [0,0,SYSTEM_ASSETS["back"].get_width(),SYSTEM_ASSETS["back"].get_height()])
+        pygame.draw.rect(screen, [255,255,255] if SETTINGS["theme"] == "dark" else [0,0,0], [0,0,holo_assets.buttons.back.get_width(),holo_assets.buttons.back.get_height()])
         pygame.display.flip()
         data["screen"] = "menu"
         KEYBOARD.reset()
@@ -57,13 +57,13 @@ if event.type == pygame.MOUSEBUTTONUP:
         if data["screen"] == "autostart":
             if len(data["autostart"]["process_list"]) != 0:
                 data["autostart"]["processes"][data["autostart"]["active"]]["checkbox"].detect_click(data["mousePos"])
-            if data["mousePos"][0] in range(0, SYSTEM_ASSETS["arrows"]["left"].get_width()) and data["mousePos"][1] in range(SETTINGS["height"] // 3, SETTINGS["height"] // 3 + SYSTEM_ASSETS["arrows"]["left"].get_height()):
+            if data["mousePos"][0] in range(0, holo_assets.arrows.left.get_width()) and data["mousePos"][1] in range(SETTINGS["height"] // 3, SETTINGS["height"] // 3 + holo_assets.arrows.left.get_height()):
                 try:
                     data["autostart"]["active"] = data["autostart"]["process_list"][data["autostart"]["process_list"].index(data["autostart"]["active"]) - 1]
                 except:
                     if len(data["autostart"]["process_list"]) != 0:
                         data["autostart"]["active"] = data["autostart"]["process_list"][0]
-            if data["mousePos"][0] in range(SETTINGS["width"] - SYSTEM_ASSETS["arrows"]["left"].get_width(), SETTINGS["width"]) and data["mousePos"][1] in range(SETTINGS["height"] // 3, SETTINGS["height"] // 3 + SYSTEM_ASSETS["arrows"]["left"].get_height()):
+            if data["mousePos"][0] in range(SETTINGS["width"] - holo_assets.arrows.left.get_width(), SETTINGS["width"]) and data["mousePos"][1] in range(SETTINGS["height"] // 3, SETTINGS["height"] // 3 + holo_assets.arrows.left.get_height()):
                 try:
                     data["autostart"]["active"] = data["autostart"]["process_list"][data["autostart"]["process_list"].index(data["autostart"]["active"]) + 1]
                 except:

@@ -11,9 +11,15 @@ class holo_assets:
             ok_button = holo_gui.load_image("assets/images/icons/buttons/OK/okbutton-"+SETTINGS["theme"]+".png", (SETTINGS["height"]//5,SETTINGS["height"]//10))
 
         class surfaces:
-            s1_1 = holo_gui.load_image("assets/images/icons/surface_1_1_"+SETTINGS["theme"]+".png", (SETTINGS["height"]//5,SETTINGS["height"]//5))
-            s4_1 = holo_gui.load_image("assets/images/icons/surface_4_1_"+SETTINGS["theme"]+".png", (SETTINGS["height"]//5*4,SETTINGS["height"]//5))
-            s2_1 = holo_gui.load_image("assets/images/icons/surface_2_1_"+SETTINGS["theme"]+".png", (SETTINGS["width"]//5,SETTINGS["width"]//10))
+            s_1_1 = holo_gui.load_image("assets/images/icons/surface_1_1_"+SETTINGS["theme"]+".png", (SETTINGS["height"]//5,SETTINGS["height"]//5))
+            s_4_1 = holo_gui.load_image("assets/images/icons/surface_4_1_"+SETTINGS["theme"]+".png", (SETTINGS["height"]//5*4,SETTINGS["height"]//5))
+            s_2_1 = holo_gui.load_image("assets/images/icons/surface_2_1_"+SETTINGS["theme"]+".png", (SETTINGS["width"]//5,SETTINGS["width"]//10))
+
+        class dropdown:
+            dropdown_button = holo_gui.load_image("assets/images/system/dropdown/dropdown-"+SETTINGS["theme"]+".png", (SETTINGS["width"]//20,SETTINGS["width"]//20))
+            arrow_left = holo_gui.load_image("assets/images/system/dropdown/left_arrow-"+SETTINGS["theme"]+".png", (SETTINGS["width"]//20,SETTINGS["width"]//20))
+            arrow_right = holo_gui.load_image("assets/images/system/dropdown/right_arrow-"+SETTINGS["theme"]+".png", (SETTINGS["width"]//20,SETTINGS["width"]//20))
+
 
     class keyboard:
 
@@ -37,3 +43,8 @@ class holo_assets:
         main = holo_gui.load_image("assets/images/system/overlays/overlay-"+SETTINGS["theme"]+".png", (SETTINGS["width"],SETTINGS["height"]))
         light = holo_gui.load_image("assets/images/system/overlays/overlay-light.png", (SETTINGS["width"],SETTINGS["height"]))
         dark = holo_gui.load_image("assets/images/system/overlays/overlay-dark.png", (SETTINGS["width"],SETTINGS["height"]))
+
+    class system:
+
+        background = Image.open(join(PATH,join("assets/images/backgrounds",SETTINGS["background"])))
+        loading = []

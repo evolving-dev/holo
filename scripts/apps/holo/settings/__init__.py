@@ -10,7 +10,7 @@ data["assets"] = {
     "display": pygame.image.fromstring(Image.open(holo_io.path.to_absolute(join(APP_PATH["assets"] , "images/icons/display-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["height"] // 5,SETTINGS["height"] // 5)).tobytes(),(SETTINGS["height"] // 5,SETTINGS["height"] // 5),"RGBA").convert_alpha(),
     "network": pygame.image.fromstring(Image.open(holo_io.path.to_absolute(join(APP_PATH["assets"] , "images/icons/network-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["height"] // 5,SETTINGS["height"] // 5)).tobytes(),(SETTINGS["height"] // 5,SETTINGS["height"] // 5),"RGBA").convert_alpha(),
     "troubleshooting": pygame.image.fromstring(Image.open(holo_io.path.to_absolute(join(APP_PATH["assets"] , "images/icons/troubleshooting-" + SETTINGS["theme"] + ".png"))).resize((SETTINGS["height"] // 5,SETTINGS["height"] // 5)).tobytes(),(SETTINGS["height"] // 5,SETTINGS["height"] // 5),"RGBA").convert_alpha(),
-    "home":SYSTEM_ASSETS["home"],
+    "home":holo_assets.buttons.home,
     "bar_background": pygame.Surface([SETTINGS["width"], SETTINGS["height"] // 10]),
     "textbox": pygame.Surface([SETTINGS["width"] // 5 * 4, SETTINGS["height"] // 10]),
     "button_change": pygame.Surface([SETTINGS["width"] // 8,int(FONTS["p-sans-serif"].render("CHANGE", False, [0,0,0]).get_height() * 1.5)]),

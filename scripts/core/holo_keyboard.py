@@ -7,7 +7,7 @@ class holo_keyboard:
             self.text = ""
             self.uppercase = False
             self.visible = False
-            self.surface = {"lower" : SYSTEM_ASSETS["keyboard_lower"], "upper" : SYSTEM_ASSETS["keyboard_upper"]} #Load keyboard
+            self.surface = {"lower" : holo_assets.keyboard.lower, "upper" : holo_assets.keyboard.upper} #Load keyboard
             self.keymap = KEYMAP
 
         def reset(self):

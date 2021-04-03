@@ -1,4 +1,4 @@
-screen.blit(SYSTEM_ASSETS["overlay"], (0,0)) #Blit black / white overlay onto the background image
+screen.blit(holo_assets.overlays.main, (0,0)) #Blit black / white overlay onto the background image
 
 
 if data["cache"]["swipeframe"] == 10:

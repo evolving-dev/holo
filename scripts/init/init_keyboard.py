@@ -69,9 +69,9 @@ for ROW_INDEX,ROW_ITEM in enumerate(KEYBOARD_LAYOUT):
         key.blit(letter,[key.get_width() // 2 - letter.get_width() // 2, key.get_height() // 2 - letter.get_height() // 2]) #Blit text onto key
         ROW.blit(key, (i * key.get_width() + 2*i ,0)) # Blit key onto row
 
-    SYSTEM_ASSETS["keyboard_lower"].blit(ROW,((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2 ,ROW_INDEX * key.get_height())) #Blit row onto keyboard
+    holo_assets.keyboard.lower.blit(ROW,((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2 ,ROW_INDEX * key.get_height())) #Blit row onto keyboard
 
-SYSTEM_ASSETS["keyboard_lower"].blit(SPACEBAR, [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height()]) #Add the spacebar
+holo_assets.keyboard.lower.blit(SPACEBAR, [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height()]) #Add the spacebar
 
 KEYMAP["lower"][" "] = [[SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height() + SETTINGS["height"] // 2], [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) + SPACEBAR.get_width(),4 * key.get_height() + SPACEBAR.get_height() + SETTINGS["height"] // 2]] # Add the spacebar to the keymap
 
@@ -121,8 +121,8 @@ for ROW_INDEX,ROW_ITEM in enumerate(KEYBOARD_LAYOUT):
         key.blit(letter,[key.get_width() // 2 - letter.get_width() // 2, key.get_height() // 2 - letter.get_height() // 2]) #Blit text onto key
         ROW.blit(key, (i * key.get_width() + 2*i ,0)) # Blit key onto row
 
-    SYSTEM_ASSETS["keyboard_upper"].blit(ROW,((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2 ,ROW_INDEX * key.get_height())) #Blit row onto keyboard
+    holo_assets.keyboard.upper.blit(ROW,((SETTINGS["width"] // 2) - (len(ROW_ITEM) * key.get_width()) // 2 ,ROW_INDEX * key.get_height())) #Blit row onto keyboard
 
-SYSTEM_ASSETS["keyboard_upper"].blit(SPACEBAR, [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height()]) #Add the spacebar
+holo_assets.keyboard.upper.blit(SPACEBAR, [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height()]) #Add the spacebar
 
 KEYMAP["upper"][" "] = [[SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) ,4 * key.get_height() + SETTINGS["height"] // 2], [SETTINGS["width"] // 2 - (SPACEBAR.get_width() // 2) + SPACEBAR.get_width(),4 * key.get_height() + SPACEBAR.get_height() + SETTINGS["height"] // 2]] # Add the spacebar to the keymap

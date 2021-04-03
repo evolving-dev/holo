@@ -17,8 +17,8 @@ if data["screen"] == "menu":
 else:
     #Top bar to go back to the main menu
     screen.blit(data["assets"]["bar_background"], [0,0])
-    screen.blit(SYSTEM_ASSETS["back"], [0,0])
-    screen.blit(data["constants"]["menu_headers"][data["screen"]], [SYSTEM_ASSETS["back"].get_width(), SETTINGS["height"] // 20 - (data["constants"]["menu_headers"][data["screen"]].get_height() // 2)])
+    screen.blit(holo_assets.buttons.back, [0,0])
+    screen.blit(data["constants"]["menu_headers"][data["screen"]], [holo_assets.buttons.back.get_width(), SETTINGS["height"] // 20 - (data["constants"]["menu_headers"][data["screen"]].get_height() // 2)])
 
 if data["screen"] == "general":
     #General settings
@@ -65,8 +65,8 @@ if data["screen"] == "autostart":
     if (len(data["autostart"]["process_list"]) == 0):
         screen.blit(data["autostart"]["empty"], [SETTINGS["width"] // 2 - data["autostart"]["empty"].get_width() // 2, int((SETTINGS["height"] // 3)*1.05)])
     else:
-        screen.blit(SYSTEM_ASSETS["arrows"]["left"], [0, SETTINGS["height"] // 3])
-        screen.blit(SYSTEM_ASSETS["arrows"]["right"], [SETTINGS["width"] - SYSTEM_ASSETS["arrows"]["right"].get_width(), int((SETTINGS["height"] // 3)*1.05)])
+        screen.blit(holo_assets.arrows.left, [0, SETTINGS["height"] // 3])
+        screen.blit(holo_assets.arrows.right, [SETTINGS["width"] - holo_assets.arrows.right.get_width(), int((SETTINGS["height"] // 3)*1.05)])
         screen.blit(data["autostart"]["processes"][data["autostart"]["active"]]["main"], [0,SETTINGS["height"] // 3])
         screen.blit(data["autostart"]["processes"][data["autostart"]["active"]]["checkbox"].surface, data["autostart"]["processes"]["test"]["checkbox"].pos)
 
