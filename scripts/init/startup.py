@@ -53,15 +53,13 @@ screen.blit(LOADING,(0,0))
 screen.blit(FONTS["p-sans-serif-small"].render(SYSTEM_TEXTS["startup_2"], True, [150,150,150]), [0, SETTINGS["height"] - SETTINGS["width"]//30])
 pygame.display.flip()
 
-exec(holo_io.file.read(join(PATH, "scripts/init/initStaticCore.py")))#INITIALIZE STATIC OBJECTS
+exec(holo_io.file.read(join(PATH, "scripts/init/init_static_objects.py")))#INITIALIZE STATIC OBJECTS
 
 screen.fill([0,0,0])
 screen.blit(LOADING,(0,0))
 screen.blit(FONTS["p-sans-serif-small"].render(SYSTEM_TEXTS["startup_3"], True, [150,150,150]), [0, SETTINGS["height"] - SETTINGS["width"]//30])
 pygame.display.flip()
 #GLOBAL VARIABLES (ALL CAPS VARIABLES)
-STATIC:dict = {} #Static objects, such as texts, which persist until the given app was closed.
-DISPLAY = [SETTINGS["width"],SETTINGS["height"]]
 CLOSE = False #LOOP STATE
 DISPLAY_BACKGROUND = True
 ALERT_CLICKED = False
