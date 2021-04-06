@@ -1,0 +1,1 @@
+{'width': 1280, 'height': 720, 'lang': 'de-DE','background':'standard.png', 'theme':'dark', 'timeout':69420, 'keyboard':'qwertz', 'timeformat': '%H:%M:%S','dateformat':'%d.%m.%Y', 'init_sound': 0, 'keyboard_mode': 'onscreen', 'connectivity_enabled': 1}

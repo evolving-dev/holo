@@ -18,7 +18,7 @@ for i in range(len(data["widgetcode"])):
         del data["widgetcode"][data["keycache"]]
         del data["eventcode"][data["keycache"]]
         data["widgetfile"][data["keycache"]]["enabled"] = 0
-        with open(holo_io.path.to_absolute("USERS/WIDGETS"), "w") as f:
+        with open(holo_io.path.to_absolute("storage/system/widgets"), "w") as f:
             f.write(str(data["widgetfile"]))
             f.close()
 
@@ -63,7 +63,7 @@ if data["quit"]:
         data["widgetfile"][i]["x"] = data["var"][i]["x"]
         data["widgetfile"][i]["y"] = data["var"][i]["y"]
 
-    with open(holo_io.path.to_absolute("USERS/WIDGETS"), "r") as f:
+    with open(holo_io.path.to_absolute("storage/system/widgets"), "r") as f:
         data["widgetfile_OLD"] = f.read()
         f.close()
 
@@ -71,12 +71,12 @@ if data["quit"]:
         data["widgetfile_OLD"] = eval(data["widgetfile_OLD"])
     except:
         APP_CRASHED = True
-        holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + SYSTEM_TEXTS["read_error"] + holo_io.path.to_absolute("USERS/WIDGETS")) #Show an alert of the exception thrown
+        holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + SYSTEM_TEXTS["read_error"] + holo_io.path.to_absolute("storage/system/widgets")) #Show an alert of the exception thrown
         APP = "home"
         exec(APPLAUNCHER) #Start the home app if the WIDGETFILE could not be read
 
     if data["widgetfile"] != data["widgetfile_OLD"]:
-        with open(holo_io.path.to_absolute("USERS/WIDGETS"), "w") as f:
+        with open(holo_io.path.to_absolute("storage/system/widgets"), "w") as f:
             f.write(str(data["widgetfile"]))
             f.close()
 

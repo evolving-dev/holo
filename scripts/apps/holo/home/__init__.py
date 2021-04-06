@@ -1,8 +1,8 @@
 FPS = 15
 
 data["assets"] = {
-    "default-icon": pygame.image.fromstring(Image.open(holo_io.path.to_absolute("assets/images/icons/default.png")).resize((SETTINGS["width"] // 10,SETTINGS["width"] // 10)).convert("RGBA").tobytes(),(SETTINGS["width"] // 10,SETTINGS["width"] // 10),"RGBA").convert_alpha(),
-    "warning":pygame.image.fromstring(Image.open(holo_io.path.to_absolute("assets/images/system/warning.png")).resize((SETTINGS["width"] // 20,SETTINGS["width"] // 20)).tobytes(),(SETTINGS["width"] // 20,SETTINGS["width"] // 20),"RGBA").convert_alpha()
+    "default-icon": holo_gui.load_image("assets/images/icons/default.png", (SETTINGS["width"] // 10,SETTINGS["width"] // 10)),
+    "warning": holo_gui.load_image("assets/images/system/warning.png", (SETTINGS["width"] // 20,SETTINGS["width"] // 20))
 } #Load in image assets
 
 data["apps"] = {
@@ -60,7 +60,7 @@ for i in PATHFILE.keys(): #For every app in the Pathfile
 
         else:
 
-            data["apps"]["icons"][i] = pygame.image.fromstring(Image.open(data["apps"]["appicons"][i]).resize((SETTINGS["width"] // 10,SETTINGS["width"] // 10)).convert("RGBA").tobytes(),(SETTINGS["width"] // 10,SETTINGS["width"] // 10),"RGBA").convert_alpha() #Load and convert the icon
+            data["apps"]["icons"][i] = holo_gui.load_image(data["apps"]["appicons"][i], (SETTINGS["width"] // 10,SETTINGS["width"] // 10)) #Load and convert the icon
 
 
 

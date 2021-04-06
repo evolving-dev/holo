@@ -30,7 +30,7 @@ clock = pygame.time.Clock()
 pygame.display.set_caption("Startup - HOLO" if os.path.isdir(join(PATH,"USERS")) else "Setup - HOLO")
 
 exec(holo_io.file.read(join(PATH, "scripts/init/fonts_setup.py")))
-STARTUP_LANG_FILE = eval(holo_io.file.read(join(PATH,"assets/text/startup_en-US"))) if not os.path.isfile(join(PATH,"USERS/SETTINGS")) else eval(holo_io.file.read(join(PATH,"assets/text/startup_"+eval(holo_io.file.read(join(PATH,"USERS/settings")))["lang"])))
+STARTUP_LANG_FILE = eval(holo_io.file.read(join(PATH,"assets/text/startup_en-US"))) if not os.path.isfile(join(PATH,"storage/system/settings")) else eval(holo_io.file.read(join(PATH,"assets/text/startup_"+eval(holo_io.file.read(join(PATH,"storage/system/settings")))["lang"])))
 STARTUP_TEXTS:dict = {}
 for i in list(STARTUP_LANG_FILE.keys()):
     STARTUP_TEXTS[i] = FONTS["small"].render(STARTUP_LANG_FILE[i],True,[255]*3)

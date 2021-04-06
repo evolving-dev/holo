@@ -4,17 +4,17 @@ exec(holo_io.file.read("scripts/init/cleanup_launcher.py"))#Clean up data the la
 
 exec(holo_io.file.read("scripts/core/holo_logging.py")) #Initialize logging functionality
 
-SETTINGS = eval(holo_io.file.read(join(PATH,"USERS/settings"))) #INITIALIZE SETTINGS
+SETTINGS = eval(holo_io.file.read(join(PATH,"storage/system/settings"))) #INITIALIZE SETTINGS
 
 pygame.init()
 
 exec(holo_io.file.read(join(PATH, "scripts/init/fonts_main.py")))#INITIALIZE FONTS
 
 try:
-    PATHFILE = eval(holo_io.file.read(join(PATH,"data/PATH"))) #APP PATH FILE
+    PATHFILE = eval(holo_io.file.read(join(PATH,"storage/system/path"))) #APP PATH FILE
 except:
     try:
-        PATHFILE_ERROR = holo_io.file.read(join(PATH,"data/PATH"))
+        PATHFILE_ERROR = holo_io.file.read(join(PATH,"storage/system/path"))
         holo_logging.log_critical("ERROR: HOLO crashed due to an unexpected error. Please report the following error message on HOLO's GitHub page: HOLO_STARTUP: PATHFILE_READ_ERROR: "+ str(PATHFILE_ERROR), system=True)
     except:
         holo_logging.log_critical("ERROR: HOLO crashed due to an unexpected error. Please report the following error message on HOLO's GitHub page: HOLO_STARTUP: PATHFILE_READ_ERROR: NOT_FOUND.", system=True)
@@ -32,7 +32,7 @@ screen = pygame.display.set_mode([SETTINGS["width"],SETTINGS["height"]])
 clock = pygame.time.Clock()
 pygame.display.set_caption("HOLO")
 PLATFORM = "HOLO"
-AUTOSTART = eval(holo_io.file.read("data/AUTOSTART"))
+AUTOSTART = eval(holo_io.file.read("storage/system/autostart"))
 LOADING = pygame.image.load(join(PATH,"assets/images/icons/startup.png")).convert_alpha()
 screen.fill([0,0,0])
 screen.blit(LOADING,(0,0))

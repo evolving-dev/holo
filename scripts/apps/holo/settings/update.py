@@ -1,4 +1,4 @@
-screen.blit(data["assets"]["overlay"], [0,0]) #Render the overlay
+screen.blit(holo_assets.overlays.main, [0,0]) #Render the overlay
 
 #Bottom bar and home button
 if not KEYBOARD.visible:

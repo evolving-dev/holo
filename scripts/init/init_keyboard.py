@@ -2,12 +2,12 @@
 #KEYBOARD
 
 #Load the Keytemplate and the special keys
-KEYTEMPLATE = pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_1_1_"+SETTINGS["theme"]+".png")).resize((int(SETTINGS["width"]//15),int(SETTINGS["height"]//10))).tobytes(),(SETTINGS["width"]//15,SETTINGS["height"]//10),"RGBA").convert_alpha()
-SPACEBAR = pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_8_1_"+SETTINGS["theme"]+".png")).resize(((SETTINGS["height"]//10)*8 if (SETTINGS["height"]//10)*8 < SETTINGS["width"] else int(SETTINGS["width"] // 1.5),SETTINGS["height"]//10)).tobytes(),((SETTINGS["height"]//10)*8 if (SETTINGS["height"]//10)*8 < SETTINGS["width"] else int(SETTINGS["width"] // 1.5),SETTINGS["height"]//10),"RGBA").convert_alpha()
-SHIFT = pygame.image.fromstring(Image.open(join(PATH,"assets/images/system/keyboard/shift-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//20,SETTINGS["height"]//20)).tobytes(),(SETTINGS["height"]//20,SETTINGS["height"]//20),"RGBA").convert_alpha()
-BACKSPACE = pygame.image.fromstring(Image.open(join(PATH,"assets/images/system/keyboard/backspace-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//10,SETTINGS["height"]//20)).tobytes(),(SETTINGS["height"]//10,SETTINGS["height"]//20),"RGBA").convert_alpha()
-ENTER = pygame.image.fromstring(Image.open(join(PATH,"assets/images/system/keyboard/enter-"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//20,SETTINGS["height"]//20)).tobytes(),(SETTINGS["height"]//20,SETTINGS["height"]//20),"RGBA").convert_alpha()
-BACKSPACE_SURFACE = pygame.image.fromstring(Image.open(join(PATH,"assets/images/icons/surface_2_1_"+SETTINGS["theme"]+".png")).resize((SETTINGS["height"]//5,SETTINGS["height"]//10)).tobytes(),(SETTINGS["height"]//5,SETTINGS["height"]//10),"RGBA").convert_alpha()
+KEYTEMPLATE = holo_gui.load_image("assets/images/icons/surface_1_1_"+SETTINGS["theme"]+".png", (int(SETTINGS["width"]//15),int(SETTINGS["height"]//10)))
+SPACEBAR = holo_gui.load_image("assets/images/icons/surface_8_1_"+SETTINGS["theme"]+".png", ((SETTINGS["height"]//10)*8 if (SETTINGS["height"]//10)*8 < SETTINGS["width"] else int(SETTINGS["width"] // 1.5),SETTINGS["height"]//10))
+SHIFT = holo_gui.load_image("assets/images/system/keyboard/shift-"+SETTINGS["theme"]+".png", (SETTINGS["height"]//20,SETTINGS["height"]//20))
+BACKSPACE = holo_gui.load_image("assets/images/system/keyboard/backspace-"+SETTINGS["theme"]+".png", (SETTINGS["height"]//10,SETTINGS["height"]//20))
+ENTER = holo_gui.load_image("assets/images/system/keyboard/enter-"+SETTINGS["theme"]+".png", (SETTINGS["height"]//20,SETTINGS["height"]//20))
+BACKSPACE_SURFACE =holo_gui.load_image("assets/images/icons/surface_2_1_"+SETTINGS["theme"]+".png", (SETTINGS["height"]//5,SETTINGS["height"]//10))
 
 
 #BLIT SPECIAL KEYS ONTO SURFACES
