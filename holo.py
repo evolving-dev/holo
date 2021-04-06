@@ -27,7 +27,7 @@ ICON = pygame.image.load(join(PATH,'assets/images/icons/icon.png'))
 pygame.display.set_icon(ICON)
 screen = pygame.display.set_mode(resolution)
 clock = pygame.time.Clock()
-pygame.display.set_caption("Startup - HOLO" if os.path.isdir(join(PATH,"USERS")) else "Setup - HOLO")
+pygame.display.set_caption("Startup - HOLO" if os.path.isdir(join(PATH,"storage")) else "Setup - HOLO")
 
 exec(holo_io.file.read(join(PATH, "scripts/init/fonts_setup.py")))
 STARTUP_LANG_FILE = eval(holo_io.file.read(join(PATH,"assets/text/startup_en-US"))) if not os.path.isfile(join(PATH,"storage/system/settings")) else eval(holo_io.file.read(join(PATH,"assets/text/startup_"+eval(holo_io.file.read(join(PATH,"storage/system/settings")))["lang"])))
@@ -42,7 +42,7 @@ while not done:
     if error_loop == 0:
         for n,m in enumerate(list(STARTUP_TEXTS.keys())):
             screen.blit(STARTUP_TEXTS[m],((resolution[0]-STARTUP_TEXTS[m].get_width())//2,(n+1)*resolution[1]//8))
-        if os.path.isdir(join(PATH,"USERS")):
+        if os.path.isdir(join(PATH,"storage")):
             run_setup = 0
             pygame.display.flip()
             done = True
