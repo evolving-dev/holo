@@ -61,7 +61,7 @@ while not CLOSE:
                 TIMEOUT = SETTINGS["timeout"]
             if event.type == pygame.MOUSEBUTTONUP:
                 if len(ALERTS) >= 1:
-                    ALERT_CLICKED = ALERTS[-1:][0].detectClick(list(pygame.mouse.get_pos())) #Only detect most recent alert
+                    ALERT_CLICKED = ALERTS[-1:][0].detect_click(list(pygame.mouse.get_pos())) #Only detect most recent alert
                 else:
                     ALERT_CLICKED = False
                 if KEYBOARD.visible and list(pygame.mouse.get_pos())[1] >= SETTINGS["height"] // 2:

@@ -62,14 +62,14 @@ for i in data["constants"]["menu_items"]:
 #STEP 4: Initialize sub-menus
 data["general"]:dict = {
     "language": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["language"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, holo_color.system.text_color),
-    "languageSelector": holo.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.15)], width=SETTINGS["width"] // 2, items=list(SYSTEM_TEXTS["settings"]["general"]["languages"].keys()), display_text=list(SYSTEM_TEXTS["settings"]["general"]["languages"].values())),
+    "languageSelector": holo_prefabs.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.15)], width=SETTINGS["width"] // 2, items=list(SYSTEM_TEXTS["settings"]["general"]["languages"].keys()), display_text=list(SYSTEM_TEXTS["settings"]["general"]["languages"].values())),
     "keyboard_layout": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["keyboard-layout"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, holo_color.system.text_color),
-    "layoutSelector": holo.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.25)], width=SETTINGS["width"] // 2, items=data["constants"]["keyboard_layouts"], display_text=[i.upper() for i in data["constants"]["keyboard_layouts"]]),
+    "layoutSelector": holo_prefabs.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.25)], width=SETTINGS["width"] // 2, items=data["constants"]["keyboard_layouts"], display_text=[i.upper() for i in data["constants"]["keyboard_layouts"]]),
     "date_format": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["date_layout"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, holo_color.system.text_color),
     "time_format": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["time_layout"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, holo_color.system.text_color),
     "autostart": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["autostart"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, holo_color.system.text_color),
     "use_sound": FONTS["p-sans-serif"].render(text_cutoff(SYSTEM_TEXTS["settings"]["general"]["use_sound"], width=SETTINGS["width"] // 3, font=FONTS["p-sans-serif"]), True, holo_color.system.text_color),
-    "sound_checkbox": holo.checkbox([SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.65)])
+    "sound_checkbox": holo_prefabs.checkbox([SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.65)])
 }
 
 data["autostart"] = {
@@ -94,7 +94,7 @@ for i,n in enumerate(AUTOSTART.keys()):
         FONTS["p-sans-serif-small"].render(text_cutoff(AUTOSTART[n]["path"], int(SETTINGS["width"]*0.7), FONTS["p-sans-serif-small"]), True, holo_color.system.text_color),
         [SETTINGS["width"] // 15 ,SETTINGS["height"] // 15]
     )
-    data["autostart"]["processes"][n]["checkbox"] = holo.checkbox([int(SETTINGS["width"] * 0.85), int((SETTINGS["height"] // 3) * 1.05)])
+    data["autostart"]["processes"][n]["checkbox"] = holo_prefabs.checkbox([int(SETTINGS["width"] * 0.85), int((SETTINGS["height"] // 3) * 1.05)])
 
 data["autostart"]["process_list"] = list(data["autostart"]["processes"].keys())
 
@@ -131,7 +131,7 @@ del data["time_date"]
 
 data["display"]:dict = {
     "theme_text": FONTS["p-sans-serif"].render(SYSTEM_TEXTS["settings"]["display"]["theme"], True, holo_color.system.text_color),
-    "theme_selector": holo.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.15)], width=SETTINGS["width"] // 2, items=list(SYSTEM_TEXTS["settings"]["display"]["themes"].keys()), display_text=list(SYSTEM_TEXTS["settings"]["display"]["themes"].values())),
+    "theme_selector": holo_prefabs.list_selector(pos=[SETTINGS["width"] // 2, int(SETTINGS["height"] * 0.15)], width=SETTINGS["width"] // 2, items=list(SYSTEM_TEXTS["settings"]["display"]["themes"].keys()), display_text=list(SYSTEM_TEXTS["settings"]["display"]["themes"].values())),
 }
 
 #STEP 5: Display the current settings in the initialized components

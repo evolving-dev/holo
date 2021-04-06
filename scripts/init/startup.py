@@ -46,6 +46,7 @@ exec(holo_io.file.read(join(PATH, "scripts/core/text_wrapper.py"))) #INITIALIZE 
 exec(holo_io.file.read("scripts/core/pass_types.py"))
 exec(holo_io.file.read("scripts/core/holo_gui.py"))
 exec(holo_io.file.read("scripts/core/holo_color.py"))
+exec(holo_io.file.read("scripts/core/holo_prefabs.py"))
 exec(holo_io.file.read("scripts/core/holo_keyboard.py"))
 
 screen.fill([0,0,0])

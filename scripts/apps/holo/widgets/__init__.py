@@ -76,6 +76,6 @@ for i in data["widgetfile"]:
     data["id_list"] += [i]
 
 data["components"] = {
-    "app_selector": holo.list_selector(pos=[int(data["assets"]["add"].get_width() * 1.5), ((SETTINGS["height"] - SETTINGS["height"] // 15) + (SETTINGS["height"] - data["assets"]["overlaySurface"].get_height())) // 2], items=data["id_list"], display_text=data["name_list"])
+    "app_selector": holo_prefabs.list_selector(pos=[int(data["assets"]["add"].get_width() * 1.5), ((SETTINGS["height"] - SETTINGS["height"] // 15) + (SETTINGS["height"] - data["assets"]["overlaySurface"].get_height())) // 2], items=data["id_list"], display_text=data["name_list"])
 }
 
