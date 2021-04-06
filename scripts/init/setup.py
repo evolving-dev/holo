@@ -4,8 +4,13 @@ with open(join(PATH,"INITFILE"),"r") as f:
     INITFILE = f.readlines()
     f.close()
 
-os.mkdir("USERS")
-os.chdir(join(PATH,"USERS"))
+os.mkdir("storage")
+os.chdir(join(PATH,"storage"))
+os.mkdir("apps")
+os.mkdir("apps_private")
+os.mkdir("main")
+os.mkdir("system")
+os.chdir(join(PATH,"storage/system"))
 
 SETTINGS = {
     "width":int(INITFILE[0]),
