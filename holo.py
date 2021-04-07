@@ -46,14 +46,21 @@ while not done:
             run_setup = 0
             pygame.display.flip()
             done = True
-        elif os.path.isfile(join(PATH,"INITFILE")):
+        else:
             run_setup = 1
             pygame.display.flip()
             done = True
-        else:
-            global ERRORMSG
-            ERRORMSG = FONTS["big"].render("ERROR: Missing INITFILE",True,[255,0,0])
-            error_loop = 1
+            import tkinter as tk
+            root = tk.Tk()
+            root.title("HOLO Setup")
+            root.update_idletasks()
+            root.attributes('-fullscreen', True)
+            root.state('iconic')
+            START_RESOLUTION = root.winfo_geometry().split("+")[0].split("x") # Get current resolution for settings
+            root.destroy()
+            del tk
+            del root
+
     else:
         screen.blit(ERRORMSG,((resolution[0] - ERRORMSG.get_width())//2,(resolution[1] - ERRORMSG.get_height())//2))
     if done:
@@ -62,6 +69,7 @@ while not done:
     pygame.display.flip()
 
 del error_loop
+
 if run_setup:
     exec(holo_io.file.read("scripts/init/setup.py"))
 else:
