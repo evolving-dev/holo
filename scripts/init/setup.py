@@ -9,9 +9,9 @@ os.mkdir("system")
 os.chdir(join(PATH,"storage/system"))
 
 SETTINGS = {
-    "width":int(START_RESOLUTION[0]),
-    "height":int(START_RESOLUTION[1]),
-    "lang":"en-US",
+    'width':int(START_RESOLUTION[0]),
+    'height':int(START_RESOLUTION[1]),
+    'lang':'en-US',
     'background':'standard.png',
     'theme':'dark',
     'timeout':120,
@@ -19,8 +19,9 @@ SETTINGS = {
     'timeformat': '%H:%M:%S',
     'dateformat':'%d.%m.%Y',
     'init_sound': 0,
-    'keyboard_mode': "both",
+    'keyboard_mode': 'both',
     'connectivity_enabled': 1,
+    'default_home': 'home'
     }
 
 with open("settings","w") as f:

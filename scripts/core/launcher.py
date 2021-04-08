@@ -1,3 +1,21 @@
+global ALERTS
+global SETTINGS
+global data
+global app
+global code
+global LOADERS
+global APP_PATH
+global FRAME
+global SECOND
+global FPS
+global KEYBOARD
+global APPLAUNCHER
+global PRIORITY_MODE_ACTIVE
+global APP_CODE
+global APP_EVENTHANDLER
+global PATH
+global PATHFILE
+
 if not APP_CRASHED:
     del ALERTS
     ALERTS:list = [] #RESET ALERTS ONLY WHEN AN APP EXITED NORMALLY. (keep error report)
@@ -7,6 +25,11 @@ if SETTINGS["init_sound"]:
 
 if "data" in globals():
     del data
+if "app" in globals():
+    del app
+if "code" in globals():
+    del code
+
 data:dict = {} #RESET APP DATA
 
 del LOADERS
@@ -18,7 +41,7 @@ APP_PATH:dict = {}
 FRAME,SECOND = 0,0 #RESET TIMERS
 FPS = 6 #RESET FPS
 
-DISPLAY_BACKGROUND = True
+holo_gui.background.show()
 
 KEYBOARD.reset()
 APP_CRASHED = False
@@ -26,7 +49,7 @@ APP_CRASHED = False
 if APP == "startup":
 
     #Code to be executed at startup
-    APP = "home"
+    APP = SETTINGS["default_home"]
     exec(APPLAUNCHER)
 
 else:

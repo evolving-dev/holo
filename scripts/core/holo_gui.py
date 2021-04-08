@@ -26,6 +26,9 @@ class holo_gui:
             global DISPLAY_BACKGROUND
             DISPLAY_BACKGROUND = False
 
+        def is_visible():
+            return DISPLAY_BACKGROUND
+
         def set_background(image_path): #TODO: CLEAN UP
             holo_assets.system.background = Image.open(image_path)
 

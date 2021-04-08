@@ -72,6 +72,4 @@ if data["screen"] == "autostart":
 
 
 if data["quit"]:
-    APP_CRASHED = False
-    APP = "home"
-    exec(APPLAUNCHER)
+    holo_launcher.to_home(crash=False)

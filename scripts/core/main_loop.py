@@ -1,6 +1,6 @@
 while not CLOSE:
     if TIMEOUT > 0: #If screen timeout not reached
-        if DISPLAY_BACKGROUND:
+        if holo_gui.background.is_visible():
             screen.blit(holo_assets.system.background,(0,0))
         else:
             screen.fill([0,0,0])

@@ -31,10 +31,8 @@ with open(holo_io.path.to_absolute("storage/system/widgets"), "r") as f:
 try:
     data["widgetfile"] = eval(data["widgetfile"])
 except:
-    APP_CRASHED = True
     holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + SYSTEM_TEXTS["read_error"] + holo_io.path.to_absolute("storage/system/widgets")) #Show an alert of the exception thrown
-    APP = "home"
-    exec(APPLAUNCHER) #Start the home app if the WIDGETFILE could not be read
+    holo_launcher.to_home(crash=True) #Start the home app if the WIDGETFILE could not be read
 
 if not APP_CRASHED:
    data["widgetcode"]:dict = {} #Update code for all the widgets

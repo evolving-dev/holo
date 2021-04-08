@@ -70,16 +70,12 @@ if data["quit"]:
     try:
         data["widgetfile_OLD"] = eval(data["widgetfile_OLD"])
     except:
-        APP_CRASHED = True
         holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + SYSTEM_TEXTS["read_error"] + holo_io.path.to_absolute("storage/system/widgets")) #Show an alert of the exception thrown
-        APP = "home"
-        exec(APPLAUNCHER) #Start the home app if the WIDGETFILE could not be read
+        holo_launcher.to_home(crash=True) #Start the home app if the WIDGETFILE could not be read
 
     if data["widgetfile"] != data["widgetfile_OLD"]:
         with open(holo_io.path.to_absolute("storage/system/widgets"), "w") as f:
             f.write(str(data["widgetfile"]))
             f.close()
 
-    APP_CRASHED = False
-    APP = "home"
-    exec(APPLAUNCHER)
+    holo_launcher.to_home(crash=True)
