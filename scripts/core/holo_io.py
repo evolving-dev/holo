@@ -57,13 +57,13 @@ class holo_io:
         class app:
 
             def get_asset_path(): #Will replace APP_PATH Variable in the future
-                pass
+                return PATHFILE[APP]["assets"]
 
             def get_script_path():
-                pass
+                return PATHFILE[APP]["scripts"]
 
             def get_data_path():
-                pass
+                return PATHFILE[APP]["data"]
 
 
 
