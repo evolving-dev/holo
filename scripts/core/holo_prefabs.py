@@ -13,6 +13,10 @@ class holo_prefabs:
             self.frame = 0 if self.frame >= len(holo_assets.system.loading) - 1 else self.frame+1 #Loop animation if end is reached, if not, add 1 to the frame count
             self.surface = holo_assets.system.loading[self.frame]
 
+        def new():
+            global LOADERS
+            LOADERS += [holo_prefabs.loader()]
+
     class checkbox:
 
         def __init__(self,pos):
@@ -59,6 +63,10 @@ class holo_prefabs:
                 self.visible = False
                 return True
             return False
+
+        def new(text="Sample text"):
+            global ALERTS
+            ALERTS += [holo_prefabs.alert(message)]
 
     class list_selector:
 

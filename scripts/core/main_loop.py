@@ -9,7 +9,7 @@ while not CLOSE:
             exec(APP_CODE) #Run the updatefile of the current app
         except Exception as e: #CRASH PROTECTION
             APP_CRASHED = True
-            holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + str(e)) #Show an alert of the exception thrown
+            holo_prefabs.alert.new(APP + SYSTEM_TEXTS["crash"] + "\n" + str(e)) #Show an alert of the exception thrown
             APP = "home"
             exec(APPLAUNCHER)
 
@@ -42,7 +42,7 @@ while not CLOSE:
             except Exception as e:
                 BLOCK_PROCESS_HANDLER = 1
                 print("[HOLO:MAIN_LOOP/ERROR]: The background process handler crashed. Stacktrace below:\n" + str(e))
-                holo.new_alert(SYSTEM_TEXTS["background_process_error"])
+                holo_prefabs.alert.new(SYSTEM_TEXTS["background_process_error"])
             except:pass
 
         clock.tick(FPS)
@@ -74,7 +74,7 @@ while not CLOSE:
                 except Exception as e:
                     if APP != "home":
                         APP_CRASHED = True
-                        holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + str(e)) #Show an alert of the exception thrown
+                        holo_prefabs.alert.new(APP + SYSTEM_TEXTS["crash"] + "\n" + str(e)) #Show an alert of the exception thrown
                         APP = "home"
                         exec(APPLAUNCHER) #Start the home app
 

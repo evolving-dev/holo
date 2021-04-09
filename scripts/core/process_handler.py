@@ -15,7 +15,7 @@ for a,b in enumerate(AUTOSTART.keys()):
                 #Disable process
                 del PROCESSES[b]
                 AUTOSTART[b]["enabled"] = 0
-                holo.new_alert(SYSTEM_TEXTS["process_crash"].replace("__PROCESS__", b) + str(e))
+                holo_prefabs.alert.new(SYSTEM_TEXTS["process_crash"].replace("__PROCESS__", b) + str(e))
 
         try:
             process = PROCESSES[b]["var"] #Load memory section for the active process
@@ -26,4 +26,4 @@ for a,b in enumerate(AUTOSTART.keys()):
             #Disable process
             del PROCESSES[b]
             AUTOSTART[b]["enabled"] = 0
-            holo.new_alert(SYSTEM_TEXTS["process_crash"].replace("__PROCESS__", b) + str(e))
+            holo_prefabs.alert.new(SYSTEM_TEXTS["process_crash"].replace("__PROCESS__", b) + str(e))

@@ -41,7 +41,6 @@ pygame.display.flip()
 
 
 MAIN_LOOP = holo_io.file.read("scripts/core/main_loop.py")
-exec(holo_io.file.read("scripts/core/renderFunctions.py")) #INITIALIZE LEGACY CUSTOM RENDER FUNCTIONS (WILL GET REMOVED SOON)
 exec(holo_io.file.read("scripts/core/text_wrapper.py")) #INITIALIZE TEXT WRAPPER
 exec(holo_io.file.read("scripts/core/pass_types.py"))
 exec(holo_io.file.read("scripts/core/holo_gui.py"))

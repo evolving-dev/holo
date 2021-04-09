@@ -1,5 +1,17 @@
 class holo_gui:
 
+    def responsive_scale(image,new_scale): #Function to scale an image without stretching
+        im = image
+        old_width, old_height = im.size
+
+        # Center the image
+        
+        paste_coords = [(new_scale[0] - old_width) // 2,(new_scale[1] - old_height) // 2]
+        newImage = Image.new("RGBA", tuple(new_scale),(255,255,255,255))
+        newImage.paste(im, (paste_coords[0], paste_coords[1], paste_coords[0] + old_width, paste_coords[1] + old_height))
+
+        return newImage
+
     def load_image(path, size, aa=True, alpha=True):
         if aa:#Antialiasing enabled
 
@@ -46,6 +58,6 @@ class holo_gui:
                 holo_assets.system.background = holo_assets.system.background.resize(tuple(TRANSFORM_CACHE[1]))
 
 
-            holo_assets.system.background = holo.responsive_scale(holo_assets.system.background,[SETTINGS["width"], SETTINGS["height"]]) #Crop to center of image
+            holo_assets.system.background = holo_gui.responsive_scale(holo_assets.system.background,[SETTINGS["width"], SETTINGS["height"]]) #Crop to center of image
 
             holo_assets.system.background = pygame.image.fromstring(holo_assets.system.background.convert("RGB").tobytes(),(SETTINGS["width"],SETTINGS["height"]),"RGB").convert()

@@ -23,7 +23,7 @@ if event.type == pygame.MOUSEBUTTONUP and data["mouseHold"] < 6:
             
             exec(data["eventcode"][data["clickObjectName"]])
         except Exception as e:
-            holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", data["keycache"]) + str(e))
+            holo_prefabs.alert.new(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", data["keycache"]) + str(e))
             #TODO: MEMDUMP DES WIDGETS IN DIE LOGS SCHREIBEN
             del widget
             del data["var"][data["keycache"]]
@@ -57,7 +57,7 @@ if event.type == pygame.MOUSEBUTTONUP and data["mouseHold"] < 6:
             exec(holo_io.file.read(holo_io.path.to_absolute(data["widgetfile"][i]["init"])))
             data["var"][i] = widget.copy() #Move the data to its designated place
         except Exception as e:
-            holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", i) + str(e))
+            holo_prefabs.alert.new(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", i) + str(e))
             #TODO: MEMDUMP DES WIDGETS IN DIE LOGS SCHREIBEN
             del data["widgetcode"][i]
             del data["eventcode"][i]

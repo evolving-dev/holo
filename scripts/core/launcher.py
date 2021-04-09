@@ -69,7 +69,7 @@ else:
         if APP != "home": #If a third-party app crashes, return to the home screen
 
             APP_CRASHED = True
-            holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + str(e)) #Show an alert of the exception thrown
+            holo_prefabs.alert.new(APP + SYSTEM_TEXTS["crash"] + "\n" + str(e)) #Show an alert of the exception thrown
             APP = "home"
             exec(APPLAUNCHER) #Start the home app
 

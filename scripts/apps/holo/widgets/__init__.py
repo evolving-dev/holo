@@ -31,7 +31,7 @@ with open(holo_io.path.to_absolute("storage/system/widgets"), "r") as f:
 try:
     data["widgetfile"] = eval(data["widgetfile"])
 except:
-    holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + SYSTEM_TEXTS["read_error"] + holo_io.path.to_absolute("storage/system/widgets")) #Show an alert of the exception thrown
+    holo_prefabs.alert.new(APP + SYSTEM_TEXTS["crash"] + "\n" + SYSTEM_TEXTS["read_error"] + holo_io.path.to_absolute("storage/system/widgets")) #Show an alert of the exception thrown
     holo_launcher.to_home(crash=True) #Start the home app if the WIDGETFILE could not be read
 
 if not APP_CRASHED:
@@ -49,7 +49,7 @@ if not APP_CRASHED:
                 exec(holo_io.file.read(holo_io.path.to_absolute(data["widgetfile"][i]["init"])))
                 data["var"][i] = widget.copy() #Move the data to its designated place
             except Exception as e:
-                holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", i) + str(e))
+                holo_prefabs.alert.new(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", i) + str(e))
                 #TODO: MEMDUMP DES WIDGETS IN DIE LOGS SCHREIBEN
                 del data["widgetcode"][i]
                 del data["eventcode"][i]

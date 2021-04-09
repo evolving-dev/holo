@@ -12,7 +12,7 @@ for i in range(len(data["widgetcode"])):
 
         screen.blit(widget["surface"], [widget["x"], widget["y"]])
     except Exception as e:
-        holo.new_alert(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", data["keycache"]) + str(e))
+        holo_prefabs.alert.new(SYSTEM_TEXTS["widget_crash"].replace("__WIDGET__", data["keycache"]) + str(e))
         #TODO: MEMDUMP DES WIDGETS IN DIE LOGS SCHREIBEN
         del data["var"][data["keycache"]]
         del data["widgetcode"][data["keycache"]]
@@ -70,7 +70,7 @@ if data["quit"]:
     try:
         data["widgetfile_OLD"] = eval(data["widgetfile_OLD"])
     except:
-        holo.new_alert(APP + SYSTEM_TEXTS["crash"] + "\n" + SYSTEM_TEXTS["read_error"] + holo_io.path.to_absolute("storage/system/widgets")) #Show an alert of the exception thrown
+        holo_prefabs.alert.new(APP + SYSTEM_TEXTS["crash"] + "\n" + SYSTEM_TEXTS["read_error"] + holo_io.path.to_absolute("storage/system/widgets")) #Show an alert of the exception thrown
         holo_launcher.to_home(crash=True) #Start the home app if the WIDGETFILE could not be read
 
     if data["widgetfile"] != data["widgetfile_OLD"]:

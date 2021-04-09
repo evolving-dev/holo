@@ -6,7 +6,7 @@ if event.type == pygame.MOUSEBUTTONUP: #When the mousebutton is released
                 if data["page"] == data["apps"]["areas"][i][0]: #When the app found is on the currently active page
                     if mouse_pos[0] in range(data["apps"]["areas"][i][1][0],data["apps"]["areas"][i][2][0]) and mouse_pos[1] in range(data["apps"]["areas"][i][1][1], data["apps"]["areas"][i][2][1]):
                         #When an app has been found, start it
-                        holo.new_loader()
+                        holo_prefabs.loader.new()
                         
                         pygame.draw.rect(screen, holo_color.system.text_color, [data["apps"]["areas"][i][1][0], data["apps"]["areas"][i][1][1], SETTINGS["width"] // 10, SETTINGS["width"] // 10])
                         

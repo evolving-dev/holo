@@ -22,7 +22,7 @@ elif TRANSFORM_CACHE[1][0] >= SETTINGS["width"]:
     holo_assets.system.background = holo_assets.system.background.resize(tuple(TRANSFORM_CACHE[1]))
 
 
-holo_assets.system.background = holo.responsive_scale(holo_assets.system.background,[SETTINGS["width"], SETTINGS["height"]]) #Crop to center of image
+holo_assets.system.background = holo_gui.responsive_scale(holo_assets.system.background,[SETTINGS["width"], SETTINGS["height"]]) #Crop to center of image
 
 holo_assets.system.background = pygame.image.fromstring(holo_assets.system.background.convert("RGB").tobytes(),(SETTINGS["width"],SETTINGS["height"]),"RGB").convert()
 
