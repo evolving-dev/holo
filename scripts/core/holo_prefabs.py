@@ -66,7 +66,7 @@ class holo_prefabs:
 
         def new(text="Sample text"):
             global ALERTS
-            ALERTS += [holo_prefabs.alert(message)]
+            ALERTS += [holo_prefabs.alert(text)]
 
     class list_selector:
 
