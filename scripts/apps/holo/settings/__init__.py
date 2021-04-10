@@ -24,18 +24,20 @@ data["assets"]["textbox"].set_alpha(150)
 
 
 data["assets"]["button_change"].fill(holo_color.system.theme_color)
-data["assets"]["button_change"].set_alpha(200)
+
 
 data["cache"] = FONTS["p-sans-serif"].render(SYSTEM_TEXTS["settings"]["general"]["change"], True, holo_color.system.text_color)
 data["assets"]["button_change"].blit(data["cache"],[(SETTINGS["width"] // 16 - data["cache"].get_width() // 2), data["assets"]["button_change"].get_height() // 2 - data["cache"].get_height() // 2])
 
 
 data["assets"]["button_remove"].fill(holo_color.system.theme_color)
-data["assets"]["button_remove"].set_alpha(200)
+
 
 data["cache"] = FONTS["p-sans-serif"].render(SYSTEM_TEXTS["settings"]["general"]["remove"], True, holo_color.system.text_color)
 data["assets"]["button_remove"].blit(data["cache"],[(SETTINGS["width"] // 16 - data["cache"].get_width() // 2), data["assets"]["button_remove"].get_height() // 2 - data["cache"].get_height() // 2])
 
+data["assets"]["button_change"].set_alpha(200)
+data["assets"]["button_remove"].set_alpha(200)
 
 del data["cache"]
 
