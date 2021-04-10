@@ -32,6 +32,8 @@ if "code" in globals():
 
 data:dict = {} #RESET APP DATA
 
+holo_screen.objects = {} #Reset objects
+
 del LOADERS
 LOADERS:list = [] #RESET LOADERS
 
