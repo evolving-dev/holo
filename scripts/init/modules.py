@@ -8,3 +8,4 @@ import sys
 import PIL
 from PIL import Image,ImageDraw,GifImagePlugin
 from os.path import join
+import uuid

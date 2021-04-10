@@ -132,3 +132,28 @@ class holo_prefabs:
             self.text_render = self.text_renders[self.selected]
             self.surface = self.empty_surface.copy()
             self.surface.blit(self.text_render, [holo_assets.prefabs.dropdown.arrow_left.get_width(), self.empty_surface.get_height() // 2 -self.text_render.get_height() // 2])
+
+    class text:
+
+        def __init__(self, font, text, color, pos, aa=True, visible=True):
+            self.font = font
+            self.text = text
+            self.color = color
+            self.pos = pos
+            self.aa = aa
+            self.visible = visible
+            self.rerender = False
+            self.surface = self.font.render(self.text, self.aa, self.color)
+            self.width = self.surface.get_width()
+            self.height = self.surface.get_height()
+
+
+        def update(self):
+            
+            if self.rerender:
+                self.surface = self.font.render(self.text, self.aa, self.color)
+                self.width = self.surface.get_width()
+                self.height = self.surface.get_height()
+
+            if self.visible:
+                screen.blit(self.surface, self.pos)

@@ -45,6 +45,7 @@ exec(holo_io.file.read("scripts/core/text_wrapper.py")) #INITIALIZE TEXT WRAPPER
 exec(holo_io.file.read("scripts/core/pass_types.py"))
 exec(holo_io.file.read("scripts/core/holo_gui.py"))
 exec(holo_io.file.read("scripts/core/holo_color.py"))
+exec(holo_io.file.read("scripts/core/holo_screen.py"))
 exec(holo_io.file.read("scripts/core/holo_prefabs.py"))
 exec(holo_io.file.read("scripts/core/holo_keyboard.py"))
 exec(holo_io.file.read("scripts/core/holo_launcher.py"))
