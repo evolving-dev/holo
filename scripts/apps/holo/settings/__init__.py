@@ -53,8 +53,8 @@ data["constants"]["menu_desc"] = {}
 #STEP 3.2: Render menu headers and description
 for i in data["constants"]["menu_items"]:
     #STEP 3.2.1: Shorten the text to fit on the screen
-    data["constants"]["menu_headers"][i] = text_cutoff(SYSTEM_TEXTS["settings"]["type"][i][:], width=int(SETTINGS["width"] * 0.75), font=FONTS["p-sans-serif"])
-    data["constants"]["menu_desc"][i] = text_cutoff(SYSTEM_TEXTS["settings"]["type"][i+"_desc"][:], width=int(SETTINGS["width"] * 0.75), font=FONTS["p-sans-serif-small"])
+    data["constants"]["menu_headers"][i] = text_cutoff(SYSTEM_TEXTS["settings"]["type"][i][:], width=int(SETTINGS["width"] * 0.8), font=FONTS["p-sans-serif"])
+    data["constants"]["menu_desc"][i] = text_cutoff(SYSTEM_TEXTS["settings"]["type"][i+"_desc"][:], width=int(SETTINGS["width"] * 0.8), font=FONTS["p-sans-serif-small"])
 
     #STEP 3.2.2: Render the text
     data["constants"]["menu_headers"][i] = FONTS["h4"].render(data["constants"]["menu_headers"][i], True, holo_color.system.text_color)

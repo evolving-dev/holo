@@ -18,7 +18,7 @@ global PATHFILE
 
 if not APP_CRASHED:
     del ALERTS
-    ALERTS:list = [] #RESET ALERTS ONLY WHEN AN APP EXITED NORMALLY. (keep error report)
+    ALERTS = [] #RESET ALERTS ONLY WHEN AN APP EXITED NORMALLY. (keep error report)
 
 if SETTINGS["init_sound"]:
     pygame.mixer.stop()
@@ -30,15 +30,15 @@ if "app" in globals():
 if "code" in globals():
     del code
 
-data:dict = {} #RESET APP DATA
+data = {} #RESET APP DATA
 
 holo_screen.objects = {} #Reset objects
 
 del LOADERS
-LOADERS:list = [] #RESET LOADERS
+LOADERS = [] #RESET LOADERS
 
 del APP_PATH
-APP_PATH:dict = {}
+APP_PATH = {}
 
 FRAME,SECOND = 0,0 #RESET TIMERS
 FPS = 6 #RESET FPS
