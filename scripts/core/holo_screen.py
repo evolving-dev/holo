@@ -15,10 +15,12 @@ class holo_screen:
         def hide(self):
 
             holo_screen.objects[self.uuid].visible = False
+            return self
 
         def show(self):
 
             holo_screen.objects[self.uuid].visible = True
+            return self
 
         def is_visible(self):
 
@@ -28,6 +30,7 @@ class holo_screen:
 
             holo_screen.objects[self.uuid].color = color
             holo_screen.objects[self.uuid].rerender = True
+            return self
 
         def get_color(self):
 
@@ -37,10 +40,12 @@ class holo_screen:
 
             holo_screen.objects[self.uuid].text = text
             holo_screen.objects[self.uuid].rerender = True
+            return self
 
         def move(self, pos):
 
             holo_screen.objects[self.uuid].pos = pos
+            return self
 
         def get_pos(self):
 
@@ -58,6 +63,70 @@ class holo_screen:
 
             holo_screen.objects[self.uuid].rerender = True
             holo_screen.objects[self.uuid].update()
+            return self
+
+        def center_horizontal(self, width=SETTINGS["width"], offset=0):
+
+            holo_screen.objects[self.uuid].pos[0] = (width // 2) - (holo_screen.objects[self.uuid].width // 2) + offset
+            return self
+
+        def center_vertical(self, height=SETTINGS["height"], offset=0):
+
+            holo_screen.objects[self.uuid].pos[1] = (height // 2) - (holo_screen.objects[self.uuid].height // 2) + offset
+            return self
+
+    class image:
+
+        def __init__(self, image, pos, visible=True, alpha=True):
+            self.uuid = uuid.uuid4().hex
+
+            while self.uuid in holo_screen.objects: #Generate new UUID if the one generated already exists
+                self.uuid = uuid.uuid4().hex
+
+            holo_screen.objects[self.uuid] = holo_prefabs.image(image, pos, alpha, visible)
+
+        def hide(self):
+
+            holo_screen.objects[self.uuid].visible = False
+            return self
+
+        def show(self):
+
+            holo_screen.objects[self.uuid].visible = True
+            return self
+
+        def is_visible(self):
+
+            return holo_screen.objects[self.uuid].visible
+
+        def move(self, pos):
+
+            holo_screen.objects[self.uuid].pos = pos
+            return self
+
+        def get_pos(self):
+
+            return holo_screen.objects[self.uuid].pos
+
+        def get_width(self):
+
+            return holo_screen.objects[self.uuid].width
+
+        def get_height(self):
+
+            return holo_screen.objects[self.uuid].height
+
+        def center_horizontal(self, width=SETTINGS["width"], offset=0):
+
+            holo_screen.objects[self.uuid].pos[0] = (width // 2) - (holo_screen.objects[self.uuid].width // 2) + offset
+            return self
+
+        def center_vertical(self, height=SETTINGS["height"], offset=0):
+
+            holo_screen.objects[self.uuid].pos[1] = (height // 2) - (holo_screen.objects[self.uuid].height // 2) + offset
+            return self
+
+
 
     def draw():
         for i in list(holo_screen.objects.keys()):

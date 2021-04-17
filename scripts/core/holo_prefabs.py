@@ -157,3 +157,19 @@ class holo_prefabs:
 
             if self.visible:
                 screen.blit(self.surface, self.pos)
+
+    class image:
+        
+        def __init__(self, image, pos, alpha, visible):
+            
+            self.surface = image
+            self.pos = pos
+            self.visible = visible
+            self.alpha = alpha
+            self.width = image.get_width()
+            self.height = image.get_height()
+            
+        def update(self):
+            
+            if self.visible:
+                screen.blit(self.surface, self.pos)
