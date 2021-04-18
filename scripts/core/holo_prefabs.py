@@ -19,22 +19,26 @@ class holo_prefabs:
 
     class checkbox:
 
-        def __init__(self,pos):
-            self.isChecked = False
+        def __init__(self, pos, checked=False, visible=True):
+            self.visible = visible
+            self.is_checked = checked
             self.surface = holo_assets.prefabs.checkbox.unchecked
             self.width = self.surface.get_width()
             self.height = self.surface.get_height()
             self.pos = pos
         def update_surface(self):
-            self.surface = holo_assets.prefabs.checkbox.checked if self.isChecked else holo_assets.prefabs.checkbox.unchecked
+            self.surface = holo_assets.prefabs.checkbox.checked if self.is_checked else holo_assets.prefabs.checkbox.unchecked
         def on_click(self):
-            self.isChecked = not self.isChecked
+            self.is_checked = not self.is_checked
             self.update_surface()
-        def detect_click(self,clickPos):
-            if clickPos[0] in range(self.pos[0],self.pos[0]+self.width) and clickPos[1] in range(self.pos[1],self.pos[1]+self.height):
+        def detect_click(self,click_pos):
+            if click_pos[0] in range(self.pos[0],self.pos[0]+self.width) and click_pos[1] in range(self.pos[1],self.pos[1]+self.height):
                 self.on_click()
                 return True
             return False
+        def update(self):
+            if self.visible:
+                screen.blit(self.surface, self.pos)
 
     class alert:
 
@@ -149,7 +153,7 @@ class holo_prefabs:
 
 
         def update(self):
-            
+
             if self.rerender:
                 self.surface = self.font.render(self.text, self.aa, self.color)
                 self.width = self.surface.get_width()
@@ -159,17 +163,17 @@ class holo_prefabs:
                 screen.blit(self.surface, self.pos)
 
     class image:
-        
+
         def __init__(self, image, pos, alpha, visible):
-            
+
             self.surface = image
             self.pos = pos
             self.visible = visible
             self.alpha = alpha
             self.width = image.get_width()
             self.height = image.get_height()
-            
+
         def update(self):
-            
+
             if self.visible:
                 screen.blit(self.surface, self.pos)

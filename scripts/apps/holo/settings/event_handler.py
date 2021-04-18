@@ -27,7 +27,7 @@ if event.type == pygame.MOUSEBUTTONUP:
             data["general"]["languageSelector"].detect_click(data["mousePos"])
             data["general"]["layoutSelector"].detect_click(data["mousePos"])
             if data["general"]["sound_checkbox"].detect_click(data["mousePos"]):
-                if data["general"]["sound_checkbox"].isChecked:
+                if data["general"]["sound_checkbox"].is_checked:
                     holo_prefabs.alert.new(SYSTEM_TEXTS["settings"]["general"]["sound_warning"])
 
             if (data["mousePos"][0] in range(SETTINGS["width"] // 2, SETTINGS["width"] // 2 + data["assets"]["button_change"].get_width()) and data["mousePos"][1] in range(int(SETTINGS["height"]*0.35), int(SETTINGS["height"]*0.35) + data["assets"]["button_change"].get_height())):
